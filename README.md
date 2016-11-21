@@ -15,7 +15,7 @@ docker run --rm --name Hadoop -h hadoop \
 http://localhost:8088
 ```
 
-### Notebook access
+### Jupyter Notebook
 
 #### Command in container
 ```
