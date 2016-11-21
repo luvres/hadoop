@@ -16,9 +16,13 @@ http://localhost:8088
 ```
 
 ### Notebook access
+
+#### Command in container
 ```
 jupyter notebook --ip='0.0.0.0' --no-browser
-
+```
+#### Jupyter Notebook Browser access
+```
 http://localhost:8888
 ```
 
