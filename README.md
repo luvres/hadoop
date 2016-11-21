@@ -15,8 +15,6 @@ http://localhost:8888
 ```
 
 ### Notebook Access
-
-#### In the conteiner
 ```
 jupyter notebook --ip='0.0.0.0' --no-browser
 
