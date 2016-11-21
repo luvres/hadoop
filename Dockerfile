@@ -39,13 +39,13 @@ ENV PATH=/opt/miniconda3/bin:$PATH
 RUN conda install jupyter -y \
     && rm Miniconda3-latest-Linux-x86_64.sh
 
-
 # Hadoop
-RUN wget -c http://ftp.unicamp.br/pub/apache/hadoop/common/hadoop-2.7.3/hadoop-2.7.3.tar.gz \
-    && tar -xzf hadoop-2.7.3.tar.gz \
-    && mv hadoop-2.7.3 /usr/local/ \
-    && ln -s /usr/local/hadoop-2.7.3/ /opt/hadoop \
-    && rm hadoop-2.7.3.tar.gz
+ENV HADOOP_VERSION 2.7.3
+RUN wget -c http://ftp.unicamp.br/pub/apache/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz \
+    && tar -xzf hadoop-${HADOOP_VERSION}.tar.gz \
+    && mv hadoop-${HADOOP_VERSION} /usr/local/ \
+    && ln -s /usr/local/hadoop-${HADOOP_VERSION}/ /opt/hadoop \
+    && rm hadoop-${HADOOP_VERSION}.tar.gz
 
 ENV HADOOP_HOME=/opt/hadoop
 ENV HADOOP_INSTALL=$HADOOP_HOME
