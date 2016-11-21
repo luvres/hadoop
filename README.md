@@ -1,4 +1,6 @@
 # Hadoop 2.7.3 pseudo distributed mode and Jupyter Notebook with CentOS 6
+
+## Build Image
 ```
 docker build -t hadoop:2.7.3 .
 
@@ -7,12 +9,12 @@ docker run --rm --name Hadoop -h hadoop \
 	-p 8888:8888 \
 	-ti hadoop:2.7.3 bash
 ```
-# Hadoop Browser
+## Hadoop Browser
 ```
 http://localhost:8888
 ```
 
-# Notebook Access
+## Notebook Access
 ```
 jupyter notebook --ip='0.0.0.0' --no-browser
 
