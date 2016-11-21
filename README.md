@@ -51,7 +51,7 @@ hadoop jar /opt/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.3.ja
 hdfs dfs -cat /output/*
 ```
 
-### Jupyter Notebook
+## Jupyter Notebook
 
 #### Command in container
 ```
