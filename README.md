@@ -1,6 +1,6 @@
-## Hadoop 2.7.3 pseudo distributed mode and Jupyter Notebook with CentOS 6
+### Hadoop 2.7.3 pseudo distributed mode and Jupyter Notebook with CentOS 6
 
-### Build image
+#### Build image
 ```
 docker build -t hadoop:2.7.3 .
 
@@ -11,54 +11,54 @@ docker run --rm --name Hadoop -h hadoop \
 	-ti hadoop:2.7.3 bash
 ```
 
-### Hadoop Browser
+#### Hadoop Browser
 ```
 http://localhost:8088
 ```
 
-## Testing..
+### Testing..
 
-### Create a Directory
+#### Create a Directory
 ```
 hdfs dfs -mkdir /bigdata
 ```
 
-### List diretory
+#### List diretory
 ```
 hadoop fs -ls /
 ```
 
-### Download a file csv
+#### Download a file csv
 ```
 wget -c http://compras.dados.gov.br/contratos/v1/contratos.csv
 ```
 
-### Copy file to the HDFS directory created above
+#### Copy file to the HDFS directory created above
 ```
 hadoop fs -copyFromLocal contratos.csv /bigdata
 ```
 
-### Read file
+#### Read file
 ```
 hadoop fs -cat /bigdata/contratos.csv
 ```
-### Test word count with mapreduce
+#### Test word count with mapreduce
 ```
 hadoop jar /opt/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.3.jar wordcount /bigdata/contratos.csv /output
 ```
 
-### Read result
+#### Read result
 ```
 hdfs dfs -cat /output/*
 ```
 
-## Jupyter Notebook
+### Jupyter Notebook
 
-#### Command in container
+###### Command in container
 ```
 jupyter notebook --ip='0.0.0.0' --no-browser
 ```
-#### Jupyter Notebook Browser access
+###### Jupyter Notebook Browser access
 ```
 http://localhost:8888
 ```
