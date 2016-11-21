@@ -12,7 +12,7 @@ docker run --rm --name Hadoop -h hadoop \
 
 ### Hadoop Browser
 ```
-http://localhost:8888
+http://localhost:8088
 ```
 
 ### Notebook access
