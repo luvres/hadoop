@@ -1,0 +1,141 @@
+docker build -t hadoop:2.7.3 .
+
+docker run --rm --name Hadoop -h hadoop \
+	-p 8088:8088 \
+	-p 8888:8888 \
+	-ti hadoop:2.7.3 bash
+
+
+jupyter notebook --ip='*'
+
+	/bin/bash -c "mkdir /opt/notebooks \
+	&& jupyter notebook --notebook-dir=/opt/notebooks \
+	--ip='*' --port=8888 --no-browser"
+
+
+ssh -l root `docker inspect -f '{{ .NetworkSettings.IPAddress }}' Hadoop`
+
+
+docker run --rm --privileged --name Hadoop -ti centos:7.2.1511 /usr/sbin/init
+
+## Salvar imagem
+docker save hadoop:2.7.3 > img-hadoop_2.7.3.tar
+
+## Carregar imagem salva
+docker load < img-hadoop_2.7.3.tar
+
+
+### Cloudera
+docker pull cloudera/quickstart:latest
+
+docker run --rm -h quickstart.cloudera \
+	--privileged \
+	-p 8088:8088 \
+	-p 8888:8888 \
+	-ti cloudera/quickstart \
+	/usr/bin/docker-quickstart bash
+
+# Teste
+hdfs dfs -mkdir /bigdata #Criar um diretorio
+hadoop fs -ls / #Listar diretorio
+# http://dados.gov.br/dataset/compras-publicas-do-governo-federal
+yum install -y wget
+wget -c http://compras.dados.gov.br/contratos/v1/contratos.csv
+hadoop fs -copyFromLocal contratos.csv /bigdata #Copia arquivo
+hadoop fs -cat /bigdata/contratos.csv
+hadoop jar /usr/jars/hadoop-mapreduce-examples-2.6.0-cdh5.7.0.jar wordcount /bigdata/contratos.csv /output
+
+############
+
+docker run --rm \
+	-p 8042:8042 -p 8088:8088 -p 50070:50070 -p 50075:50075 -p 50090:50090 \
+	-ti ruo91/hadoop bash
+
+
+
+
+
+
+docker run -it sequenceiq/hadoop-docker:2.7.0 /etc/bootstrap.sh -bash
+
+cd $HADOOP_PREFIX
+# run the mapreduce
+bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar grep input output 'dfs[a-z.]+'
+
+# check the output
+bin/hdfs dfs -cat output/*
+
+#######################
+
+# Preparar e iniciar o Hadoop
+service sshd start
+hdfs namenode -format
+start-dfs.sh
+start-yarn.sh
+jps
+
+# localhost:8088
+
+### Testar o Hadoop
+hdfs dfs -mkdir /bigdata #Criar um diretorio
+hadoop fs -ls / #Listar diretorio
+# http://dados.gov.br/dataset/compras-publicas-do-governo-federal
+wget -c http://compras.dados.gov.br/contratos/v1/contratos.csv
+hadoop fs -copyFromLocal contratos.csv /bigdata #Copia arquivo
+hadoop fs -cat /bigdata/contratos.csv
+
+# Teste contar palavras com mapreduce
+hadoop jar /opt/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.3.jar wordcount /bigdata/contratos.csv /output
+
+hdfs dfs -cat /output/*
+
+### Ambari
+cd /etc/yum.repos.d/
+wget -c http://public-repo-1.hortonworks.com/ambari/centos6/2.x/updates/2.2.2.0/ambari.repo
+yum install ambari-server
+ambari-server setup
+ambari-server start
+
+# http://localhost:8080
+# usuário: admin
+# senha: admin
+
+
+### User
+#useradd luvres
+#passwd luvres
+#echo '' >>/etc/sudoers
+#echo 'luvres	ALL=(ALL)  	ALL' >>/etc/sudoers
+#su - luvres
+
+#systemctl start sshd
+#ssh localhost
+
+#sed -i 's/#Port 22/Port 22/' /etc/ssh/sshd_config
+#sed -i 's/#AddressFamily any/AddressFamily any/' /etc/ssh/sshd_config   
+#sed -i 's/#ListenAddress 0.0.0.0/ListenAddress 0.0.0.0/' /etc/ssh/sshd_config   
+
+#chkconfig sshd on
+#service sshd start
+#echo "169.8.192.130 pi" >>/etc/hosts
+
+#source $HOME/.bashrc
+#java -version && javac -version
+
+#hadoop version
+
+
+# Hdfs ports
+EXPOSE 50010 50020 50070 50075 50090 8020 9000
+# Mapred ports
+EXPOSE 10020 19888
+#Yarn ports
+EXPOSE 8030 8031 8032 8033 8040 8042 8088
+#Other ports
+EXPOSE 49707 2122
+
+# Add Tini
+ENV TINI_VERSION v0.13.0
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
+RUN chmod +x /tini
+
