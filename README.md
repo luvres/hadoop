@@ -1,14 +1,20 @@
-### Hadoop 2.7.3 pseudo distributed mode and Jupyter Notebook with CentOS 6
+### Hadoop 2.7.3 pseudo distributed mode and Jupyter Notebook with CentOS 7
 
 #### Build image
 ```
-docker build -t hadoop:2.7.3 .
-
+docker build -t hadoop .
+```
+#### Build image wuth CentOS 6
+```
+docker build -t hadoop:2.7.3 ./centos6/
+```
+#### Run image
+```
 docker run --rm --name Hadoop -h hadoop \
 	-p 8088:8088 \
 	-p 8888:8888 \
 	-p 8042:8042 \
-	-ti hadoop:2.7.3 bash
+	-ti hadoop bash
 ```
 
 #### Hadoop Browser
