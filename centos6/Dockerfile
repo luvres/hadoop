@@ -56,12 +56,12 @@ ENV YARN_HOME=$HADOOP_HOME
 ENV PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
 # Configurations Pseudo Distributed
-ADD ../hadoop-env.sh $HADOOP_HOME/etc/hadoop/hadoop-env.sh
-ADD ../core-site.xml $HADOOP_HOME/etc/hadoop/core-site.xml
-ADD ../hdfs-site.xml $HADOOP_HOME/etc/hadoop/hdfs-site.xml
-ADD ../mapred-site.xml $HADOOP_HOME/etc/hadoop/mapred-site.xml
-ADD ../yarn-site.xml $HADOOP_HOME/etc/hadoop/yarn-site.xml
-ADD ../start.sh /start.sh
+ADD hadoop-env.sh $HADOOP_HOME/etc/hadoop/hadoop-env.sh
+ADD core-site.xml $HADOOP_HOME/etc/hadoop/core-site.xml
+ADD hdfs-site.xml $HADOOP_HOME/etc/hadoop/hdfs-site.xml
+ADD mapred-site.xml $HADOOP_HOME/etc/hadoop/mapred-site.xml
+ADD yarn-site.xml $HADOOP_HOME/etc/hadoop/yarn-site.xml
+ADD start.sh /start.sh
 RUN hdfs namenode -format
 
 
