@@ -4,7 +4,7 @@
 ```
 docker build -t hadoop .
 ```
-#### Build image wuth CentOS 6
+#### Build image with CentOS 6
 ```
 docker build -t hadoop:2.7.3 ./centos6/
 ```
