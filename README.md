@@ -1,6 +1,6 @@
-### Hadoop 2.7.3 pseudo distributed mode and Jupyter Notebook with CentOS 7
+## Hadoop 2.7.3 pseudo distributed mode and Jupyter Notebook with CentOS 7
 
-#### Build image
+### Build image
 ```
 docker build -t hadoop .
 ```
@@ -60,11 +60,11 @@ hdfs dfs -cat /output/*
 
 ### Jupyter Notebook
 
-###### Command in container
+#### Command in container
 ```
 jupyter notebook --ip='0.0.0.0' --no-browser
 ```
-###### Jupyter Notebook Browser access
+#### Jupyter Notebook Browser access
 ```
 http://localhost:8888
 ```
