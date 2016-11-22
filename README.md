@@ -16,11 +16,11 @@ docker build -t hadoop:2.7.3 ./centos6/
 ```
 docker pull izone/hadoop
 ```
-### Pull image with CentOS 6
+#### Pull image with CentOS 6
 ```
 docker pull izone/hadoop:2.7.3
 ```
-#### Run image
+### Run image
 ```
 docker run --rm --name Hadoop -h hadoop \
 	-p 8088:8088 \
@@ -29,7 +29,7 @@ docker run --rm --name Hadoop -h hadoop \
 	-ti izone/hadoop bash
 ```
 
-#### Hadoop Browser
+### Hadoop Browser
 ```
 http://localhost:8088
 ```
