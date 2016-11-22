@@ -21,9 +21,9 @@ docker run --rm --name Hadoop -h hadoop \
 ```
 http://localhost:8088
 ```
-
-### Testing..
 ---
+### Testing..
+
 #### Create a Directory
 ```
 hdfs dfs -mkdir /bigdata
@@ -57,7 +57,7 @@ hadoop jar /opt/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.3.ja
 ```
 hdfs dfs -cat /output/*
 ```
-
+---
 ### Jupyter Notebook
 
 #### Command in container
