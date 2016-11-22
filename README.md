@@ -1,5 +1,5 @@
 ## Hadoop 2.7.3 pseudo distributed mode and Jupyter Notebook with CentOS 7
-
+---
 ### Build image
 ```
 docker build -t hadoop .
@@ -23,7 +23,7 @@ http://localhost:8088
 ```
 
 ### Testing..
-
+---
 #### Create a Directory
 ```
 hdfs dfs -mkdir /bigdata
