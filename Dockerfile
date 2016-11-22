@@ -61,12 +61,12 @@ RUN hdfs namenode -format
 # ENV PATH=/opt/anaconda3/bin:$PATH
 
 # Miniconda3
-RUN wget -c https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh \
-    && /bin/bash Miniconda3-latest-Linux-x86_64.sh -b -p /usr/local/miniconda3 \
-    && ln -s /usr/local/miniconda3/ /opt/miniconda3
-ENV PATH=/opt/miniconda3/bin:$PATH
-RUN conda install jupyter -y \
-    && rm Miniconda3-latest-Linux-x86_64.sh
+#RUN wget -c https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+#    && /bin/bash Miniconda3-latest-Linux-x86_64.sh -b -p /usr/local/miniconda3 \
+#    && ln -s /usr/local/miniconda3/ /opt/miniconda3
+#ENV PATH=/opt/miniconda3/bin:$PATH
+#RUN conda install jupyter -y \
+#    && rm Miniconda3-latest-Linux-x86_64.sh
 
 
 # Hdfs ports
