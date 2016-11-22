@@ -24,21 +24,6 @@ ENV JRE_HOME=/opt/jre
 ENV PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
 RUN rm jdk-8u112-linux-x64.tar.gz
 
-## Anaconda3 -> https://www.continuum.io/downloads
-# RUN wget -c https://repo.continuum.io/archive/Anaconda3-4.2.0-Linux-x86_64.sh \
-#    && /bin/bash Anaconda3-4.2.0-Linux-x86_64.sh -b -p /usr/local/anaconda3 \
-#    && ln -s /usr/local/anaconda3/ /opt/anaconda3 \
-#    && rm Anaconda3-4.2.0-Linux-x86_64.sh
-# ENV PATH=/opt/anaconda3/bin:$PATH
-
-# Miniconda3
-RUN wget -c https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh \
-    && /bin/bash Miniconda3-latest-Linux-x86_64.sh -b -p /usr/local/miniconda3 \
-    && ln -s /usr/local/miniconda3/ /opt/miniconda3
-ENV PATH=/opt/miniconda3/bin:$PATH
-RUN conda install jupyter -y \
-    && rm Miniconda3-latest-Linux-x86_64.sh
-
 # Hadoop
 ENV HADOOP_VERSION 2.7.3
 RUN wget -c http://ftp.unicamp.br/pub/apache/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz \
@@ -64,6 +49,20 @@ ADD yarn-site.xml $HADOOP_HOME/etc/hadoop/yarn-site.xml
 ADD start.sh /start.sh
 RUN hdfs namenode -format
 
+## Anaconda3 -> https://www.continuum.io/downloads
+# RUN wget -c https://repo.continuum.io/archive/Anaconda3-4.2.0-Linux-x86_64.sh \
+#    && /bin/bash Anaconda3-4.2.0-Linux-x86_64.sh -b -p /usr/local/anaconda3 \
+#    && ln -s /usr/local/anaconda3/ /opt/anaconda3 \
+#    && rm Anaconda3-4.2.0-Linux-x86_64.sh
+# ENV PATH=/opt/anaconda3/bin:$PATH
+
+# Miniconda3
+#RUN wget -c https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+#    && /bin/bash Miniconda3-latest-Linux-x86_64.sh -b -p /usr/local/miniconda3 \
+#    && ln -s /usr/local/miniconda3/ /opt/miniconda3
+#ENV PATH=/opt/miniconda3/bin:$PATH
+#RUN conda install jupyter -y \
+#    && rm Miniconda3-latest-Linux-x86_64.sh
 
 # Hdfs ports
 EXPOSE 50010 50020 50070 50075 50090 8020 9000
