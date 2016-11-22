@@ -10,11 +10,11 @@ docker build -t hadoop .
 ```
 docker build -t hadoop:2.7.3 ./centos6/
 ```
-### Pull image under UNDER CONSTRUCTION
+### Pull image under (( UNDER CONSTRUCTION ))
 ```
 docker pull izone/hadoop
 ```
-#### Pull image with CentOS 6 UNDER CONSTRUCTION
+#### Pull image with CentOS 6  (( UNDER CONSTRUCTION ))
 ```
 docker pull izone/hadoop:2.7.3
 ```
