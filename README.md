@@ -24,7 +24,7 @@ docker run --rm --name Hadoop -h hadoop \
 	-p 8088:8088 \
 	-p 8888:8888 \
 	-p 8042:8042 \
-	-ti izone/hadoop bash
+	-ti hadoop bash
 ```
 
 ### Hadoop Browser
