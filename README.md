@@ -3,9 +3,11 @@
 ### Build image
 ```
 git clone https://github.com/luvres/hadoop.git
-
+```
+```
 cd hadoop
-
+```
+```
 docker build -t hadoop .
 ```
 #### Build image with CentOS 6
