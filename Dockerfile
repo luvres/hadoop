@@ -3,8 +3,10 @@ MAINTAINER Leonardo Loures <luvres@hotmail.com>
 
 RUN yum install -y \
     openssh-server openssh-clients \
-    bzip2 unzip rsync wget net-tools java sudo which \
-    && yum update -y
+    bzip2 unzip rsync wget net-tools java sudo which python-setuptools \
+    && yum update -y \
+    && easy_install pip \
+    && pip install supervisor
 
 # SSH Key Passwordless
 RUN ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa \
@@ -51,6 +53,8 @@ ADD hdfs-site.xml $HADOOP_HOME/etc/hadoop/hdfs-site.xml
 ADD mapred-site.xml $HADOOP_HOME/etc/hadoop/mapred-site.xml
 ADD yarn-site.xml $HADOOP_HOME/etc/hadoop/yarn-site.xml
 ADD start.sh /start.sh
+ADD supervisord.conf /etc/supervisord.conf
+RUN chmod +x start.sh
 RUN hdfs namenode -format
 
 ## Anaconda3 -> https://www.continuum.io/downloads
@@ -84,11 +88,5 @@ EXPOSE 8888
 #Other ports
 EXPOSE 49707 22 2122
 
-# Add Tini
-ENV TINI_VERSION v0.13.0
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
-RUN chmod +x /tini
-ENTRYPOINT ["/tini", "--", "/start.sh"]
-
-
+ENTRYPOINT ["/start.sh"]
 
