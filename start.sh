@@ -8,7 +8,7 @@ echo -e "• `date` \e[01;37mStarting HDFS - NameNode DataNodes\e[00m"
 start-dfs.sh
 sleep 10
 
-echo -e "• `date` \e[01;37mStarting YARN -  Resource Manager\e[00m"
+echo -e "• `date` \e[01;37mStarting YARN - Resource Manager\e[00m"
 start-yarn.sh
 sleep 10
 
