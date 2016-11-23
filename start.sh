@@ -18,7 +18,7 @@ $HADOOP_HOME/sbin/mr-jobhistory-daemon.sh start historyserver
 #echo "127.0.0.1       $HOSTNAME" >>/etc/hosts
 
 if [[ $1 == "bash" ]]; then
-  echo "••• `date` Iniciando a Shell Bash"
+  echo "••• `date` Shell Bash"
   /bin/bash
 fi
 
