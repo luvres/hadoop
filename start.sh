@@ -4,13 +4,11 @@ set -e
 nohup /usr/bin/supervisord -c /etc/supervisord.conf &
 sleep 10
 
-
-echo "••• `date` Iniciando o HDFS - NameNode DataNodes"
+echo -e "• `date` \e[01;37mStarting HDFS - NameNode DataNodes\e[00m"
 start-dfs.sh
 sleep 10
 
-
-echo "••• `date` Iniciando o YARN -  Resource Manager"
+echo -e "• `date` \e[01;37mStarting YARN -  Resource Manager\e[00m"
 start-yarn.sh
 sleep 10
 
@@ -25,7 +23,7 @@ if [[ $1 == "bash" ]]; then
 fi
 
 if [[ $1 == "bash" ]]; then
-  echo "••• `date` Iniciando a Shell Bash"
+  echo "••• `date` Shell Bash"
   /bin/bash
 fi
 
