@@ -12,6 +12,9 @@ RUN ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa \
     && chmod 0600 ~/.ssh/authorized_keys \
     && echo 'StrictHostKeyChecking no' >>/etc/ssh/ssh_config
 
+# Timezone
+RUN ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
+
 # Java
 RUN wget -c --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u112-b15/jdk-8u112-linux-x64.tar.gz \
     && tar -xzf jdk-8u112-linux-x64.tar.gz \
