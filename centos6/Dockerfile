@@ -19,8 +19,8 @@ RUN wget -c --no-check-certificate --no-cookies --header "Cookie: oraclelicense=
     && ln -s /usr/local/jdk1.8.0_112/ /opt/jdk \
     && rm jdk-8u112-linux-x64.tar.gz
 
-ENV JAVA_HOME=/opt/jdk \
-    PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
+ENV JAVA_HOME=/opt/jdk
+ENV PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
 
 # Hadoop
 ENV HADOOP_VERSION 2.7.3
@@ -30,13 +30,13 @@ RUN wget -c http://ftp.unicamp.br/pub/apache/hadoop/common/hadoop-${HADOOP_VERSI
     && ln -s /usr/local/hadoop-${HADOOP_VERSION}/ /opt/hadoop \
     && rm hadoop-${HADOOP_VERSION}.tar.gz
 
-ENV HADOOP_HOME=/opt/hadoop \
-    HADOOP_INSTALL=$HADOOP_HOME \
-    HADOOP_COMMON_HOME=$HADOOP_HOME \
-    HADOOP_MAPRED_HOME=$HADOOP_HOME \
-    HADOOP_HDFS_HOME=$HADOOP_HOME \
-    YARN_HOME=$HADOOP_HOME \
-    PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
+ENV HADOOP_HOME=/opt/hadoop
+ENV HADOOP_INSTALL=$HADOOP_HOME
+ENV HADOOP_COMMON_HOME=$HADOOP_HOME
+ENV HADOOP_MAPRED_HOME=$HADOOP_HOME
+ENV HADOOP_HDFS_HOME=$HADOOP_HOME
+ENV YARN_HOME=$HADOOP_HOME
+ENV PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
 # Configurations Pseudo Distributed
 ADD hadoop-env.sh $HADOOP_HOME/etc/hadoop/hadoop-env.sh

@@ -2,10 +2,10 @@
 
 service sshd start
 
-echo -e "• `date` \e[01;37mStarting HDFS - NameNode DataNodes\e[00m"
+echo -e "\e[01;37m*\e[00m `date` \e[01;37mStarting HDFS - NameNode DataNodes\e[00m"
 start-dfs.sh
 
-echo -e "• `date` \e[01;37mStarting YARN - Resource Manager\e[00m"
+echo -e "\e[01;37m*\e[00m `date` \e[01;37mStarting YARN - Resource Manager\e[00m"
 start-yarn.sh
 
 $HADOOP_HOME/sbin/mr-jobhistory-daemon.sh start historyserver
