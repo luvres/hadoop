@@ -18,13 +18,21 @@ docker pull izone/hadoop
 ```
 docker pull izone/hadoop:2.7.3
 ```
-### Run image
+### Run image built
 ```
 docker run --rm --name Hadoop -h hadoop \
 	-p 8088:8088 \
 	-p 8888:8888 \
 	-p 8042:8042 \
 	-ti hadoop bash
+```
+#### Run image pulled
+```
+docker run --rm --name Hadoop -h hadoop \
+        -p 8088:8088 \
+        -p 8888:8888 \
+        -p 8042:8042 \
+        -ti izone/hadoop -test bash
 ```
 
 ### Hadoop Browser
