@@ -11,7 +11,6 @@ start-yarn.sh
 $HADOOP_HOME/sbin/mr-jobhistory-daemon.sh start historyserver
 
 
-
 if [[ $1 == "bash" ]]; then
   echo -e "• `date` \e[01;32mShell Bash\e[00m"
   /bin/bash
