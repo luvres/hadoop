@@ -1,4 +1,4 @@
-## Hadoop 2.7.3 with CentOS 7
+# Hadoop 2.7.3 with CentOS 7
 ### Pseudo distributed mode
 ### Jupyter Notebook integraded
 ---
