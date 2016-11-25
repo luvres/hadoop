@@ -1,11 +1,14 @@
 #!/bin/bash
+set -e
 
+echo -e "\e[01;37m*\e[00m `date` \e[00;37mStarting Supervidord\e[00m"
 nohup /usr/bin/supervisord -c /etc/supervisord.conf &
-sleep 3
+sleep 20
 
 echo " "
 echo -e "\e[01;37m*\e[00m `date` \e[01;37mStarting HDFS - NameNode DataNodes\e[00m"
 start-dfs.sh
+sleep 10
 
 echo " "
 echo -e "\e[01;37m*\e[00m `date` \e[01;37mStarting YARN - Resource Manager\e[00m"

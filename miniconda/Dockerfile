@@ -12,6 +12,7 @@ RUN conda install jupyter -y \
     && pip install mrjob
 
 RUN  mkdir $HOME/notebooks
+VOLUME $HOME/notebooks
 
 RUN echo "" >>/etc/supervisord.conf \
     && echo "[program:jupyter]" >>/etc/supervisord.conf \
