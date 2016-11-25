@@ -77,13 +77,16 @@ hdfs dfs -cat /output/*
 ```
 ---
 ## Jupyter Notebook
-
+```
+mkdir ~/notebooks
+```
 ### Pull image with Miniconda
 ```
 docker run --rm --name Hadoop -h hadoop \
 	-p 8088:8088 \
 	-p 8042:8042 \
 	-p 8888:8888 \
+	-v ~/notebooks:/root/notebooks \
 	-ti izone/hadoop:miniconda bash
 ```
 ### Pull image with Anaconda
@@ -92,6 +95,7 @@ docker run --rm --name Hadoop -h hadoop \
 	-p 8088:8088 \
 	-p 8042:8042 \
 	-p 8888:8888 \
+	-v ~/notebooks:/root/notebooks \
 	-ti izone/hadoop:anaconda bash
 ```
 #### Browser access
