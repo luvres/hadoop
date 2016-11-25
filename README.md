@@ -10,11 +10,11 @@ docker build -t hadoop .
 ```
 docker build -t hadoop:2.7.3 ./centos6/
 ```
-### Pull image under (( UNDER CONSTRUCTION ))
+### Pull image latest (with CentOS 7)
 ```
 docker pull izone/hadoop
 ```
-#### Pull image with CentOS 6  (( UNDER CONSTRUCTION ))
+#### Pull image with CentOS 6
 ```
 docker pull izone/hadoop:2.7.3
 ```
@@ -76,11 +76,38 @@ hdfs dfs -cat /output/*
 ---
 ## Jupyter Notebook
 
-#### Command in container
+### Pull image with Miniconda
 ```
-jupyter notebook --ip='0.0.0.0' --no-browser
+docker run --rm --name Hadoop -h hadoop \
+        -p 8088:8088 \
+        -p 8042:8042 \
+	-p 8888:8888 \
+        -ti izone/hadoop:miniconda bash
 ```
-#### Jupyter Notebook Browser access
+### Pull image with Anaconda
+```
+docker run --rm --name Hadoop -h hadoop \
+        -p 8088:8088 \
+        -p 8042:8042 \
+	-p 8888:8888 \
+        -ti izone/hadoop:anaconda bash
+```
+#### Browser access
 ```
 http://localhost:8888
 ```
+### Build image
+```
+git clone https://github.com/luvres/hadoop.git
+cd hadoop
+```
+#### With Miniconda
+```
+docker build -t hadoop:miniconda ./miniconda/
+```
+#### With Anaconda
+```
+docker build -t hadoop:anaconda ./anaconda/
+```
+
+
