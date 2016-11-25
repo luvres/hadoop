@@ -18,13 +18,6 @@ docker run --rm --name Hadoop -h hadoop \
 	-p 8042:8042 \
 	-ti izone/hadoop -test bash
 ```
-### Run built image
-```
-docker run --rm --name Hadoop -h hadoop \
-	-p 8088:8088 \
-	-p 8042:8042 \
-	-ti hadoop bash
-```
 #### Build image
 ```
 git clone https://github.com/luvres/hadoop.git
@@ -34,6 +27,13 @@ docker build -t hadoop .
 #### Build image with CentOS 6
 ```
 docker build -t hadoop:2.7.3 ./centos6/
+```
+### Run built image
+```
+docker run --rm --name Hadoop -h hadoop \
+	-p 8088:8088 \
+	-p 8042:8042 \
+	-ti hadoop bash
 ```
 ### Hadoop Browser
 ```
