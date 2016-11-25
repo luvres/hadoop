@@ -3,8 +3,8 @@ MAINTAINER Leonardo Loures <luvres@hotmail.com>
 
 RUN yum install -y \
     openssh-server openssh-clients \
-    bzip2 unzip rsync wget net-tools java sudo \
-    && yum update -y
+    bzip2 unzip rsync wget net-tools java sudo python-setuptools \
+    && yum update -y 
 
 # SSH Key Passwordless
 RUN ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa \
@@ -66,3 +66,4 @@ EXPOSE 49707 22 2122
 
 
 ENTRYPOINT ["/start.sh"]
+
