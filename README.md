@@ -1,6 +1,31 @@
-## Hadoop 2.7.3 pseudo distributed mode and Jupyter Notebook with CentOS 7
+## Hadoop 2.7.3 with CentOS 7
+### Pseudo distributed mode
+### Jupyter Notebook integraded
 ---
-### Build image
+
+### Pull image latest (with CentOS 7)
+```
+docker pull izone/hadoop
+```
+#### Pull image with CentOS 6
+```
+docker pull izone/hadoop:2.7.3
+```
+#### Run pulled image
+```
+docker run --rm --name Hadoop -h hadoop \
+	-p 8088:8088 \
+	-p 8042:8042 \
+	-ti izone/hadoop -test bash
+```
+### Run built image
+```
+docker run --rm --name Hadoop -h hadoop \
+	-p 8088:8088 \
+	-p 8042:8042 \
+	-ti hadoop bash
+```
+#### Build image
 ```
 git clone https://github.com/luvres/hadoop.git
 cd hadoop
@@ -10,29 +35,6 @@ docker build -t hadoop .
 ```
 docker build -t hadoop:2.7.3 ./centos6/
 ```
-### Pull image latest (with CentOS 7)
-```
-docker pull izone/hadoop
-```
-#### Pull image with CentOS 6
-```
-docker pull izone/hadoop:2.7.3
-```
-### Run image built
-```
-docker run --rm --name Hadoop -h hadoop \
-	-p 8088:8088 \
-	-p 8042:8042 \
-	-ti hadoop bash
-```
-#### Run image pulled
-```
-docker run --rm --name Hadoop -h hadoop \
-        -p 8088:8088 \
-        -p 8042:8042 \
-        -ti izone/hadoop -test bash
-```
-
 ### Hadoop Browser
 ```
 http://localhost:8088
