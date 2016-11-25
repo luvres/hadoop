@@ -79,10 +79,10 @@ hdfs dfs -cat /output/*
 ### Pull image with Miniconda
 ```
 docker run --rm --name Hadoop -h hadoop \
-        -p 8088:8088 \
-        -p 8042:8042 \
+	-p 8088:8088 \
+	-p 8042:8042 \
 	-p 8888:8888 \
-        -ti izone/hadoop:miniconda bash
+	-ti izone/hadoop:miniconda bash
 ```
 ### Pull image with Anaconda
 ```
