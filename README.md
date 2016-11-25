@@ -87,10 +87,10 @@ docker run --rm --name Hadoop -h hadoop \
 ### Pull image with Anaconda
 ```
 docker run --rm --name Hadoop -h hadoop \
-        -p 8088:8088 \
-        -p 8042:8042 \
+	-p 8088:8088 \
+	-p 8042:8042 \
 	-p 8888:8888 \
-        -ti izone/hadoop:anaconda bash
+	-ti izone/hadoop:anaconda bash
 ```
 #### Browser access
 ```
