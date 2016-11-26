@@ -77,6 +77,8 @@ hdfs dfs -cat /output/*
 ```
 ---
 ## PySpark and Jupyter Notebook
+
+#### Create a directory for notebooks and Include directory created above on flag "-v"
 ```
 mkdir $HOME/notebooks
 ```
