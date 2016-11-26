@@ -102,7 +102,7 @@ docker run --rm --name Hadoop -h hadoop \
 ```
 ### Browser access
 
-#### Jupyter Notebook
+#### PySpark with Jupyter Notebook
 ```
 http://localhost:8888
 ```
@@ -115,11 +115,11 @@ http://localhost:4040
 git clone https://github.com/luvres/hadoop.git
 cd hadoop
 ```
-#### With Miniconda
+#### PySpark and Miniconda
 ```
 docker build -t hadoop:miniconda ./miniconda/
 ```
-#### With Anaconda
+#### PySpark and Anaconda
 ```
 docker build -t hadoop:anaconda ./anaconda/
 ```
