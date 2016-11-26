@@ -1,6 +1,6 @@
 ## Hadoop 2.7.3 with CentOS 7
 ### · Pseudo distributed mode
-### · Jupyter Notebook integraded
+### · PySpark with Jupyter Notebook
 ---
 
 ### Pull image latest (with CentOS 7)
@@ -76,9 +76,9 @@ hadoop jar /opt/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.3.ja
 hdfs dfs -cat /output/*
 ```
 ---
-## Jupyter Notebook
+## PySpark and Jupyter Notebook
 ```
-mkdir ~/notebooks
+mkdir $HOME/notebooks
 ```
 ### Pull image with Miniconda
 ```
@@ -86,7 +86,8 @@ docker run --rm --name Hadoop -h hadoop \
 	-p 8088:8088 \
 	-p 8042:8042 \
 	-p 8888:8888 \
-	-v ~/notebooks:/root/notebooks \
+	-p 4040:4040 \
+	-v $HOME/notebooks:/root/notebooks \
 	-ti izone/hadoop:miniconda bash
 ```
 ### Pull image with Anaconda
@@ -95,12 +96,19 @@ docker run --rm --name Hadoop -h hadoop \
 	-p 8088:8088 \
 	-p 8042:8042 \
 	-p 8888:8888 \
-	-v ~/notebooks:/root/notebooks \
+	-p 4040:4040 \
+	-v $HOME/notebooks:/root/notebooks \
 	-ti izone/hadoop:anaconda bash
 ```
-#### Browser access
+### Browser access
+
+#### Jupyter Notebook
 ```
 http://localhost:8888
+```
+#### Spark management jobs
+```
+http://localhost:4040
 ```
 ### Build image
 ```
