@@ -11,7 +11,7 @@ docker pull izone/hadoop
 ```
 docker pull izone/hadoop:2.7.3
 ```
-#### Run pulled image
+#### Run pulled image (Optional flag "-test" to start with a PI test)
 ```
 docker run --rm --name Hadoop -h hadoop \
 	-p 8088:8088 \
