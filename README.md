@@ -16,6 +16,7 @@ docker pull izone/hadoop:2.7.3
 docker run --rm --name Hadoop -h hadoop \
 	-p 8088:8088 \
 	-p 8042:8042 \
+	-p 50070:50070 \
 	-ti izone/hadoop -test bash
 ```
 #### Build image
@@ -33,11 +34,14 @@ docker build -t hadoop:2.7.3 ./centos6/
 docker run --rm --name Hadoop -h hadoop \
 	-p 8088:8088 \
 	-p 8042:8042 \
+	-p 50070:50070 \
 	-ti hadoop bash
 ```
 ### Hadoop Browser
 ```
 http://localhost:8088
+
+http://localhost:50070
 ```
 ---
 ## Testing..
@@ -87,6 +91,7 @@ mkdir $HOME/notebooks
 docker run --rm --name Hadoop -h hadoop \
 	-p 8088:8088 \
 	-p 8042:8042 \
+	-p 50070:50070 \
 	-p 8888:8888 \
 	-p 4040:4040 \
 	-v $HOME/notebooks:/root/notebooks \
@@ -97,6 +102,7 @@ docker run --rm --name Hadoop -h hadoop \
 docker run --rm --name Hadoop -h hadoop \
 	-p 8088:8088 \
 	-p 8042:8042 \
+	-p 50070:50070 \
 	-p 8888:8888 \
 	-p 4040:4040 \
 	-v $HOME/notebooks:/root/notebooks \
