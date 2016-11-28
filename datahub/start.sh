@@ -23,10 +23,6 @@ echo " "
 echo -e "\e[01;33m*\e[00m `date` \e[01;33mStarting HBase - NoSQL data store\e[00m"
 start-hbase.sh
 
-#echo " "
-#echo -e "\e[01;33m*\e[00m `date` \e[01;33mStarting Hive - Data Warehousing\e[00m"
-#schematool -initSchema -dbType derby
-
 
 if [[ $1 == "bash" ]]; then
   echo " "
