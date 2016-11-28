@@ -60,3 +60,7 @@ ENV PIG_HOME=/opt/pig
 ENV PATH=$PATH:$PIG_HOME/bin
 ENV PIG_CLASSPATH=$HADOOP_HOME/conf
 
+
+ADD start.sh /start.sh
+RUN chmod +x start.sh
+
