@@ -34,3 +34,6 @@ if [[ $2 == "bash" ]]; then
   /bin/bash
 fi
 
+
+sleep 999999
+
