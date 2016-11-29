@@ -28,4 +28,16 @@ RUN ln -s /usr/local/jdbc/mysql-connector-java-5.1.40-bin.jar /opt/sqoop/lib/mys
     && ln -s /usr/local/jdbc/postgresql-9.4.1212.jar /opt/sqoop/lib/postgresql-9.4.1212.jar
 
 
+# Flume
+ENV FLUME_VERSION 1.7.0
+RUN wget -c http://ftp.unicamp.br/pub/apache/flume/${FLUME_VERSION}/apache-flume-${FLUME_VERSION}-bin.tar.gz \
+    && tar -xzf apache-flume-${FLUME_VERSION}-bin.tar.gz \
+    && mv apache-flume-${FLUME_VERSION}-bin /usr/local/ \
+    && ln -s /usr/local/apache-flume-${FLUME_VERSION}-bin/ /opt/flume
+
+ADD flume-env.sh /opt/flume/conf/flume-env.sh
+
+ENV FLUME_HOME=/opt/flume
+ENV PATH=$PATH:$FLUME_HOME/bin
+ENV CLASSPATH=#CLASSPATH:$FLUME_HOME/lib/*
 
