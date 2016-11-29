@@ -29,5 +29,11 @@
     <name>hbase.zookeeper.property.dataDir</name>
     <value>/opt/zookeeper/data</value>
   </property>
+
+  <property>
+    <name>zookeeper.znode.parent</name>
+    <value>/hbase-unsecure</value>
+  </property>
+
 </configuration>
 
