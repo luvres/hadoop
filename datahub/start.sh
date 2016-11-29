@@ -14,14 +14,14 @@ echo -e "\e[01;37m*\e[00m `date` \e[01;37mStarting YARN - Resource Manager\e[00m
 start-yarn.sh
 
 echo " "
-echo -e "\e[00;37m*\e[00m `date` \e[00;37mStarting ZooKeeper - Centralized service\e[00m"
+echo -e "\e[01;33m*\e[00m `date` \e[01;33mStarting HBase - NoSQL data store\e[00m"
+start-hbase.sh
+
+echo " "
+echo -e "\e[00;33m*\e[00m `date` \e[00;33mStarting ZooKeeper - Centralized service\e[00m"
 zkServer.sh start
 
 $HADOOP_HOME/sbin/mr-jobhistory-daemon.sh start historyserver
-
-echo " "
-echo -e "\e[01;33m*\e[00m `date` \e[01;33mStarting HBase - NoSQL data store\e[00m"
-start-hbase.sh
 
 
 if [[ $1 == "bash" ]]; then
