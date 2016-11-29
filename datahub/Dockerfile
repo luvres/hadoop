@@ -10,10 +10,7 @@ RUN wget -c http://ftp.unicamp.br/pub/apache/zookeeper/zookeeper-${ZOOKEEPER_VER
     && ln -s /usr/local/zookeeper-${ZOOKEEPER_VERSION}/ /opt/zookeeper \
     && mkdir /opt/zookeeper/data
 
-RUN cp /opt/zookeeper/conf/zoo_sample.cfg /opt/zookeeper/conf/zoo.cfg \
-    && sed -i '/initLimit/s/10/5/g' /opt/zookeeper/conf/zoo.cfg \
-    && sed -i '/syncLimit/s/5/2/g' /opt/zookeeper/conf/zoo.cfg \
-    && sed -i '/dataDir/s/\/tmp\/zookeeper/\/opt\/zookeeper\/data/g' /opt/zookeeper/conf/zoo.cfg
+ADD zoo.cfg /opt/zookeeper/conf/zoo.cfg
 
 ENV ZOOKEEPER_HOME=/opt/zookeeper
 ENV PATH=$PATH:$ZOOKEEPER_HOME/bin
