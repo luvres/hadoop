@@ -77,4 +77,5 @@ ENV CLASSPATH=#CLASSPATH:$FLUME_HOME/lib/*
 
 ADD start.sh /start.sh
 RUN chmod +x start.sh
+RUN echo 'export PS1="[\e[01;31m\u\e[00;37m@\e[01;33m\h:\e[01;34m\w\e[00m] # "' >>$HOME/.bashrc
 
