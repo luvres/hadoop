@@ -1,6 +1,5 @@
-FROM izone/hadoop
+FROM izone/hadoop:anaconda
 MAINTAINER Leonardo Loures <luvres@hotmail.com>
-
 
 # Zookeeper
 ENV ZOOKEEPER_VERSION 3.4.9
@@ -48,6 +47,33 @@ ENV PIG_HOME=/opt/pig
 ENV PATH=$PATH:$PIG_HOME/bin
 ENV PIG_CLASSPATH=$HADOOP_HOME/conf
 
+# Sqoop
+ENV SQOOP_VERSION 1.4.6
+RUN wget -c http://ftp.unicamp.br/pub/apache/sqoop/${SQOOP_VERSION}/sqoop-${SQOOP_VERSION}.bin__hadoop-2.0.4-alpha.tar.gz \
+    && tar -xzf sqoop-${SQOOP_VERSION}.bin__hadoop-2.0.4-alpha.tar.gz \
+    && mv sqoop-${SQOOP_VERSION}.bin__hadoop-2.0.4-alpha /usr/local/ \
+    && ln -s /usr/local/sqoop-${SQOOP_VERSION}.bin__hadoop-2.0.4-alpha/ /opt/sqoop \
+    && mkdir /opt/sqoop/hcatalog /opt/sqoop/accumulo
+ENV SQOOP_HOME=/opt/sqoop
+ENV PATH=$PATH:$SQOOP_HOME/bin
+ENV ACCUMULO_HOME=/opt/sqoop/accumulo
+ENV HCAT_HOME=/opt/sqoop/hcatalog
+ADD sqoop-env.sh /opt/sqoop/conf/sqoop-env.sh
+RUN ln -s /usr/local/jdbc/mysql-connector-java-5.1.40-bin.jar /opt/sqoop/lib/mysql-connector.jar \
+    && ln -s /usr/local/jdbc/mariadb-java-client-1.4.6.jar /opt/sqoop/lib/mariadb-connector.jar \
+    && ln -s /usr/local/jdbc/ojdbc7.jar /opt/sqoop/lib/ojdbc7.jar \
+    && ln -s /usr/local/jdbc/postgresql-9.4.1212.jar /opt/sqoop/lib/postgresql-connector.jar
+
+# Flume
+ENV FLUME_VERSION 1.7.0
+RUN wget -c http://ftp.unicamp.br/pub/apache/flume/${FLUME_VERSION}/apache-flume-${FLUME_VERSION}-bin.tar.gz \
+    && tar -xzf apache-flume-${FLUME_VERSION}-bin.tar.gz \
+    && mv apache-flume-${FLUME_VERSION}-bin /usr/local/ \
+    && ln -s /usr/local/apache-flume-${FLUME_VERSION}-bin/ /opt/flume
+ADD flume-env.sh /opt/flume/conf/flume-env.sh
+ENV FLUME_HOME=/opt/flume
+ENV PATH=$PATH:$FLUME_HOME/bin
+ENV CLASSPATH=#CLASSPATH:$FLUME_HOME/lib/*
 
 ADD start.sh /start.sh
 RUN chmod +x start.sh
