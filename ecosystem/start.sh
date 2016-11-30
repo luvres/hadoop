@@ -36,12 +36,14 @@ if [[ $1 == "-test" ]]; then
   hadoop jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.3.jar pi 16 1000
 fi
 
+if [[ $1 == "" ]]; then
+  echo " "
+  sleep 31557600
+fi
+
 if [[ $2 == "bash" ]]; then
   echo " "
   echo -e "\e[01;31m*\e[00m `date` \e[01;31mShell Bash\e[00m"
   /bin/bash
 fi
-
-
-sleep 31557600
 

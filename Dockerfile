@@ -59,6 +59,7 @@ ADD mapred-site.xml $HADOOP_HOME/etc/hadoop/mapred-site.xml
 ADD yarn-site.xml $HADOOP_HOME/etc/hadoop/yarn-site.xml
 ADD start.sh /start.sh
 RUN chmod +x start.sh
+RUN echo 'export PS1="[\e[01;37m\um@\h:\e[01;34m\w\e[00m] # "' >>$HOME/.bashrc
 RUN hdfs namenode -format
 
 
