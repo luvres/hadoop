@@ -32,7 +32,6 @@ RUN wget -c http://ftp.unicamp.br/pub/apache/hive/hive-${HIVE_VERSION}/apache-hi
     && rm apache-hive-${HIVE_VERSION}-bin.tar.gz \
     && mv apache-hive-${HIVE_VERSION}-bin /usr/local/ \
     && ln -s /usr/local/apache-hive-${HIVE_VERSION}-bin/ /opt/hive
-
 ENV HIVE_HOME=/opt/hive
 ENV PATH=$PATH:$HIVE_HOME/bin
 ENV CLASSPATH=$CLASSPATH:$HADOOP_HOME/lib/*:.
