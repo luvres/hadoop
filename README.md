@@ -1,7 +1,7 @@
 ## Hadoop 2.7.3 with CentOS 7
-### · Pseudo distributed mode
-### · PySpark with Jupyter Notebook
-### . Ecosystem (Zookeeper, HBase, Hive, Pig, Sqoop, Flume)
+#### · Pseudo distributed mode
+#### · PySpark with Jupyter Notebook
+#### . Ecosystem (Zookeeper, HBase, Hive, Pig, Sqoop, Flume)
 ---
 
 ### Pull image latest (with CentOS 7)
