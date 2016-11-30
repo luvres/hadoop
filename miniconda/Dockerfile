@@ -21,7 +21,7 @@ RUN mkdir /usr/local/jdbc \
     && wget -c https://github.com/luvres/jdbc/raw/master/ojdbc7.jar -O /usr/local/jdbc/ojdbc7.jar \
     && wget -c https://github.com/luvres/jdbc/raw/master/postgresql-9.4.1212.jar -O /usr/local/jdbc/postgresql-9.4.1212.jar
 
-# Spark -> http://spark.apache.org/downloads.html
+# Spark
 RUN wget -c http://d3kbcqa49mib13.cloudfront.net/spark-2.0.2-bin-hadoop2.7.tgz \
     && tar -xzf spark-2.0.2-bin-hadoop2.7.tgz \
     && mv spark-2.0.2-bin-hadoop2.7 /usr/local/ \
