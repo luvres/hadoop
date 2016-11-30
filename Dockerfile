@@ -29,10 +29,8 @@ RUN wget -c --no-check-certificate --no-cookies --header "Cookie: oraclelicense=
     && tar -xzf jdk-8u112-linux-x64.tar.gz \
     && mv jdk1.8.0_112/ /usr/local/ \
     && ln -s /usr/local/jdk1.8.0_112/ /opt/jdk
-
 ENV JAVA_HOME=/opt/jdk
 ENV PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
-
 RUN rm jdk-8u112-linux-x64.tar.gz
 
 # Hadoop
@@ -42,7 +40,6 @@ RUN wget -c http://ftp.unicamp.br/pub/apache/hadoop/common/hadoop-${HADOOP_VERSI
     && mv hadoop-${HADOOP_VERSION} /usr/local/ \
     && ln -s /usr/local/hadoop-${HADOOP_VERSION}/ /opt/hadoop \
     && rm hadoop-${HADOOP_VERSION}.tar.gz
-
 ENV HADOOP_HOME=/opt/hadoop
 ENV HADOOP_INSTALL=$HADOOP_HOME
 ENV HADOOP_COMMON_HOME=$HADOOP_HOME
@@ -59,9 +56,7 @@ ADD mapred-site.xml $HADOOP_HOME/etc/hadoop/mapred-site.xml
 ADD yarn-site.xml $HADOOP_HOME/etc/hadoop/yarn-site.xml
 ADD start.sh /start.sh
 RUN chmod +x start.sh
-RUN echo 'export PS1="[\e[01;37m\u@\h \e[01;34m\w\e[00m]# "' >>$HOME/.bashrc
 RUN hdfs namenode -format
-
 
 # Hdfs ports
 EXPOSE 50010 50020 50070 50075 50090 8020 9000
