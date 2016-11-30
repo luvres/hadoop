@@ -132,5 +132,24 @@ docker build -t hadoop:miniconda ./miniconda/
 ```
 docker build -t hadoop:anaconda ./anaconda/
 ```
+---
+## Hadoop Ecosystem (Zookeeper, HBase, Hive, Pig, Sqoop, Flume)
 
+### Pull image
+```
+docker run --name Hadoop -h hadoop \
+	-p 8088:8088 \
+	-p 8042:8042 \
+	-p 50070:50070 \
+	-p 8888:8888 \
+	-p 4040:4040 \
+	-v $HOME/notebooks:/root/notebooks \
+	-d izone/hadoop:ecosystem
+```
+#### Access by Jupyter Notebook
+```
+http://localhost:8888/terminals/1
+
+ sh-4.2# bash <enter>
+```
 
