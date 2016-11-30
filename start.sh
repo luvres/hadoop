@@ -35,5 +35,3 @@ if [[ $2 == "bash" ]]; then
 fi
 
 
-sleep 31557600
-
