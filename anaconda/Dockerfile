@@ -21,7 +21,7 @@ RUN mkdir /usr/local/jdbc \
     && wget -c https://github.com/luvres/jdbc/raw/master/postgresql-9.4.1212.jar -O /usr/local/jdbc/postgresql-9.4.1212.jar
 
 # Spark
-ENV SPARK_VERSION 2.0. 2
+ENV SPARK_VERSION 2.0.2
 RUN wget -c http://d3kbcqa49mib13.cloudfront.net/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz \
     && tar -xzf spark-${SPARK_VERSION}-bin-hadoop2.7.tgz \
     && mv spark-${SPARK_VERSION}-bin-hadoop2.7 /usr/local/ \
