@@ -29,7 +29,6 @@ if [[ $1 == "-test" ]]; then
 fi
 
 if [[ $1 == "" ]]; then
-  echo " "
   sleep 31557600
 fi
 

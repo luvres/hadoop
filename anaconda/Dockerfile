@@ -40,6 +40,8 @@ ENV PYSPARK_DRIVER_PYTHON_OPTS="notebook --ip='*' --no-browser --notebook-dir=$N
 RUN echo 'export PS1="[\e[01;37m\u\e[01;31m@\e[01;37m\h \e[01;34m\w\e[00m]# "' >>$HOME/.bashrc
 ENV NOTEBOOKS_PATH=/root/notebooks
 RUN mkdir $NOTEBOOKS_PATH
+ADD start.sh /start.sh
+RUN chmod +x start.sh
 
 VOLUME $NOTEBOOKS_PATH
 
