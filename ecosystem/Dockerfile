@@ -83,16 +83,6 @@ ENV CLASSPATH=#CLASSPATH:$FLUME_HOME/lib/*
 ADD start.sh /start.sh
 RUN chmod +x start.sh
 
-ENV RESET='\[$(tput sgr0)\]'
-ENV GREY='\[$(tput setaf 0)\]'
-ENV RED='\[$(tput setaf 1)\]'
-ENV GREEN='\[$(tput setaf 2)\]'
-ENV YELLOY='\[$(tput setaf 3)\]'
-ENV BLUE='\[$(tput setaf 4)\]'
-ENV PURPLE='\[$(tput setaf 5)\]'
-ENV CYAN='\[$(tput setaf 6)\]'
-ENV WHITE='\[$(tput setaf 7)\]'
-
 # Bash colors
 RUN sed -i '/export/d' $HOME/.bashrc \
     && echo 'export PS1="[${RED}\u${RESET}@${YELLOY}\h${BLUE}\w${RESET}]# "' >>$HOME/.bashrc
