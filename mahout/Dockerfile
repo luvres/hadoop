@@ -95,5 +95,5 @@ RUN chmod +x start.sh
 
 # Bash colors
 RUN sed -i '/export/d' $HOME/.bashrc \
-    && echo 'export PS1="[${RED}\u${RESET}@${YELLOY}\h${BLUE}\w${RESET}]# "' >>$HOME/.bashrc
+    && echo 'export PS1="${RESET}[${RED}\u${RESET}@${YELLOY}\h${BLUE}\w${RESET}]# ${GREEN}"' >>$HOME/.bashrc
 
