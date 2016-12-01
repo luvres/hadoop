@@ -1,4 +1,4 @@
-FROM izone/hadoop:anaconda
+FROM izone/hadoop:miniconda
 MAINTAINER Leonardo Loures <luvres@hotmail.com>
 
 # Zookeeper
