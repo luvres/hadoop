@@ -39,7 +39,7 @@ RUN mkdir $NOTEBOOKS_PATH
 ENV PYSPARK_PYTHON=python3
 ENV PYSPARK_DRIVER_PYTHON=ipython
 ENV PYSPARK_DRIVER_PYTHON_OPTS="notebook --ip='*' --no-browser --notebook-dir=$NOTEBOOKS_PATH"
-RUN echo 'export PS1="[\e[01;37m\u@\h \e[01;34m\w\e[00m]# "' >>$HOME/.bashrc
+#RUN echo 'export PS1="[\e[01;37m\u@\h \e[01;34m\w\e[00m]# "' >>$HOME/.bashrc
 
 VOLUME $NOTEBOOKS_PATH
 
