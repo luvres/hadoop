@@ -34,13 +34,12 @@ RUN ln -s /usr/local/jdbc/mysql-connector-java-5.1.40-bin.jar /opt/spark/jars/my
     && ln -s /usr/local/jdbc/postgresql-9.4.1212.jar /opt/spark/jars/postgresql-connector.jar
 ENV SPARK_HOME=/opt/spark
 ENV PATH=$PATH:$SPARK_HOME/bin
+ENV NOTEBOOKS_PATH=/root/notebooks
+RUN mkdir $NOTEBOOKS_PATH
 ENV PYSPARK_PYTHON=python3
 ENV PYSPARK_DRIVER_PYTHON=ipython
 ENV PYSPARK_DRIVER_PYTHON_OPTS="notebook --ip='*' --no-browser --notebook-dir=$NOTEBOOKS_PATH"
-
 RUN echo 'export PS1="[\e[01;37m\u@\h \e[01;34m\w\e[00m]# "' >>$HOME/.bashrc
-ENV NOTEBOOKS_PATH=/root/notebooks
-RUN mkdir $NOTEBOOKS_PATH
 
 VOLUME $NOTEBOOKS_PATH
 
