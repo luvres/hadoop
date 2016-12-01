@@ -38,7 +38,18 @@ RUN mkdir $NOTEBOOKS_PATH
 ENV PYSPARK_PYTHON=python3
 ENV PYSPARK_DRIVER_PYTHON=ipython
 ENV PYSPARK_DRIVER_PYTHON_OPTS="notebook --ip='*' --no-browser --notebook-dir=$NOTEBOOKS_PATH"
-#RUN echo 'export PS1="[\e[01;37m\u\e[01;31m@\e[01;37m\h \e[01;34m\w\e[00m]# "' >>$HOME/.bashrc
+
+# Bash colors
+ENV RESET='\[$(tput sgr0)\]'
+ENV GREY='\[$(tput setaf 0)\]'
+ENV RED='\[$(tput setaf 1)\]'
+ENV GREEN='\[$(tput setaf 2)\]'
+ENV YELLOY='\[$(tput setaf 3)\]'
+ENV BLUE='\[$(tput setaf 4)\]'
+ENV PURPLE='\[$(tput setaf 5)\]'
+ENV CYAN='\[$(tput setaf 6)\]'
+ENV WHITE='\[$(tput setaf 7)\]'
+RUN echo 'export PS1="[${WHITE}\u${RED}@${WHITE}\h${WHITE}\w${RESET}]# "' >>$HOME/.bashrc
 
 VOLUME $NOTEBOOKS_PATH
 
