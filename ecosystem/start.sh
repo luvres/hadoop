@@ -16,7 +16,7 @@ start-yarn.sh
 echo " "
 echo -e "\e[01;33m*\e[00m `date` \e[01;33mStarting HBase - NoSQL data store\e[00m"
 start-hbase.sh
-
+sleep 3
 echo " "
 echo -e "\e[00;33m*\e[00m `date` \e[00;33mStarting ZooKeeper - Centralized service\e[00m"
 zkServer.sh start
@@ -36,13 +36,11 @@ if [[ $1 == "-test" ]]; then
   hadoop jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.3.jar pi 16 1000
 fi
 
-if [[ $1 == "" ]]; then
-  sleep 31557600
-fi
-
 if [[ $2 == "bash" ]]; then
   echo " "
   echo -e "\e[01;31m*\e[00m `date` \e[01;31mShell Bash\e[00m"
   /bin/bash
 fi
 
+
+sleep 31557600
