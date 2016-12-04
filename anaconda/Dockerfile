@@ -50,7 +50,7 @@ ENV BLUE='\[$(tput setaf 4)\]'
 ENV PURPLE='\[$(tput setaf 5)\]'
 ENV CYAN='\[$(tput setaf 6)\]'
 ENV WHITE='\[$(tput setaf 7)\]'
-RUN echo 'export PS1="[${WHITE}\u${RED}@${WHITE}\h${WHITE}\w${RESET}]# "' >>$HOME/.bashrc
+RUN echo 'export PS1="[${WHITE}\u${RED}@${WHITE}\h${WHITE}:\w${RESET}]# "' >>$HOME/.bashrc
 
 VOLUME $NOTEBOOKS_PATH
 
