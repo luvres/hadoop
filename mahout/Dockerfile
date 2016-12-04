@@ -91,9 +91,9 @@ ENV MAHOUT_HOME=/opt/mahout
 ENV PATH=$PATH:$MAHOUT_HOME/bin
 
 ADD start.sh /start.sh
-RUN chmod +x start.sh
+RUN chmod +x /start.sh
 
 # Bash colors
 RUN sed -i '/export/d' $HOME/.bashrc \
-    && echo 'export PS1="${RESET}[${RED}\u${RESET}@${YELLOY}\h${BLUE}\w${RESET}]# ${GREEN}"' >>$HOME/.bashrc
+    && echo 'export PS1="${RESET}[${RED}\u${RESET}@${YELLOW}\h${BLUE}\w${RESET}]# ${GREEN}"' >>$HOME/.bashrc
 

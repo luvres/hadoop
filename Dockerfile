@@ -55,8 +55,10 @@ ADD hdfs-site.xml $HADOOP_HOME/etc/hadoop/hdfs-site.xml
 ADD mapred-site.xml $HADOOP_HOME/etc/hadoop/mapred-site.xml
 ADD yarn-site.xml $HADOOP_HOME/etc/hadoop/yarn-site.xml
 ADD start.sh /start.sh
-RUN chmod +x start.sh
+RUN chmod +x /start.sh
 RUN hdfs namenode -format
+
+WORKDIR ~
 
 # Hdfs ports
 EXPOSE 50010 50020 50070 50075 50090 8020 9000

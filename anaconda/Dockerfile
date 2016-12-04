@@ -2,10 +2,11 @@ FROM izone/hadoop
 MAINTAINER Leonardo Loures <luvres@hotmail.com>
 
 # Anaconda3
-RUN wget -c https://repo.continuum.io/archive/Anaconda3-4.2.0-Linux-x86_64.sh \
-    && /bin/bash Anaconda3-4.2.0-Linux-x86_64.sh -b -p /usr/local/anaconda3 \
+ENV ANACONDA_VERSION 4.2.0
+RUN wget -c https://repo.continuum.io/archive/Anaconda3-${ANACONDA_VERSION}-Linux-x86_64.sh \
+    && /bin/bash Anaconda3-${ANACONDA_VERSION}-Linux-x86_64.sh -b -p /usr/local/anaconda3 \
     && ln -s /usr/local/anaconda3/ /opt/anaconda3 \
-    && rm Anaconda3-4.2.0-Linux-x86_64.sh
+    && rm Anaconda3-${ANACONDA_VERSION}-Linux-x86_64.sh
 ENV PATH=/opt/anaconda3/bin:$PATH
 RUN pip install --upgrade pip \
     && pip install mrjob
@@ -44,7 +45,7 @@ ENV RESET='\[$(tput sgr0)\]'
 ENV GREY='\[$(tput setaf 0)\]'
 ENV RED='\[$(tput setaf 1)\]'
 ENV GREEN='\[$(tput setaf 2)\]'
-ENV YELLOY='\[$(tput setaf 3)\]'
+ENV YELLOW='\[$(tput setaf 3)\]'
 ENV BLUE='\[$(tput setaf 4)\]'
 ENV PURPLE='\[$(tput setaf 5)\]'
 ENV CYAN='\[$(tput setaf 6)\]'
