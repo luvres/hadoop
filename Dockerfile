@@ -59,7 +59,7 @@ RUN chmod +x /start.sh
 RUN hdfs namenode -format
 
 # Bash
-RUN echo '' >>$HOME/.bashrc && echo 'pushd $HOME' >>$HOME/.bashrc && echo '' >>$HOME/.bashrc
+RUN echo '' >>$HOME/.bashrc && echo 'pushd $HOME &>/dev/null' >>$HOME/.bashrc && echo '' >>$HOME/.bashrc
 
 # Hdfs ports
 EXPOSE 50010 50020 50070 50075 50090 8020 9000
