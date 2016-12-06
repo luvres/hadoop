@@ -1,9 +1,10 @@
 FROM centos
 MAINTAINER Leonardo Loures <luvres@hotmail.com>
 
+RUN sed -i -e 's/^tsflags=nodocs/#tsflags=nodocs/g' /etc/yum.conf
 RUN yum install -y \
     openssh-server openssh-clients \
-    bzip2 unzip rsync wget net-tools java sudo which python-setuptools \
+    bzip2 unzip rsync wget net-tools dhclient java sudo which python-setuptools \
     && yum update -y \
     && easy_install pip \
     && pip install supervisor
@@ -58,8 +59,7 @@ ADD start.sh /start.sh
 RUN chmod +x /start.sh
 RUN hdfs namenode -format
 
-# Bash
-RUN echo '' >>$HOME/.bashrc && echo 'pushd $HOME &>/dev/null' >>$HOME/.bashrc && echo '' >>$HOME/.bashrc
+WORKDIR /root
 
 # Hdfs ports
 EXPOSE 50010 50020 50070 50075 50090 8020 9000
