@@ -56,7 +56,7 @@ ADD mapred-site.xml $HADOOP_HOME/etc/hadoop/mapred-site.xml
 ADD yarn-site.xml $HADOOP_HOME/etc/hadoop/yarn-site.xml
 ADD start.sh /start.sh
 RUN chmod +x /start.sh
-#####RUN hdfs namenode -format
+RUN hdfs namenode -format
 
 WORKDIR /root
 
