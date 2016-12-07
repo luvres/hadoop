@@ -12,6 +12,9 @@ RUN pip install --upgrade pip \
     && pip install mrjob
 RUN echo "" >>/etc/supervisord.conf \
     && echo "[program:pyspark]" >>/etc/supervisord.conf \
+    && echo "command=jupyter notebook --ip='*' --port=8889 --no-browser --notebook-dir=$NOTEBOOKS_PATH" >>/etc/supervisord.conf
+RUN echo "" >>/etc/supervisord.conf \
+    && echo "[program:pyspark]" >>/etc/supervisord.conf \
     && echo "command=pyspark" >>/etc/supervisord.conf
 
 # jdbc
@@ -38,7 +41,7 @@ ENV NOTEBOOKS_PATH=/root/notebooks
 RUN mkdir $NOTEBOOKS_PATH
 ENV PYSPARK_PYTHON=python3
 ENV PYSPARK_DRIVER_PYTHON=ipython
-ENV PYSPARK_DRIVER_PYTHON_OPTS="notebook --ip='*' --no-browser --notebook-dir=$NOTEBOOKS_PATH"
+ENV PYSPARK_DRIVER_PYTHON_OPTS="notebook --ip='*' --port=8888 --no-browser --notebook-dir=$NOTEBOOKS_PATH"
 
 # Bash colors
 ENV RESET='\[$(tput sgr0)\]'
@@ -55,7 +58,7 @@ RUN echo 'export PS1="[${WHITE}\u${RED}@${WHITE}\h${WHITE}:\w${RESET}]# "' >>$HO
 VOLUME $NOTEBOOKS_PATH
 
 # Jupyter Notebook ports
-EXPOSE 8888
+EXPOSE 8888 8889
 
 # Spark management ports
 EXPOSE 4040
