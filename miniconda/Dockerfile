@@ -10,9 +10,6 @@ ENV PATH=/opt/miniconda3/bin:$PATH
 RUN conda install jupyter -y \
     && pip install --upgrade pip \
     && pip install mrjob
-RUN echo "" >>/etc/supervisord.conf \
-    && echo "[program:pyspark]" >>/etc/supervisord.conf \
-    && echo "command=pyspark" >>/etc/supervisord.conf
 
 # jdbc
 RUN mkdir /usr/local/jdbc \
@@ -39,6 +36,9 @@ RUN mkdir $NOTEBOOKS_PATH
 ENV PYSPARK_PYTHON=python3
 ENV PYSPARK_DRIVER_PYTHON=ipython
 ENV PYSPARK_DRIVER_PYTHON_OPTS="notebook --ip='*' --no-browser --notebook-dir=$NOTEBOOKS_PATH"
+RUN echo "" >>/etc/supervisord.conf \
+    && echo "[program:pyspark]" >>/etc/supervisord.conf \
+    && echo "command=pyspark" >>/etc/supervisord.conf
 
 # Bash colors
 ENV RESET='\[$(tput sgr0)\]'
