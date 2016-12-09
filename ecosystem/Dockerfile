@@ -26,7 +26,7 @@ ADD hbase-env.sh $HBASE_HOME/conf/hbase-env.sh
 ADD hbase-site.xml $HBASE_HOME/conf/hbase-site.xml
 
 # Hive
-ENV HIVE_VERSION 2.1.0
+ENV HIVE_VERSION 2.1.1
 RUN wget -c http://ftp.unicamp.br/pub/apache/hive/hive-${HIVE_VERSION}/apache-hive-${HIVE_VERSION}-bin.tar.gz \
     && tar -xzf apache-hive-${HIVE_VERSION}-bin.tar.gz \
     && rm apache-hive-${HIVE_VERSION}-bin.tar.gz \
@@ -85,5 +85,5 @@ RUN chmod +x /etc/start.sh
 
 # Bash colors
 RUN sed -i '/export/d' $HOME/.bashrc \
-    && echo 'export PS1="${RESET}[${RED}\u${RESET}@${YELLOW}\h${RESET}:${BLUE}\w${RESET}]# "' >>$HOME/.bashrc
+    && echo 'export PS1="${RESET}[${RED}\u${RESET}@${YELLOW}\h${RESET}:${BLUE}\w${RESET}]# ${RESET}"' >>$HOME/.bashrc
 

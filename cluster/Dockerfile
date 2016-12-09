@@ -17,3 +17,7 @@ ADD yarn-site.xml $HADOOP_HOME/etc/hadoop/yarn-site.xml
 ADD cluster.sh /etc/cluster.sh
 ADD start.sh /etc/start.sh
 RUN chmod +x /etc/start.sh
+
+# Bash colors
+RUN sed -i '/export/d' $HOME/.bashrc \
+    && echo 'export PS1="${RESET}[${RED}\u${RESET}@${YELLOW}\h${RESET}:${BLUE}\w${RESET}]# ${GREEN}"' >>$HOME/.bashrc
