@@ -90,8 +90,8 @@ RUN wget -c http://ftp.unicamp.br/pub/apache/mahout/${MAHOUT_VERSION}/apache-mah
 ENV MAHOUT_HOME=/opt/mahout
 ENV PATH=$PATH:$MAHOUT_HOME/bin
 
-ADD start.sh /start.sh
-RUN chmod +x /start.sh
+ADD start.sh /etc/start.sh
+RUN chmod +x /etc/start.sh
 
 # Bash colors
 RUN sed -i '/export/d' $HOME/.bashrc \
