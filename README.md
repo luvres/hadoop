@@ -6,7 +6,25 @@
 ##### . (Zookeeper, HBase, Hive, Pig, Sqoop, Flume, Mahout)
 ##### . JDBC implemented and ready for sqoop and spark
 ---
-
+### Script for your cluster from 1 to 9 nodes.
+```
+wget https://raw.githubusercontent.com/luvres/hadoop/master/zoneCluster.sh
+alias zoneCluster="bash zoneCluster.sh"
+```
+### Create cluster of a node 
+#### (the total of 2, as the namenode assumes a node)
+```
+zoneCluster
+```
+### To create a cluster of maximum 9 nodes (10 including the namenode)
+```
+zoneCluster 3
+```
+#### Note: The script is limited to a maximum of 9 nodes because multiple hosts are being created on only one host and I see no point in overloading your machine. The settings are ready for a real cluster and in the future I want to create scripts for provisioning with docker swarm.
+### Stop the cluster
+```
+zoneCluster stop
+```
 ### Pull image latest (with CentOS 7)
 ```
 docker pull izone/hadoop
