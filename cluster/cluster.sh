@@ -8,20 +8,24 @@ nodesSSH(){
   done
 }; nodesSSH
 
-hostsNodes(){
-  for i in `seq $((NODES))`
-  do
-    scp /etc/hosts ${HOSTNODE}$i:/etc/hosts
-    scp /opt/hadoop/etc/hadoop/hadoop-env.sh ${HOSTNODE}$i:/opt/hadoop/etc/hadoop/hadoop-env.sh
-    scp /opt/hadoop/etc/hadoop/core-site.xml ${HOSTNODE}$i:/opt/hadoop/etc/hadoop/core-site.xml
-    scp /opt/hadoop/etc/hadoop/mapred-site.xml ${HOSTNODE}$i:/opt/hadoop/etc/hadoop/mapred-site.xml
-    scp /opt/hadoop/etc/hadoop/yarn-site.xml ${HOSTNODE}$i:/opt/hadoop/etc/hadoop/yarn-site.xml
-  done
-}; hostsNodes
-
 confFiles(){
   echo $HOSTNAME >/opt/hadoop/etc/hadoop/slaves
   cat /etc/machines >>/opt/hadoop/etc/hadoop/slaves
   sed -i "s/NAMENODE/$HOSTNAME/" /opt/hadoop/etc/hadoop/core-site.xml
   sed -i "s/NAMENODE/$HOSTNAME/" /opt/hadoop/etc/hadoop/yarn-site.xml
 }; confFiles
+
+hostsNodes(){
+  SOURCE=/opt/hadoop/etc/hadoop
+  for i in `seq $((NODES))`
+  do
+    for f in /etc/hosts ${SOURCE}/hadoop-env.sh ${SOURCE}/core-site.xml ${SOURCE}/mapred-site.xml ${SOURCE}/yarn-site.xml
+    do
+      scp $f ${HOSTNODE}$i:$f
+      scp $f ${HOSTNODE}$i:$f
+      scp $f ${HOSTNODE}$i:$f
+      scp $f ${HOSTNODE}$i:$f
+      scp $f ${HOSTNODE}$i:$f
+    done
+  done
+}; hostsNodes

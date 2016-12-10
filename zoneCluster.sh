@@ -41,13 +41,13 @@ if [ $# == 0 ]; then
   docker network rm znet &>/dev/null
   docker network create --subnet ${NET}.${SUBNET} --ip-range=${NET}.${RANGE} znet &>/dev/null # 18-30
 
-  NODES=3 # Max -> 12 nodes
+  NODES=1 # Max -> 12 nodes
   NODE=node-0
   IP=30
   unset HOSTS
   for i in `seq $((NODES))`
   do
-  HOSTS="$HOSTS  --add-host ${NODE}$f:${NET}.$((${IP}-$i))"
+  HOSTS="$HOSTS  --add-host ${NODE}$i:${NET}.$((${IP}-$i))"
   docker run --name Node-0$i -h ${NODE}$i \
   --net znet --ip ${NET}.$((${IP}-$i)) \
   -d izone/hadoop:datanode
@@ -57,6 +57,7 @@ if [ $# == 0 ]; then
   CONTAINER=Hadoop
   docker run --rm --name ${CONTAINER} -h ${NAMENODE} \
   --net znet --ip ${NET}.${IP} \
+  $HOSTS \
   -p 8088:8088 \
   -p 8042:8042 \
   -p 50070:50070 \
