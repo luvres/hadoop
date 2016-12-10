@@ -17,6 +17,12 @@ mkdir $HOME/notebooks
 ```
 zoneCluster
 ```
+### Hadoop Browser
+```
+http://localhost:8088
+
+http://localhost:50070
+```
 #### Access by Jupyter Notebook
 ```
 http://localhost:8888/terminals/1
