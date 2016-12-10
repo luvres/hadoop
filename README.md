@@ -2,9 +2,9 @@
 ### · Pseudo distributed mode
 ### · Fully distributed mode
 ### · PySpark with Jupyter Notebook
-#### . Ecosystem
+### . Ecosystem:
 ##### . (Zookeeper, HBase, Hive, Pig, Sqoop, Flume, Mahout)
-
+##### . JDBC implemented and ready for sqoop and spark
 ---
 
 ### Pull image latest (with CentOS 7)
