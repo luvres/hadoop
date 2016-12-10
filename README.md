@@ -10,11 +10,18 @@
 ```
 wget https://raw.githubusercontent.com/luvres/hadoop/master/zoneCluster.sh
 alias zoneCluster="bash zoneCluster.sh"
+mkdir $HOME/notebooks
 ```
 ### Create cluster of a node 
 #### The total of 2, as the namenode assumes one more node
 ```
 zoneCluster
+```
+#### Access by Jupyter Notebook
+```
+http://localhost:8888/terminals/1
+
+ sh-4.2# bash <enter>
 ```
 ### To create a cluster of maximum 9 nodes (10 including the namenode)
 ```
