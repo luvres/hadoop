@@ -25,6 +25,19 @@ zoneCluster 3
 ```
 zoneCluster stop
 ```
+### Creates a pseudo-distributed instance
+```
+zoneCluster pseudo
+```
+#### Equivalent to the command
+```
+  NAMENODE=hadoop
+  CONTAINER=Hadoop
+  docker run --rm --name Hadoop -h hadoop \
+  -p 8088:8088 -p 8042:8042 -p 50070:50070 -p 8888:8888 -p 4040:4040 \
+  -v $HOME/notebooks:/root/notebooks \
+  -ti izone/hadoop:mahout bash
+```
 ### Pull image latest (with CentOS 7)
 ```
 docker pull izone/hadoop
