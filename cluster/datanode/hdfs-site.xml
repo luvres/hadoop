@@ -42,9 +42,4 @@
     <value>false</value>
   </property>
 
-  <property>
-    <name>dfs.datanode.data.dir</name>
-    <value>file://tmp/hdfs/datanode</value>
-  </property>
-
 </configuration>

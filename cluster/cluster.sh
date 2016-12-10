@@ -20,6 +20,7 @@ hostsNodes(){
   for i in `seq $((NODES))`
   do
     for f in /etc/hosts ${SOURCE}/hadoop-env.sh ${SOURCE}/core-site.xml ${SOURCE}/mapred-site.xml ${SOURCE}/yarn-site.xml
+
     do
       scp $f ${HOSTNODE}$i:$f
       scp $f ${HOSTNODE}$i:$f
