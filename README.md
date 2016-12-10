@@ -12,7 +12,7 @@ wget https://raw.githubusercontent.com/luvres/hadoop/master/zoneCluster.sh
 alias zoneCluster="bash zoneCluster.sh"
 ```
 ### Create cluster of a node 
-#### (the total of 2, as the namenode assumes a node)
+#### The total of 2, as the namenode assumes one more node
 ```
 zoneCluster
 ```
