@@ -21,7 +21,7 @@ arg00(){
 
   NAMENODE=hadoop
   CONTAINER=Hadoop
-  docker run --rm --name ${CONTAINER} -h ${NAMENODE} \
+  docker run --name ${CONTAINER} -h ${NAMENODE} \
   --net znet --ip ${NET}.${IP} \
   -e NODES=$NODES \
   $HOSTS \
@@ -31,7 +31,7 @@ arg00(){
   -p 8888:8888 \
   -p 4040:4040 \
   -v $HOME/notebooks:/root/notebooks \
-  -ti izone/hadoop:cluster bash
+  -d izone/hadoop:cluster
 }
 
 arg01(){
