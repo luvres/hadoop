@@ -39,11 +39,11 @@ zoneCluster 3
 ```
 zoneCluster stop
 ```
-### Raise cluster with MySQL database with Mariadb
+### Raise Cluster with Mariadb and Oracle 11g Database
 ```
 zoneCluster 2 -db
 ```
-#### Import data with Sqoop
+#### Import data from Mariadb with Sqoop
 ```
 sqoop import \
 	--connect jdbc:mysql://mariadb:3306/mysql \
