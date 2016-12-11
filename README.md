@@ -66,6 +66,7 @@ zoneCluster pseudo
   -v $HOME/notebooks:/root/notebooks \
   -ti izone/hadoop:mahout bash
 ```
+---
 ### Pull image latest (with CentOS 7)
 ```
 docker pull izone/hadoop
