@@ -51,10 +51,6 @@ ENV PURPLE='\[$(tput setaf 5)\]'
 ENV CYAN='\[$(tput setaf 6)\]'
 ENV WHITE='\[$(tput setaf 7)\]'
 RUN echo "" >>$HOME/.bashrc
-RUN echo "# Spark Cliente" >>$HOME/.bashrc
-RUN echo "export HADOOP_CONF_DIR=/etc/hadoop/conf" >>$HOME/.bashrc
-RUN echo "export YARN_CONF_DIR=/etc/hadoop/conf" >>$HOME/.bashrc
-RUN echo "" >>$HOME/.bashrc
 RUN echo 'export PS1="[${WHITE}\u${BLUE}@${WHITE}\h${WHITE}:\w${RESET}]# "' >>$HOME/.bashrc
 
 VOLUME $NOTEBOOKS_PATH
