@@ -47,7 +47,7 @@ arg01(){
 }
 arg02(){
   if [ $# == 2 ]; then
-    if [ $2 == "-db" ]; then
+    if [ $2 == "-db" ] && [ $1 -gt 0 ] && [ $1 -lt 10 ]; then
       # MariaDB
       CONTAINER=MariaDB
       HOST_MARIADB=mariadb
@@ -67,7 +67,7 @@ arg02(){
       HOSTS="$HOSTS --add-host ${HOST_ORACLE}:${NET}.$((${IP}-11))"
       arg01 $@
     else
-      echo 'Third argument of being "-db"'
+      echo 'Number of nodes: 1 to 9 and third argument of being "-db"'
     fi
   fi
 }
