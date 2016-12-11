@@ -43,6 +43,7 @@ zoneCluster stop
 zoneCluster 2 -db
 ```
 #### Import data with Sqoop
+```
 sqoop import \
 	--connect jdbc:mysql://mariadb:3306/mysql \
 	--username root \
