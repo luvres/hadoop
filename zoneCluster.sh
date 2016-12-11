@@ -48,7 +48,7 @@ arg01(){
 arg02(){
   if [ $# == 2 ]; then
     if [ $2 == "-db" ]; then
-      ### MariaDB
+      # MariaDB
       CONTAINER=MariaDB
       HOST_MARIADB=mariadb
       docker run --name ${CONTAINER} -h ${HOST_MARIADB} \
@@ -57,6 +57,14 @@ arg02(){
       -e MYSQL_ROOT_PASSWORD=maria \
       -d mariadb
       HOSTS="$HOSTS --add-host ${HOST_MARIADB}:${NET}.$((${IP}-12))"
+      # OracleXE
+      CONTAINER=OracleXE
+      HOST_ORACLE=oraclexe
+      docker run --name OracleXE -h oraclexe \
+      --net znet --ip ${NET}.$((${IP}-11)) \
+      -p 1521:1521 \
+      -d izone/oracle
+      HOSTS="$HOSTS --add-host ${HOST_ORACLE}:${NET}.$((${IP}-11))"
       arg01 $@
     else
       echo 'Third argument of being "-db"'
@@ -74,8 +82,12 @@ stop(){
   CONTAINER=Hadoop
   docker stop ${CONTAINER}
   docker rm ${CONTAINER}
-  # Stop MySQL
+  # Stop Mariadb
   CONTAINER=MariaDB
+  docker stop ${CONTAINER}
+  docker rm ${CONTAINER}
+  # Stop Oracle
+  CONTAINER=OracleXE
   docker stop ${CONTAINER}
   docker rm ${CONTAINER}
 }
@@ -104,7 +116,7 @@ if [ $# == 1 ]; then
   case $1 in
     pseudo) pseudo ;;
       stop) stop ;;
-         *) arg01 $@;;
+         *) arg01 $@ ;;
   esac
 fi
 
