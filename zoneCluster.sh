@@ -11,7 +11,6 @@ unset HOSTS
 ### Functions
 arg00(){
   NODE=node-0
-###unset HOSTS
   for i in `seq $((NODES))`
   do
   HOSTS="$HOSTS --add-host ${NODE}$i:${NET}.$((${IP}-$i))"
@@ -38,7 +37,6 @@ arg00(){
 arg01(){
   if [ $1 -gt 0 ] && [ $1 -lt 10 ]; then
     NODES=$1 # Max -> 12 nodes
-### unset HOSTS
     arg00
   else
     echo "Number of nodes: 1 to 9"
@@ -58,7 +56,6 @@ arg02(){
       -p 3306:3306 \
       -e MYSQL_ROOT_PASSWORD=maria \
       -d mariadb
-###   unset HOSTS
       HOSTS="$HOSTS --add-host ${HOST_MARIADB}:${NET}.$((${IP}-12))"
       arg01 $@
     else
