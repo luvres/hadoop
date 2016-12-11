@@ -66,6 +66,16 @@ zoneCluster pseudo
   -v $HOME/notebooks:/root/notebooks \
   -ti izone/hadoop:mahout bash
 ```
+### AUTO CONSTRUCTION creation sequence that are in the Docker Hub
+```
+git clone https://github.com/luvres/hadoop.git
+cd hadoop
+docker build -t izone/hadoop .
+docker build -t izone/hadoop:anaconda ./anaconda/
+docker build -t izone/hadoop:mahout ./mahout/
+docker build -t izone/hadoop:cluster ./cluster/
+docker build -t izone/hadoop:datanode ./cluster/datanode/
+```
 ---
 ### Pull image latest (with CentOS 7)
 ```
