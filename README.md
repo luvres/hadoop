@@ -38,6 +38,16 @@ zoneCluster 3
 ```
 zoneCluster stop
 ```
+### Raise cluster with MySQL database with Mariadb and import data with Sqoop
+```
+zoneCluster 2 -db
+
+sqoop import \
+	--connect jdbc:mysql://mariadb:3306/mysql \
+	--username root \
+	--password maria \
+	--table user --m 1
+```
 ### Creates a pseudo-distributed instance
 ```
 zoneCluster pseudo

@@ -1,19 +1,20 @@
 #!/bin/bash
 
+NET=172.32.255
+SUBNET=16/28
+RANGE=16/28
+docker network rm znet &>/dev/null
+docker network create --subnet ${NET}.${SUBNET} --ip-range=${NET}.${RANGE} znet &>/dev/null # 18-30
+IP=30
+unset HOSTS
+
 ### Functions
 arg00(){
-  NET=172.32.255
-  SUBNET=16/28
-  RANGE=16/28
-  docker network rm znet &>/dev/null
-  docker network create --subnet ${NET}.${SUBNET} --ip-range=${NET}.${RANGE} znet &>/dev/null # 18-30
-
   NODE=node-0
-  IP=30
-  unset HOSTS
+###unset HOSTS
   for i in `seq $((NODES))`
   do
-  HOSTS="$HOSTS  --add-host ${NODE}$i:${NET}.$((${IP}-$i))"
+  HOSTS="$HOSTS --add-host ${NODE}$i:${NET}.$((${IP}-$i))"
   docker run --name Node-0$i -h ${NODE}$i \
   --net znet --ip ${NET}.$((${IP}-$i)) \
   -d izone/hadoop:datanode
@@ -37,8 +38,8 @@ arg00(){
 arg01(){
   if [ $1 -gt 0 ] && [ $1 -lt 10 ]; then
     NODES=$1 # Max -> 12 nodes
+### unset HOSTS
     arg00
-    #echo $NODES
   else
     echo "Number of nodes: 1 to 9"
   fi
@@ -49,6 +50,16 @@ arg01(){
 arg02(){
   if [ $# == 2 ]; then
     if [ $2 == "-db" ]; then
+      ### MariaDB
+      CONTAINER=MariaDB
+      HOST_MARIADB=mariadb
+      docker run --name ${CONTAINER} -h ${HOST_MARIADB} \
+      --net znet --ip ${NET}.$((${IP}-12)) \
+      -p 3306:3306 \
+      -e MYSQL_ROOT_PASSWORD=maria \
+      -d mariadb
+###   unset HOSTS
+      HOSTS="$HOSTS --add-host ${HOST_MARIADB}:${NET}.$((${IP}-12))"
       arg01 $@
     else
       echo 'Third argument of being "-db"'
@@ -63,8 +74,11 @@ stop(){
     docker rm Node-0$i
   done &>/dev/null
   # Stop namenode
-  NAMENODE=hadoop
   CONTAINER=Hadoop
+  docker stop ${CONTAINER}
+  docker rm ${CONTAINER}
+  # Stop MySQL
+  CONTAINER=MariaDB
   docker stop ${CONTAINER}
   docker rm ${CONTAINER}
 }
@@ -85,6 +99,7 @@ pseudo(){
 ### Arguments
 if [ $# == 0 ]; then
   NODES=1 # Max -> 12 nodes
+  unset HOSTS
   arg00
 fi
 
