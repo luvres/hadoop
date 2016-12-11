@@ -3,8 +3,9 @@
 ### · Fully distributed mode
 ### · PySpark with Jupyter Notebook
 ### . Ecosystem:
-##### . (Zookeeper, HBase, Hive, Pig, Sqoop, Flume, Mahout)
+##### . Hadoop, Spark, Zookeeper, HBase, Hive, Pig, Sqoop, Flume, Mahout
 ##### . JDBC implemented and ready for sqoop and spark
+##### . Instances of MariaDB and Oracle 11g
 ---
 ### Script for your cluster from 1 to 9 nodes.
 ```
