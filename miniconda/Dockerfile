@@ -31,6 +31,8 @@ RUN ln -s /usr/local/jdbc/mysql-connector-java-5.1.40-bin.jar /opt/spark/jars/my
     && ln -s /usr/local/jdbc/postgresql-9.4.1212.jar /opt/spark/jars/postgresql-connector.jar
 ENV SPARK_HOME=/opt/spark
 ENV PATH=$PATH:$SPARK_HOME/bin
+ENV HADOOP_CONF_DIR=/etc/hadoop/conf
+ENV YARN_CONF_DIR=/etc/hadoop/conf
 ENV NOTEBOOKS_PATH=/root/notebooks
 RUN mkdir $NOTEBOOKS_PATH
 ENV PYSPARK_PYTHON=python3
