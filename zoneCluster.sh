@@ -71,7 +71,19 @@ arg02(){
     fi
   fi
 }
-stop(){
+pseudo(){
+  NAMENODE=hadoop
+  CONTAINER=Hadoop
+  docker run --rm --name ${CONTAINER} -h ${NAMENODE} \
+  -p 8088:8088 \
+  -p 8042:8042 \
+  -p 50070:50070 \
+  -p 8888:8888 \
+  -p 4040:4040 \
+  -v $HOME/notebooks:/root/notebooks \
+  -ti izone/hadoop:mahout bash
+}
+Stop_remove(){
   # Stop nodes
   for i in {1..12}
   do
@@ -91,18 +103,55 @@ stop(){
   docker stop ${CONTAINER}
   docker rm ${CONTAINER}
 }
-pseudo(){
-  NAMENODE=hadoop
+Stop(){
+  # Stop nodes
+  for i in {1..12}
+  do
+    docker stop Node-0$i
+  done &>/dev/null
+  # Stop namenode
   CONTAINER=Hadoop
-  docker run --rm --name ${CONTAINER} -h ${NAMENODE} \
-  -p 8088:8088 \
-  -p 8042:8042 \
-  -p 50070:50070 \
-  -p 8888:8888 \
-  -p 4040:4040 \
-  -v $HOME/notebooks:/root/notebooks \
-  -ti izone/hadoop:mahout bash
+  docker stop ${CONTAINER}
+  # Stop Mariadb
+  CONTAINER=MariaDB
+  docker stop ${CONTAINER}
+  # Stop Oracle
+  CONTAINER=OracleXE
+  docker stop ${CONTAINER}
 }
+Start(){
+  # Start nodes
+  for i in {1..12}
+  do
+    docker start Node-0$i
+  done &>/dev/null
+  # Start namenode
+  CONTAINER=Hadoop
+  docker start ${CONTAINER}
+  # Start Mariadb
+  CONTAINER=MariaDB
+  docker start ${CONTAINER}
+  # Start Oracle
+  CONTAINER=OracleXE
+  docker start ${CONTAINER}
+}
+remove(){
+  # Remove nodes
+  for i in {1..12}
+  do
+    docker rm Node-0$i
+  done &>/dev/null
+  # Remove namenode
+  CONTAINER=Hadoop
+  docker rm ${CONTAINER}
+  # Remove Mariadb
+  CONTAINER=MariaDB
+  docker rm ${CONTAINER}
+  # Remove Oracle
+  CONTAINER=OracleXE
+  docker rm ${CONTAINER}
+}
+
 
 
 ### Arguments
@@ -115,7 +164,10 @@ fi
 if [ $# == 1 ]; then
   case $1 in
     pseudo) pseudo ;;
-      stop) stop ;;
+      Stop) Stop_remove ;;
+      stop) Stop ;;
+     start) Start ;;
+    remove) remove ;;
          *) arg01 $@ ;;
   esac
 fi
