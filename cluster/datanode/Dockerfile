@@ -45,6 +45,17 @@ ENV HADOOP_HDFS_HOME=$HADOOP_HOME
 ENV YARN_HOME=$HADOOP_HOME
 ENV PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
+# Spark
+ENV SPARK_VERSION 2.0.2
+RUN wget -c http://d3kbcqa49mib13.cloudfront.net/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz \
+    && tar xzf spark-${SPARK_VERSION}-bin-hadoop2.7.tgz \
+    && rm spark-${SPARK_VERSION}-bin-hadoop2.7.tgz \
+    && mv spark-${SPARK_VERSION}-bin-hadoop2.7 /usr/local/ \
+    && ln -s /usr/local/spark-${SPARK_VERSION}-bin-hadoop2.7/ /opt/spark
+ENV SPARK_HOME=/opt/spark
+ENV PATH=$PATH:$SPARK_HOME/bin
+ADD spark-env.sh $SPARK_HOME/conf/spark-env.sh
+
 # Configurations Fully Distributed
 RUN mkdir -p /tmp/hdfs/datanode
 ADD hdfs-site.xml $HADOOP_HOME/etc/hadoop/hdfs-site.xml

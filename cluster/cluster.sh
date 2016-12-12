@@ -13,10 +13,11 @@ nodesSSH(){
 }; nodesSSH
 
 confFiles(){
-  echo $HOSTNAME >/opt/hadoop/etc/hadoop/slaves
-  cat /etc/machines >>/opt/hadoop/etc/hadoop/slaves
-  sed -i "s/NAMENODE/$HOSTNAME/" /opt/hadoop/etc/hadoop/core-site.xml
-  sed -i "s/NAMENODE/$HOSTNAME/" /opt/hadoop/etc/hadoop/yarn-site.xml
+  echo $HOSTNAME >$HADOOP_HOME/etc/hadoop/slaves
+  cat /etc/machines >>$HADOOP_HOME/etc/hadoop/slaves
+  cat /etc/machines >>$SPARK_HOME/conf/slaves
+  sed -i "s/NAMENODE/$HOSTNAME/" $HADOOP_HOME/etc/hadoop/core-site.xml
+  sed -i "s/NAMENODE/$HOSTNAME/" $HADOOP_HOME/etc/hadoop/yarn-site.xml
 }; confFiles
 
 hostsNodes(){

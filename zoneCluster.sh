@@ -29,6 +29,7 @@ arg00(){
   -p 8042:8042 \
   -p 50070:50070 \
   -p 8888:8888 \
+  -p 8080:8080 \
   -p 4040:4040 \
   -v $HOME/notebooks:/root/notebooks \
   -d izone/hadoop:cluster
@@ -79,6 +80,7 @@ pseudo(){
   -p 8042:8042 \
   -p 50070:50070 \
   -p 8888:8888 \
+  -p 8080:8080 \
   -p 4040:4040 \
   -v $HOME/notebooks:/root/notebooks \
   -ti izone/hadoop:mahout bash

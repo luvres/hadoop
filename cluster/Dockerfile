@@ -9,6 +9,19 @@ RUN yum install -y epel-release && yum update -y \
     && yum install -y pdsh sshpass \
     && yum update -y
 
+# Scala
+ENV SCALA_VERSION 2.12.1
+RUN wget -c http://downloads.lightbend.com/scala/${SCALA_VERSION}/scala-${SCALA_VERSION}.tgz \
+    && tar xzf scala-${SCALA_VERSION}.tgz \
+    && mv scala-${SCALA_VERSION} /usr/local/ \
+    && rm scala-${SCALA_VERSION}.tgz \
+    && ln -s /usr/local/scala-${SCALA_VERSION} /opt/scala
+ENV SCALA_HOME=/opt/scala
+ENV PATH=$PATH:$SCALA_HOME/bin
+
+# Spark
+ADD spark-env.sh $SPARK_HOME/conf/spark-env.sh
+
 # Configurations Fully Distributed
 RUN mkdir -p /tmp/hdfs/{namenode,datanode}
 ADD core-site.xml $HADOOP_HOME/etc/hadoop/core-site.xml
