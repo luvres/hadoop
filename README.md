@@ -1,9 +1,10 @@
-## Hadoop 2.7.3 with CentOS 7 (Centos option 6.8 also)
-## Reduced Image Option with Alpine Linux (576.1 MB)
-### · Pseudo distributed mode
-### · Fully distributed mode
-### · PySpark with Jupyter Notebook
-### . Ecosystem:
+## Hadoop 2.7.3
+### With CentOS 7 (Centos option 6.8 also)
+### Reduced Image Option with Alpine Linux (576.1 MB)
+#### · Pseudo distributed mode
+#### · Fully distributed mode
+#### · PySpark with Jupyter Notebook
+#### . Ecosystem:
 ##### . Hadoop, Spark, Zookeeper, HBase, Hive, Pig, Sqoop, Flume, Mahout
 ##### . JDBC implemented and ready for sqoop and spark
 ##### . Instances of MariaDB and Oracle 11g
