@@ -81,10 +81,6 @@ docker build -t izone/hadoop:datanode ./cluster/datanode/
 ```
 docker pull izone/hadoop
 ```
-#### Pull image with CentOS 6
-```
-docker pull izone/hadoop:2.7.3
-```
 #### Run pulled image (Optional flag "-test" to start with a PI test)
 ```
 docker run --rm --name Hadoop -h hadoop \
@@ -92,6 +88,22 @@ docker run --rm --name Hadoop -h hadoop \
 	-p 8042:8042 \
 	-p 50070:50070 \
 	-ti izone/hadoop -test bash
+```
+#### Pull image with CentOS 6 (Same form as centos 7)
+```
+docker pull izone/hadoop:2.7.3
+```
+### Pull reduced image with Alpine (576.1 MB)
+```
+docker pull izone/hadoop:alpine
+```
+#### Run pulled image (Optional flag "-test" to start with a PI test)
+```
+docker run --rm --name Hadoop -h hadoop \
+	-p 8088:8088 \
+	-p 8042:8042 \
+	-p 50070:50070 \
+	-ti izone/hadoop:alpine -test bash
 ```
 #### Build image
 ```
