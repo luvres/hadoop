@@ -1,4 +1,5 @@
-## Hadoop 2.7.3 with CentOS 7
+## Hadoop 2.7.3 with CentOS 7 (Centos option 6.8 also)
+## Reduced Image Option with Alpine Linux (576.1 MB)
 ### · Pseudo distributed mode
 ### · Fully distributed mode
 ### · PySpark with Jupyter Notebook
@@ -75,6 +76,12 @@ docker build -t izone/hadoop:anaconda ./anaconda/
 docker build -t izone/hadoop:mahout ./mahout/
 docker build -t izone/hadoop:cluster ./cluster/
 docker build -t izone/hadoop:datanode ./cluster/datanode/
+```
+### Alpine
+```
+git clone https://github.com/luvres/hadoop.git
+cd hadoop
+docker build -t izone/hadoop:alpine ./alpine/
 ```
 ---
 ### Pull image latest (with CentOS 7)
