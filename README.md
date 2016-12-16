@@ -35,6 +35,8 @@ http://localhost:8888/terminals/1
 ### To create a cluster of maximum 9 nodes (10 including the namenode)
 ```
 zoneCluster 3
+
+docker logs -f Hadoop
 ```
 #### Note: The script is limited to a maximum of 9 nodes because multiple hosts are being created on only one host and I see no point in overloading your machine. The settings are ready for a real cluster and in the future I want to create scripts for provisioning with docker swarm.
 ### Stop the cluster
