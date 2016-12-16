@@ -73,8 +73,13 @@ zoneCluster pseudo
 git clone https://github.com/luvres/hadoop.git
 cd hadoop
 docker build -t izone/hadoop .
+
+docker build -t izone/hadoop:miniconda ./miniconda/
+docker build -t izone/hadoop:ecosystem ./ecosystem/
+
 docker build -t izone/hadoop:anaconda ./anaconda/
 docker build -t izone/hadoop:mahout ./mahout/
+
 docker build -t izone/hadoop:cluster ./cluster/
 docker build -t izone/hadoop:datanode ./cluster/datanode/
 ```
@@ -83,6 +88,7 @@ docker build -t izone/hadoop:datanode ./cluster/datanode/
 git clone https://github.com/luvres/hadoop.git
 cd hadoop
 docker build -t izone/hadoop:alpine ./alpine/
+docker build -t izone/hadoop:node ./alpine/node
 ```
 ---
 ### Pull image latest (with CentOS 7)

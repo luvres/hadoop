@@ -4,7 +4,7 @@ nodesSSH(){
   for i in `seq $((NODES))`
   do
     echo "Configuring SSH ${HOSTNODE}$i"
-    for f in $HOME/.ssh/id_dsa.pub
+    for f in $HOME/.ssh/id_rsa.pub
     do
       sshpass -p $RPASS ssh-copy-id -i $f ${HOSTNODE}$i # Copy key to the nodes
     done &>/dev/null
