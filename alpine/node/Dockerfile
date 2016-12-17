@@ -13,15 +13,11 @@ RUN mkdir -p /root/.ssh \
     && cp /etc/ssh/ssh_config /root/.ssh/config \
     && cp /etc/ssh/authorized_keys /root/.ssh/authorized_keys \
     && cp /etc/ssh/id_rsa /root/.ssh/id_rsa
-RUN chmod 700 /root/.ssh \
-    && chmod 600 /root/.ssh/config \
-    && chmod 600 /root/.ssh/id_rsa \
-    && chmod 600 /root/.ssh/authorized_keys
 RUN sed -i '/StrictHostKeyChecking/s/ask/no/g' /etc/ssh/ssh_config \
-    && sed -i '/StrictHostKeyChecking/s/#//g' /etc/ssh/ssh_config
-
-# Supervidor
-ADD supervisord.conf /etc/supervisord.conf
+    && sed -i '/StrictHostKeyChecking/s/#//g' /etc/ssh/ssh_config \
+    && sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+ENV RPASS=@p4sS_-_#sECURITy*Cre4t3+bigZone
+RUN echo root:$RPASS | chpasswd
 
 # glibc
 RUN apk --update add ca-certificates \
@@ -87,7 +83,7 @@ ENV PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
 # Spark
 ENV SPARK_VERSION 2.0.2
-RUN curl http://d3kbcqa49mib13.cloudfront.net/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz -o /tmp/hadoop-${HADOOP_VERSION}.tar.gz \
+RUN curl http://d3kbcqa49mib13.cloudfront.net/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz -o /tmp/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz \
     && tar xzf /tmp/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz -C /usr/local/ \
     && ln -s /usr/local/spark-${SPARK_VERSION}-bin-hadoop2.7/ /opt/spark \
     && rm /tmp/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz

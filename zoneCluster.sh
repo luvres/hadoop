@@ -16,7 +16,7 @@ arg00(){
   HOSTS="$HOSTS --add-host ${NODE}$i:${NET}.$((${IP}-$i))"
   docker run --name Node-0$i -h ${NODE}$i \
   --net znet --ip ${NET}.$((${IP}-$i)) \
-  -d izone/hadoop:datanode
+  -d izone/hadoop:node
   done
 
   NAMENODE=hadoop
@@ -166,7 +166,7 @@ fi
 if [ $# == 1 ]; then
   case $1 in
     pseudo) pseudo ;;
-      Stop) Stop_remove ;;
+      Stop) Stop_remove 2>/dev/null ;;
       stop) Stop ;;
      start) Start ;;
     remove) remove ;;
