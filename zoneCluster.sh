@@ -16,7 +16,7 @@ arg00(){
   HOSTS="$HOSTS --add-host ${NODE}$i:${NET}.$((${IP}-$i))"
   docker run --name Node-0$i -h ${NODE}$i \
   --net znet --ip ${NET}.$((${IP}-$i)) \
-  -d izone/hadoop:node
+  -d izone/hadoop:alpine-datanode
   done
 
   NAMENODE=hadoop
