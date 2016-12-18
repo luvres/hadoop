@@ -1,4 +1,4 @@
-FROM izone/hadoop:2.7.3
+FROM izone/hadoop:cos6
 MAINTAINER Leonardo Loures <luvres@hotmail.com>
 
 # Anaconda3
