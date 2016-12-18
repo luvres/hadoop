@@ -51,6 +51,7 @@ ADD start.sh /start.sh
 RUN chmod +x start.sh
 RUN hdfs namenode -format
 
+WORKDIR /root
 
 # Hdfs ports
 EXPOSE 50010 50020 50070 50075 50090 8020 9000
