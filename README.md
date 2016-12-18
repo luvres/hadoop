@@ -94,8 +94,6 @@ docker build -t izone/hadoop:cos6-miniconda ./centos6/miniconda/
 docker build -t izone/hadoop:cos6-ecosystem ./centos6/ecosystem/
 docker build -t izone/hadoop:cos6-anaconda ./centos6/anaconda/
 docker build -t izone/hadoop:cos6-mahout ./centos6/mahout/
-docker build -t izone/hadoop:cluster ./cluster/
-docker build -t izone/hadoop:datanode ./cluster/datanode/
 ```
 ### Alpine
 ```
