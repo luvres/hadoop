@@ -1,4 +1,4 @@
-FROM izone/hadoop:mahout
+FROM izone/hadoop:cos7-mahout
 MAINTAINER Leonardo Loures <luvres@hotmail.com>
 
 ENV NODES 1
