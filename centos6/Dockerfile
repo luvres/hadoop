@@ -1,9 +1,10 @@
 FROM centos:6.8
 MAINTAINER Leonardo Loures <luvres@hotmail.com>
 
-RUN yum install -y \
-    openssh-server openssh-clients \
-    bzip2 unzip rsync wget net-tools java sudo python-setuptools \
+RUN yum install -y epel-release && yum update -y \
+    && yum install -y \
+    openssh-server openssh-clients supervisor \
+    bzip2 unzip rsync wget net-tools java sudo \
     && yum update -y 
 
 # SSH Key Passwordless
@@ -11,6 +12,9 @@ RUN ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa \
     && cat ~/.ssh/id_dsa.pub >> ~/.ssh/authorized_keys \
     && chmod 0600 ~/.ssh/authorized_keys \
     && echo 'StrictHostKeyChecking no' >>/etc/ssh/ssh_config
+
+# Supervidor
+ADD supervisord.conf /etc/supervisord.conf
 
 # Timezone
 RUN ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime

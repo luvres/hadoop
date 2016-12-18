@@ -1,6 +1,9 @@
 #!/bin/bash
 
-service sshd start
+echo " "
+echo -e "\e[00;37m*\e[00m `date` \e[00;37mStarting Supervidord\e[00m"
+nohup /usr/bin/supervisord -c /etc/supervisord.conf &
+sleep 6
 
 echo " "
 echo -e "\e[01;37m*\e[00m `date` \e[01;37mStarting HDFS - NameNode DataNodes\e[00m"
@@ -31,3 +34,5 @@ if [[ $2 == "bash" ]]; then
   /bin/bash
 fi
 
+
+sleep 31557600
