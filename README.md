@@ -102,7 +102,7 @@ docker build -t izone/hadoop:cos6-mahout ./centos6/mahout/
 git clone https://github.com/luvres/hadoop.git
 cd hadoop
 docker build -t izone/hadoop:alpine ./alpine/
-docker build -t izone/hadoop:alpine-datanode ./alpine/node
+docker build -t izone/hadoop:alpine-datanode ./alpine/datanode/
 ```
 ---
 ### Pull image latest (with CentOS 7)
