@@ -68,7 +68,7 @@ zoneCluster pseudo
   docker run --rm --name Hadoop -h hadoop \
   -p 8088:8088 -p 8042:8042 -p 50070:50070 -p 8888:8888 -p 4040:4040 \
   -v $HOME/notebooks:/root/notebooks \
-  -ti izone/hadoop:mahout bash
+  -ti izone/hadoop:cos7-mahout bash
 ```
 ### AUTO CONSTRUCTION creation sequence that are in the Docker Hub
 
@@ -115,11 +115,11 @@ docker run --rm --name Hadoop -h hadoop \
 	-p 8088:8088 \
 	-p 8042:8042 \
 	-p 50070:50070 \
-	-ti izone/hadoop -test bash
+	-ti izone/hadoop:cos7 -test bash
 ```
 #### Pull image with CentOS 6 (Same form as centos 7)
 ```
-docker pull izone/hadoop:2.7.3
+docker pull izone/hadoop:cos7
 ```
 ### Pull reduced image with Alpine (576.1 MB)
 ```
@@ -141,7 +141,7 @@ docker build -t hadoop .
 ```
 #### Build image with CentOS 6
 ```
-docker build -t hadoop:2.7.3 ./centos6/
+docker build -t hadoop:cos6 ./centos6/
 ```
 ### Run built image
 ```
@@ -149,7 +149,7 @@ docker run --rm --name Hadoop -h hadoop \
 	-p 8088:8088 \
 	-p 8042:8042 \
 	-p 50070:50070 \
-	-ti hadoop bash
+	-ti hadoop:cos7 bash
 ```
 ### Hadoop Browser
 ```
@@ -209,7 +209,7 @@ docker run --rm --name Hadoop -h hadoop \
 	-p 8888:8888 \
 	-p 4040:4040 \
 	-v $HOME/notebooks:/root/notebooks \
-	-ti izone/hadoop:miniconda bash
+	-ti izone/hadoop:cos7-miniconda bash
 ```
 ### Pull image with Anaconda
 ```
@@ -220,7 +220,7 @@ docker run --rm --name Hadoop -h hadoop \
 	-p 8888:8888 \
 	-p 4040:4040 \
 	-v $HOME/notebooks:/root/notebooks \
-	-ti izone/hadoop:anaconda bash
+	-ti izone/hadoop:cos7-anaconda bash
 ```
 ### Browser access
 
@@ -243,7 +243,7 @@ docker build -t hadoop:miniconda ./miniconda/
 ```
 #### PySpark and Anaconda
 ```
-docker build -t hadoop:anaconda ./anaconda/
+docker build -t hadoop:cos7-anaconda ./centos7/anaconda/
 ```
 ---
 ## Hadoop Ecosystem
@@ -258,7 +258,7 @@ docker run --name Hadoop -h hadoop \
 	-p 8888:8888 \
 	-p 4040:4040 \
 	-v $HOME/notebooks:/root/notebooks \
-	-d izone/hadoop:ecosystem
+	-d izone/hadoop:cos7-ecosystem
 ```
 #### Access by Jupyter Notebook
 ```

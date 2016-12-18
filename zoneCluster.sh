@@ -32,7 +32,7 @@ arg00(){
   -p 8080:8080 \
   -p 4040:4040 \
   -v $HOME/notebooks:/root/notebooks \
-  -d izone/hadoop:cluster
+  -d izone/hadoop:cos7-cluster
 }
 
 arg01(){
