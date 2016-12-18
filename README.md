@@ -71,16 +71,18 @@ zoneCluster pseudo
   -ti izone/hadoop:mahout bash
 ```
 ### AUTO CONSTRUCTION creation sequence that are in the Docker Hub
+
+### CentOS 7
 ```
 git clone https://github.com/luvres/hadoop.git
 cd hadoop
 docker build -t izone/hadoop .
 
-docker build -t izone/hadoop:miniconda ./miniconda/
-docker build -t izone/hadoop:ecosystem ./ecosystem/
-
-docker build -t izone/hadoop:anaconda ./anaconda/
-docker build -t izone/hadoop:mahout ./mahout/
+docker build -t izone/hadoop:cos7 ./centos7/
+docker build -t izone/hadoop:cos7-miniconda ./centos7/miniconda/
+docker build -t izone/hadoop:cos7-ecosystem ./centos7/ecosystem/
+docker build -t izone/hadoop:cos7-anaconda ./centos7/anaconda/
+docker build -t izone/hadoop:cos7-mahout ./centos7/mahout/
 
 docker build -t izone/hadoop:cluster ./cluster/
 docker build -t izone/hadoop:datanode ./cluster/datanode/
@@ -89,7 +91,7 @@ docker build -t izone/hadoop:datanode ./cluster/datanode/
 ```
 git clone https://github.com/luvres/hadoop.git
 cd hadoop
-docker build -t izone/hadoop:cos6 .
+docker build -t izone/hadoop:cos6 ./centos6/
 docker build -t izone/hadoop:cos6-miniconda ./centos6/miniconda/
 docker build -t izone/hadoop:cos6-ecosystem ./centos6/ecosystem/
 docker build -t izone/hadoop:cos6-anaconda ./centos6/anaconda/

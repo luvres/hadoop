@@ -1,4 +1,4 @@
-FROM izone/hadoop
+FROM izone/hadoop:cos7
 MAINTAINER Leonardo Loures <luvres@hotmail.com>
 
 # Miniconda3
