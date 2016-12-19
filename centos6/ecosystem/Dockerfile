@@ -3,10 +3,7 @@ MAINTAINER Leonardo Loures <luvres@hotmail.com>
 
 # Zookeeper
 ENV ZOOKEEPER_VERSION 3.4.9
-RUN wget -c http://ftp.unicamp.br/pub/apache/zookeeper/zookeeper-${ZOOKEEPER_VERSION}/zookeeper-${ZOOKEEPER_VERSION}.tar.gz \
-    && tar -xzf zookeeper-${ZOOKEEPER_VERSION}.tar.gz \
-    && rm zookeeper-${ZOOKEEPER_VERSION}.tar.gz \
-    && mv zookeeper-${ZOOKEEPER_VERSION} /usr/local/ \
+RUN curl http://ftp.unicamp.br/pub/apache/zookeeper/zookeeper-${ZOOKEEPER_VERSION}/zookeeper-${ZOOKEEPER_VERSION}.tar.gz | tar -xzf - -C /usr/local/ \
     && ln -s /usr/local/zookeeper-${ZOOKEEPER_VERSION}/ /opt/zookeeper \
     && mkdir /opt/zookeeper/data
 ENV ZOOKEEPER_HOME=/opt/zookeeper
@@ -15,10 +12,7 @@ ADD zoo.cfg /opt/zookeeper/conf/zoo.cfg
 
 # HBase
 ENV HBASE_VERSION 1.2.4
-RUN wget -c http://ftp.unicamp.br/pub/apache/hbase/${HBASE_VERSION}/hbase-${HBASE_VERSION}-bin.tar.gz \
-    && tar -xzf hbase-${HBASE_VERSION}-bin.tar.gz \
-    && rm hbase-${HBASE_VERSION}-bin.tar.gz \
-    && mv hbase-${HBASE_VERSION} /usr/local/ \
+RUN curl http://ftp.unicamp.br/pub/apache/hbase/${HBASE_VERSION}/hbase-${HBASE_VERSION}-bin.tar.gz | tar -xzf - -C /usr/local/ \
     && ln -s /usr/local/hbase-${HBASE_VERSION}/ /opt/hbase
 ENV HBASE_HOME=/opt/hbase
 ENV PATH=$PATH:$HBASE_HOME/bin
@@ -27,10 +21,7 @@ ADD hbase-site.xml $HBASE_HOME/conf/hbase-site.xml
 
 # Hive
 ENV HIVE_VERSION 2.1.1
-RUN wget -c http://ftp.unicamp.br/pub/apache/hive/hive-${HIVE_VERSION}/apache-hive-${HIVE_VERSION}-bin.tar.gz \
-    && tar -xzf apache-hive-${HIVE_VERSION}-bin.tar.gz \
-    && rm apache-hive-${HIVE_VERSION}-bin.tar.gz \
-    && mv apache-hive-${HIVE_VERSION}-bin /usr/local/ \
+RUN curl http://ftp.unicamp.br/pub/apache/hive/hive-${HIVE_VERSION}/apache-hive-${HIVE_VERSION}-bin.tar.gz | tar -xzf - -C /usr/local/ \
     && ln -s /usr/local/apache-hive-${HIVE_VERSION}-bin/ /opt/hive
 ENV HIVE_HOME=/opt/hive
 ENV PATH=$PATH:$HIVE_HOME/bin
@@ -41,10 +32,7 @@ ADD hive-default.xml $HIVE_HOME/conf/hive-default.xml
 
 # Pig
 ENV PIG_VERSION 0.16.0
-RUN wget -c http://ftp.unicamp.br/pub/apache/pig/pig-${PIG_VERSION}/pig-${PIG_VERSION}.tar.gz \
-    && tar -xzf pig-${PIG_VERSION}.tar.gz \
-    && rm pig-${PIG_VERSION}.tar.gz \
-    && mv pig-${PIG_VERSION} /usr/local/ \
+RUN curl http://ftp.unicamp.br/pub/apache/pig/pig-${PIG_VERSION}/pig-${PIG_VERSION}.tar.gz | tar -xzf - -C /usr/local/ \
     && ln -s /usr/local/pig-${PIG_VERSION}/ /opt/pig
 ENV PIG_HOME=/opt/pig
 ENV PATH=$PATH:$PIG_HOME/bin
@@ -52,10 +40,7 @@ ENV PIG_CLASSPATH=$HADOOP_HOME/conf
 
 # Sqoop
 ENV SQOOP_VERSION 1.4.6
-RUN wget -c http://ftp.unicamp.br/pub/apache/sqoop/${SQOOP_VERSION}/sqoop-${SQOOP_VERSION}.bin__hadoop-2.0.4-alpha.tar.gz \
-    && tar -xzf sqoop-${SQOOP_VERSION}.bin__hadoop-2.0.4-alpha.tar.gz \
-    && rm sqoop-${SQOOP_VERSION}.bin__hadoop-2.0.4-alpha.tar.gz \
-    && mv sqoop-${SQOOP_VERSION}.bin__hadoop-2.0.4-alpha /usr/local/ \
+RUN curl http://ftp.unicamp.br/pub/apache/sqoop/${SQOOP_VERSION}/sqoop-${SQOOP_VERSION}.bin__hadoop-2.0.4-alpha.tar.gz | tar -xzf - -C /usr/local/ \
     && ln -s /usr/local/sqoop-${SQOOP_VERSION}.bin__hadoop-2.0.4-alpha/ /opt/sqoop \
     && mkdir /opt/sqoop/hcatalog /opt/sqoop/accumulo
 ENV SQOOP_HOME=/opt/sqoop
@@ -70,10 +55,7 @@ RUN ln -s /usr/local/jdbc/mysql-connector-java-5.1.40-bin.jar /opt/sqoop/lib/mys
 
 # Flume
 ENV FLUME_VERSION 1.7.0
-RUN wget -c http://ftp.unicamp.br/pub/apache/flume/${FLUME_VERSION}/apache-flume-${FLUME_VERSION}-bin.tar.gz \
-    && tar -xzf apache-flume-${FLUME_VERSION}-bin.tar.gz \
-    && rm apache-flume-${FLUME_VERSION}-bin.tar.gz \
-    && mv apache-flume-${FLUME_VERSION}-bin /usr/local/ \
+N curl http://ftp.unicamp.br/pub/apache/flume/${FLUME_VERSION}/apache-flume-${FLUME_VERSION}-bin.tar.gz | tar -xzf - -C /usr/local/ \
     && ln -s /usr/local/apache-flume-${FLUME_VERSION}-bin/ /opt/flume
 ADD flume-env.sh /opt/flume/conf/flume-env.sh
 ENV FLUME_HOME=/opt/flume
