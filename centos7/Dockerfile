@@ -1,12 +1,17 @@
 FROM centos
 MAINTAINER Leonardo Loures <luvres@hotmail.com>
 
-RUN yum install -y \
-    openssh-server openssh-clients \
-    bzip2 unzip rsync net-tools java sudo which python-setuptools \
-    && yum update -y \
-    && easy_install pip \
-    && pip install supervisor
+#RUN yum install -y \
+#    openssh-server openssh-clients \
+#    bzip2 unzip rsync net-tools java sudo which python-setuptools \
+#    && yum update -y \
+#    && easy_install pip \
+#    && pip install supervisor
+
+RUN yum install -y epel-release && yum update -y \
+    && yum install -y \
+    openssh-server openssh-clients supervisor \
+    bzip2 unzip rsync net-tools java sudo which
 
 # SSH Key Passwordless
 RUN ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa \
