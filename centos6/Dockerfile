@@ -66,10 +66,8 @@ ENV PATH=${PATH}:${JAVA_HOME}/bin:${JAVA_HOME}/sbin
 
 # Hadoop
 ENV HADOOP_VERSION 2.7.3
-RUN curl http://ftp.unicamp.br/pub/apache/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz -o /tmp/hadoop-${HADOOP_VERSION}.tar.gz \
-    && tar -xzf /tmp/hadoop-${HADOOP_VERSION}.tar.gz -C /usr/local/ \
-    && ln -s /usr/local/hadoop-${HADOOP_VERSION}/ /opt/hadoop \
-    && rm /tmp/hadoop-${HADOOP_VERSION}.tar.gz
+RUN curl http://ftp.unicamp.br/pub/apache/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz | tar -xzf - -C /usr/local/ \
+    && ln -s /usr/local/hadoop-${HADOOP_VERSION}/ /opt/hadoop
 ENV HADOOP_HOME=/opt/hadoop
 ENV HADOOP_INSTALL=$HADOOP_HOME
 ENV HADOOP_COMMON_HOME=$HADOOP_HOME
