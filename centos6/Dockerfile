@@ -9,6 +9,7 @@ RUN yum install -y epel-release && yum update -y \
 
 # SSH Key Passwordless
 RUN ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa \
+    && ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa \
     && cat ~/.ssh/id_dsa.pub >> ~/.ssh/authorized_keys \
     && chmod 0600 ~/.ssh/authorized_keys \
     && echo 'StrictHostKeyChecking no' >>/etc/ssh/ssh_config
