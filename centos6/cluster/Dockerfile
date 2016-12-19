@@ -10,10 +10,7 @@ RUN yum install -y pdsh sshpass \
 
 # Scala
 ENV SCALA_VERSION 2.12.1
-RUN wget -c http://downloads.lightbend.com/scala/${SCALA_VERSION}/scala-${SCALA_VERSION}.tgz \
-    && tar xzf scala-${SCALA_VERSION}.tgz \
-    && mv scala-${SCALA_VERSION} /usr/local/ \
-    && rm scala-${SCALA_VERSION}.tgz \
+RUN curl http://downloads.lightbend.com/scala/${SCALA_VERSION}/scala-${SCALA_VERSION}.tgz | tar xzf - -C /usr/local/ \
     && ln -s /usr/local/scala-${SCALA_VERSION} /opt/scala
 ENV SCALA_HOME=/opt/scala
 ENV PATH=$PATH:$SCALA_HOME/bin
