@@ -11,8 +11,9 @@ RUN yum install -y epel-release && yum update -y \
 RUN ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa \
     && ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa \
     && cat ~/.ssh/id_dsa.pub >> ~/.ssh/authorized_keys \
-    && chmod 0600 ~/.ssh/authorized_keys \
-    && echo 'StrictHostKeyChecking no' >>/etc/ssh/ssh_config
+    && chmod 0600 ~/.ssh/authorized_keys
+RUN sed -i '/StrictHostKeyChecking/s/#//g' /etc/ssh/ssh_config \
+    && sed -i '/StrictHostKeyChecking/s/ask/no/g' /etc/ssh/ssh_config
 
 # Supervidor
 ADD supervisord.conf /etc/supervisord.conf
