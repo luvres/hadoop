@@ -11,9 +11,6 @@ RUN yum install -y epel-release && yum update -y \
 
 # Scala
 ENV SCALA_VERSION 2.12.1
-RUN curl http://ftp.unicamp.br/pub/apache/zookeeper/zookeeper-${ZOOKEEPER_VERSION}/zookeeper-${ZOOKEEPER_VERSION}.tar.gz | tar -xzf - -C /usr/local/ \
-
-
 RUN curl http://downloads.lightbend.com/scala/${SCALA_VERSION}/scala-${SCALA_VERSION}.tgz | tar xzf - -C /usr/local/ \
     && ln -s /usr/local/scala-${SCALA_VERSION} /opt/scala
 ENV SCALA_HOME=/opt/scala
