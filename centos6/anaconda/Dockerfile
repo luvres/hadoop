@@ -13,10 +13,10 @@ RUN pip install --upgrade pip \
 
 # jdbc
 RUN mkdir /usr/local/jdbc \
-    && wget -c https://github.com/luvres/jdbc/raw/master/mysql-connector-java-5.1.40-bin.jar -O /usr/local/jdbc/mysql-connector-java-5.1.40-bin.jar \
-    && wget -c https://github.com/luvres/jdbc/raw/master/mariadb-java-client-1.4.6.jar -O /usr/local/jdbc/mariadb-java-client-1.4.6.jar \
-    && wget -c https://github.com/luvres/jdbc/raw/master/ojdbc7.jar -O /usr/local/jdbc/ojdbc7.jar \
-    && wget -c https://github.com/luvres/jdbc/raw/master/postgresql-9.4.1212.jar -O /usr/local/jdbc/postgresql-9.4.1212.jar
+    && curl -L https://github.com/luvres/jdbc/raw/master/mysql-connector-java-5.1.40-bin.jar -o mysql-connector-java-5.1.40-bin.jar \
+    && curl -L https://github.com/luvres/jdbc/raw/master/mariadb-java-client-1.4.6.jar -o /usr/local/jdbc/mariadb-java-client-1.4.6.jar \
+    && curl -L https://github.com/luvres/jdbc/raw/master/ojdbc7.jar -o /usr/local/jdbc/ojdbc7.jar \
+    && curl -L https://github.com/luvres/jdbc/raw/master/postgresql-9.4.1212.jar -o /usr/local/jdbc/postgresql-9.4.1212.jar
 
 # Spark
 ENV SPARK_VERSION 2.0.2
