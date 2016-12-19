@@ -4,7 +4,8 @@ MAINTAINER Leonardo Loures <luvres@hotmail.com>
 RUN yum install -y \
     openssh-server openssh-clients \
     bzip2 unzip rsync net-tools java-1.8.0-openjdk-headless sudo which \
-    && yum update -y && yum clean all
+    && yum update -y \
+    && yum clean all
 
 # SSH Key Passwordless
 RUN ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa \
@@ -22,21 +23,52 @@ RUN echo root:$RPASS | chpasswd
 RUN ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 
 # Java
-RUN wget -c --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u112-b15/jdk-8u112-linux-x64.tar.gz \
-    && tar -xzf jdk-8u112-linux-x64.tar.gz \
-    && mv jdk1.8.0_112/ /usr/local/ \
-    && ln -s /usr/local/jdk1.8.0_112/ /opt/jdk
+RUN JAVA_VERSION_MAJOR=8 && \
+    JAVA_VERSION_MINOR=112 && \
+    JAVA_VERSION_BUILD=15 && \
+    JAVA_PACKAGE=jdk && \
+    curl -jkSLH "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-b${JAVA_VERSION_BUILD}/${JAVA_PACKAGE}-${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-linux-x64.tar.gz \
+    | tar -xzf - -C /usr/local \
+    && ln -s /usr/local/jdk1.${JAVA_VERSION_MAJOR}.0_${JAVA_VERSION_MINOR} /opt/jdk \
+    && rm -rf /opt/jdk/*src.zip \
+           /opt/jdk/lib/missioncontrol \
+           /opt/jdk/lib/visualvm \
+           /opt/jdk/lib/*javafx* \
+           /opt/jdk/jre/plugin \
+           /opt/jdk/jre/bin/javaws \
+           /opt/jdk/jre/bin/jjs \
+           /opt/jdk/jre/bin/orbd \
+           /opt/jdk/jre/bin/pack200 \
+           /opt/jdk/jre/bin/policytool \
+           /opt/jdk/jre/bin/rmid \
+           /opt/jdk/jre/bin/rmiregistry \
+           /opt/jdk/jre/bin/servertool \
+           /opt/jdk/jre/bin/tnameserv \
+           /opt/jdk/jre/bin/unpack200 \
+           /opt/jdk/jre/lib/javaws.jar \
+           /opt/jdk/jre/lib/deploy* \
+           /opt/jdk/jre/lib/desktop \
+           /opt/jdk/jre/lib/*javafx* \
+           /opt/jdk/jre/lib/*jfx* \
+           /opt/jdk/jre/lib/amd64/libdecora_sse.so \
+           /opt/jdk/jre/lib/amd64/libprism_*.so \
+           /opt/jdk/jre/lib/amd64/libfxplugins.so \
+           /opt/jdk/jre/lib/amd64/libglass.so \
+           /opt/jdk/jre/lib/amd64/libgstreamer-lite.so \
+           /opt/jdk/jre/lib/amd64/libjavafx*.so \
+           /opt/jdk/jre/lib/amd64/libjfx*.so \
+           /opt/jdk/jre/lib/ext/jfxrt.jar \
+           /opt/jdk/jre/lib/ext/nashorn.jar \
+           /opt/jdk/jre/lib/oblique-fonts \
+           /opt/jdk/jre/lib/plugin.jar \
+           /tmp/* /var/cache/apk/*
 ENV JAVA_HOME=/opt/jdk
-ENV PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
-RUN rm jdk-8u112-linux-x64.tar.gz
+ENV PATH=${PATH}:${JAVA_HOME}/bin:${JAVA_HOME}/sbin
 
 # Hadoop
 ENV HADOOP_VERSION 2.7.3
-RUN wget -c http://ftp.unicamp.br/pub/apache/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz \
-    && tar -xzf hadoop-${HADOOP_VERSION}.tar.gz \
-    && mv hadoop-${HADOOP_VERSION} /usr/local/ \
-    && ln -s /usr/local/hadoop-${HADOOP_VERSION}/ /opt/hadoop \
-    && rm hadoop-${HADOOP_VERSION}.tar.gz
+RUN curl http://ftp.unicamp.br/pub/apache/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz | tar -xzf - -C /usr/local/ \
+    && ln -s /usr/local/hadoop-${HADOOP_VERSION}/ /opt/hadoop
 ENV HADOOP_HOME=/opt/hadoop
 ENV HADOOP_INSTALL=$HADOOP_HOME
 ENV HADOOP_COMMON_HOME=$HADOOP_HOME
@@ -47,10 +79,7 @@ ENV PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
 # Spark
 ENV SPARK_VERSION 2.0.2
-RUN wget -c http://d3kbcqa49mib13.cloudfront.net/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz \
-    && tar xzf spark-${SPARK_VERSION}-bin-hadoop2.7.tgz \
-    && rm spark-${SPARK_VERSION}-bin-hadoop2.7.tgz \
-    && mv spark-${SPARK_VERSION}-bin-hadoop2.7 /usr/local/ \
+RUN curl http://d3kbcqa49mib13.cloudfront.net/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz | tar -xzf - -C /usr/local/ \
     && ln -s /usr/local/spark-${SPARK_VERSION}-bin-hadoop2.7/ /opt/spark
 ENV SPARK_HOME=/opt/spark
 ENV PATH=$PATH:$SPARK_HOME/bin
