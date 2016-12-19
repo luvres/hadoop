@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 echo " "
 echo -e "\e[00;37m*\e[00m `date` \e[00;37mStarting Supervidord\e[00m"
