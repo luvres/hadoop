@@ -3,10 +3,9 @@ MAINTAINER Leonardo Loures <luvres@hotmail.com>
 
 RUN yum install -y \
     openssh-server openssh-clients \
-    bzip2 unzip rsync wget net-tools java sudo \
-    && yum update -y
-
-# SSH Key Passwordless
+    bzip2 unzip rsync net-tools java-1.8.0-openjdk-headless sudo \
+    && yum update -y \
+    && yum clean all
 
 # SSH Key Passwordless
 RUN ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa \
