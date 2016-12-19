@@ -3,9 +3,9 @@
 echo " "
 echo -e "\e[00;37m*\e[00m `date` \e[00;37mStarting Supervidord\e[00m"
 nohup /usr/bin/supervisord -c /etc/supervisord.conf &
-sleep 3
+sleep 6
 
-bash /etc/cluster.sh; sleep 1
+bash /etc/cluster.sh; sleep 3
 
 echo " "
 echo -e "\e[01;37m*\e[00m `date` \e[01;37mStarting HDFS - NameNode DataNodes\e[00m"

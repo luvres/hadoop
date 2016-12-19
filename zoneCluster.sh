@@ -83,8 +83,31 @@ pseudo(){
   -p 8080:8080 \
   -p 4040:4040 \
   -v $HOME/notebooks:/root/notebooks \
-  -ti izone/hadoop:mahout bash
+  -ti izone/hadoop:cos7-mahout bash
 }
+cos6(){
+  NAMENODE=hadoop
+  CONTAINER=Hadoop
+  docker run --rm --name ${CONTAINER} -h ${NAMENODE} \
+  -p 8088:8088 \
+  -p 8042:8042 \
+  -p 50070:50070 \
+  -p 8888:8888 \
+  -p 8080:8080 \
+  -p 4040:4040 \
+  -v $HOME/notebooks:/root/notebooks \
+  -ti izone/hadoop:cos6-mahout bash
+}
+alpine(){
+  NAMENODE=hadoop
+  CONTAINER=Hadoop
+  docker run --rm --name Hadoop -h hadoop \
+  -p 8088:8088 \
+  -p 8042:8042 \
+  -p 50070:50070 \
+  -ti izone/hadoop:alpine bash
+}
+
 Stop_remove(){
   # Stop nodes
   for i in {1..12}
@@ -166,6 +189,8 @@ fi
 if [ $# == 1 ]; then
   case $1 in
     pseudo) pseudo ;;
+      cos6) cos6 ;;
+    alpine) alpine ;;
       Stop) Stop_remove 2>/dev/null ;;
       stop) Stop ;;
      start) Start ;;
