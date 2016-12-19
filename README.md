@@ -76,35 +76,34 @@ zoneCluster pseudo
 ```
 git clone https://github.com/luvres/hadoop.git
 cd hadoop
-docker build -t izone/hadoop .
 
-docker build -t izone/hadoop:cos7 ./centos7/
-docker build -t izone/hadoop:cos7-miniconda ./centos7/miniconda/
-docker build -t izone/hadoop:cos7-ecosystem ./centos7/ecosystem/
-docker build -t izone/hadoop:cos7-anaconda ./centos7/anaconda/
-docker build -t izone/hadoop:cos7-mahout ./centos7/mahout/
-
-docker build -t izone/hadoop:cluster ./centos7/cluster/
+docker build -t izone/hadoop:cos7 ./centos7/ && \
+docker build -t izone/hadoop:cos7-miniconda ./centos7/miniconda/ && \
+docker build -t izone/hadoop:cos7-ecosystem ./centos7/ecosystem/ && \
+docker build -t izone/hadoop:cos7-anaconda ./centos7/anaconda/ && \
+docker build -t izone/hadoop:cos7-mahout ./centos7/mahout/ && \
+docker build -t izone/hadoop:cluster ./centos7/cluster/ && \
 docker build -t izone/hadoop:datanode ./centos7/cluster/datanode/
 ```
 ### CentOS 6
 ```
 git clone https://github.com/luvres/hadoop.git
 cd hadoop
-docker build -t izone/hadoop:cos6 ./centos6/
-docker build -t izone/hadoop:cos6-miniconda ./centos6/miniconda/
-docker build -t izone/hadoop:cos6-ecosystem ./centos6/ecosystem/
-docker build -t izone/hadoop:cos6-anaconda ./centos6/anaconda/
-docker build -t izone/hadoop:cos6-mahout ./centos6/mahout/
 
-docker build -t izone/hadoop:cos6-cluster ./centos6/cluster/
+docker build -t izone/hadoop:cos6 ./centos6/ && \
+docker build -t izone/hadoop:cos6-miniconda ./centos6/miniconda/ && \
+docker build -t izone/hadoop:cos6-ecosystem ./centos6/ecosystem/ && \
+docker build -t izone/hadoop:cos6-anaconda ./centos6/anaconda/ && \
+docker build -t izone/hadoop:cos6-mahout ./centos6/mahout/ && \
+docker build -t izone/hadoop:cos6-cluster ./centos6/cluster/ && \
 docker build -t izone/hadoop:cos6-datanode ./centos6/cluster/datanode
 ```
 ### Alpine
 ```
 git clone https://github.com/luvres/hadoop.git
 cd hadoop
-docker build -t izone/hadoop:alpine ./alpine/
+
+docker build -t izone/hadoop:alpine ./alpine/ && \
 docker build -t izone/hadoop:alpine-datanode ./alpine/datanode/
 ```
 ---
