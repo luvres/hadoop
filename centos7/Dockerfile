@@ -11,7 +11,7 @@ MAINTAINER Leonardo Loures <luvres@hotmail.com>
 RUN yum install -y epel-release && yum update -y \
     && yum install -y \
     openssh-server openssh-clients supervisor \
-    bzip2 unzip rsync net-tools java sudo which
+    bzip2 unzip rsync net-tools java-1.8.0-openjdk-headless sudo which
 
 # SSH Key Passwordless
 RUN ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa \
