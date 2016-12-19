@@ -18,12 +18,13 @@ RUN mkdir /usr/local/jdbc \
     && curl -L https://github.com/luvres/jdbc/raw/master/ojdbc7.jar -o /usr/local/jdbc/ojdbc7.jar \
     && curl -L https://github.com/luvres/jdbc/raw/master/postgresql-9.4.1212.jar -o /usr/local/jdbc/postgresql-9.4.1212.jar
 
+
+RUN curl http://ftp.unicamp.br/pub/apache/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz | tar -xzf - -C /usr/local/ \
+
+
 # Spark
 ENV SPARK_VERSION 2.0.2
-RUN wget -c http://d3kbcqa49mib13.cloudfront.net/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz \
-    && tar -xzf spark-${SPARK_VERSION}-bin-hadoop2.7.tgz \
-    && rm spark-${SPARK_VERSION}-bin-hadoop2.7.tgz \
-    && mv spark-${SPARK_VERSION}-bin-hadoop2.7 /usr/local/ \
+RUN curl http://d3kbcqa49mib13.cloudfront.net/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz | tar -xzf - -C /usr/local/ \
     && ln -s /usr/local/spark-${SPARK_VERSION}-bin-hadoop2.7/ /opt/spark
 RUN ln -s /usr/local/jdbc/mysql-connector-java-5.1.40-bin.jar /opt/spark/jars/mysql-connector.jar \
     && ln -s /usr/local/jdbc/mariadb-java-client-1.4.6.jar /opt/spark/jars/mariadb-connector.jar \
