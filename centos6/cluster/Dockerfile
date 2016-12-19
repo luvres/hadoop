@@ -28,7 +28,7 @@ ADD hdfs-site.xml $HADOOP_HOME/etc/hadoop/hdfs-site.xml
 ADD yarn-site.xml $HADOOP_HOME/etc/hadoop/yarn-site.xml
 ADD cluster.sh /etc/cluster.sh
 ADD start.sh /etc/start.sh
-RUN chmod +x /etc/start.sh
+RUN chmod +x /etc/start.sh /etc/cluster.sh
 
 # Bash colors
 RUN sed -i '/PS1/d' $HOME/.bashrc \
