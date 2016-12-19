@@ -3,7 +3,7 @@ MAINTAINER Leonardo Loures <luvres@hotmail.com>
 
 # Anaconda3
 ENV ANACONDA_VERSION 4.2.0
-RUN wget -c https://repo.continuum.io/archive/Anaconda3-${ANACONDA_VERSION}-Linux-x86_64.sh \
+RUN curl -L https://repo.continuum.io/archive/Anaconda3-${ANACONDA_VERSION}-Linux-x86_64.sh -o Anaconda3-${ANACONDA_VERSION}-Linux-x86_64.sh \
     && /bin/bash Anaconda3-${ANACONDA_VERSION}-Linux-x86_64.sh -b -p /usr/local/anaconda3 \
     && ln -s /usr/local/anaconda3/ /opt/anaconda3 \
     && rm Anaconda3-${ANACONDA_VERSION}-Linux-x86_64.sh
@@ -20,10 +20,7 @@ RUN mkdir /usr/local/jdbc \
 
 # Spark
 ENV SPARK_VERSION 2.0.2
-RUN wget -c http://d3kbcqa49mib13.cloudfront.net/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz \
-    && tar -xzf spark-${SPARK_VERSION}-bin-hadoop2.7.tgz \
-    && rm spark-${SPARK_VERSION}-bin-hadoop2.7.tgz \
-    && mv spark-${SPARK_VERSION}-bin-hadoop2.7 /usr/local/ \
+RUN curl http://d3kbcqa49mib13.cloudfront.net/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz | tar -xzf - -C /usr/local/ \
     && ln -s /usr/local/spark-${SPARK_VERSION}-bin-hadoop2.7/ /opt/spark
 RUN ln -s /usr/local/jdbc/mysql-connector-java-5.1.40-bin.jar /opt/spark/jars/mysql-connector.jar \
     && ln -s /usr/local/jdbc/mariadb-java-client-1.4.6.jar /opt/spark/jars/mariadb-connector.jar \
