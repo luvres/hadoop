@@ -1,13 +1,6 @@
 FROM centos
 MAINTAINER Leonardo Loures <luvres@hotmail.com>
 
-#RUN yum install -y \
-#    openssh-server openssh-clients \
-#    bzip2 unzip rsync net-tools java sudo which python-setuptools \
-#    && yum update -y \
-#    && easy_install pip \
-#    && pip install supervisor
-
 RUN yum install -y epel-release && yum update -y \
     && yum install -y \
     openssh-server openssh-clients supervisor \
@@ -28,15 +21,6 @@ ADD supervisord.conf /etc/supervisord.conf
 
 # Timezone
 RUN ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
-
-# Java
-#RUN wget -c --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u112-b15/jdk-8u112-linux-x64.tar.gz \
-#    && tar -xzf jdk-8u112-linux-x64.tar.gz \
-#    && mv jdk1.8.0_112/ /usr/local/ \
-#    && ln -s /usr/local/jdk1.8.0_112/ /opt/jdk
-#ENV JAVA_HOME=/opt/jdk
-#ENV PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
-#RUN rm jdk-8u112-linux-x64.tar.gz
 
 # Java
 RUN JAVA_VERSION_MAJOR=8 && \
@@ -82,21 +66,6 @@ ENV JAVA_HOME=/opt/jdk
 ENV PATH=${PATH}:${JAVA_HOME}/bin:${JAVA_HOME}/sbin
 
 # Hadoop
-#ENV HADOOP_VERSION 2.7.3
-#RUN wget -c http://ftp.unicamp.br/pub/apache/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz \
-#    && tar -xzf hadoop-${HADOOP_VERSION}.tar.gz \
-#    && mv hadoop-${HADOOP_VERSION} /usr/local/ \
-#    && ln -s /usr/local/hadoop-${HADOOP_VERSION}/ /opt/hadoop \
-#    && rm hadoop-${HADOOP_VERSION}.tar.gz
-#ENV HADOOP_HOME=/opt/hadoop
-#ENV HADOOP_INSTALL=$HADOOP_HOME
-#ENV HADOOP_COMMON_HOME=$HADOOP_HOME
-#ENV HADOOP_MAPRED_HOME=$HADOOP_HOME
-#ENV HADOOP_HDFS_HOME=$HADOOP_HOME
-#ENV YARN_HOME=$HADOOP_HOME
-#ENV PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
-
-# Hadoop
 ENV HADOOP_VERSION 2.7.3
 RUN curl http://ftp.unicamp.br/pub/apache/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz -o /tmp/hadoop-${HADOOP_VERSION}.tar.gz \
     && tar -xzf /tmp/hadoop-${HADOOP_VERSION}.tar.gz -C /usr/local/ \
@@ -136,4 +105,3 @@ EXPOSE 49707 22 2122
 
 
 ENTRYPOINT ["/etc/start.sh"]
-
