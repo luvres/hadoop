@@ -1,6 +1,6 @@
 #!/bin/bash
 
-/usr/sbin/sshd
+/etc/init.d/sshd start
 
 if [[ $1 == "bash" ]]; then
   echo " "

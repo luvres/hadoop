@@ -16,7 +16,7 @@ arg00(){
   HOSTS="$HOSTS --add-host ${NODE}$i:${NET}.$((${IP}-$i))"
   docker run --name Node-0$i -h ${NODE}$i \
   --net znet --ip ${NET}.$((${IP}-$i)) \
-  -d izone/hadoop:cos7-datanode
+  -d izone/hadoop:cos6-datanode
   done
 
   NAMENODE=hadoop
@@ -32,7 +32,7 @@ arg00(){
   -p 8080:8080 \
   -p 4040:4040 \
   -v $HOME/notebooks:/root/notebooks \
-  -d izone/hadoop:cos7-cluster
+  -d izone/hadoop:cos6-cluster
 }
 
 arg01(){
