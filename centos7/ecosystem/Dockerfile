@@ -55,7 +55,7 @@ RUN ln -s /usr/local/jdbc/mysql-connector-java-5.1.40-bin.jar /opt/sqoop/lib/mys
 
 # Flume
 ENV FLUME_VERSION 1.7.0
-N curl http://ftp.unicamp.br/pub/apache/flume/${FLUME_VERSION}/apache-flume-${FLUME_VERSION}-bin.tar.gz | tar -xzf - -C /usr/local/ \
+RUN curl http://ftp.unicamp.br/pub/apache/flume/${FLUME_VERSION}/apache-flume-${FLUME_VERSION}-bin.tar.gz | tar -xzf - -C /usr/local/ \
     && ln -s /usr/local/apache-flume-${FLUME_VERSION}-bin/ /opt/flume
 ADD flume-env.sh /opt/flume/conf/flume-env.sh
 ENV FLUME_HOME=/opt/flume
