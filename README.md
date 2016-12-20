@@ -82,8 +82,8 @@ docker build -t izone/hadoop:cos7-miniconda ./centos7/miniconda/ && \
 docker build -t izone/hadoop:cos7-ecosystem ./centos7/ecosystem/ && \
 docker build -t izone/hadoop:cos7-anaconda ./centos7/anaconda/ && \
 docker build -t izone/hadoop:cos7-mahout ./centos7/mahout/ && \
-docker build -t izone/hadoop:cluster ./centos7/cluster/ && \
-docker build -t izone/hadoop:datanode ./centos7/cluster/datanode/
+docker build -t izone/hadoop:cos7-cluster ./centos7/cluster/ && \
+docker build -t izone/hadoop:cos7-datanode ./centos7/cluster/datanode/
 ```
 ### CentOS 6
 ```
