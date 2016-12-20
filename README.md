@@ -1,6 +1,6 @@
 ## Hadoop 2.7.3
 ### With CentOS 7 (Centos option 6.8 also)
-### Reduced Image Option with Alpine Linux (576.1 MB)
+### Reduced Image Option with Alpine Linux (466.6 MB)
 #### · Pseudo distributed mode
 #### · Fully distributed mode
 #### · PySpark with Jupyter Notebook
@@ -123,7 +123,7 @@ docker run --rm --name Hadoop -h hadoop \
 ```
 docker pull izone/hadoop:cos7
 ```
-### Pull reduced image with Alpine (576.1 MB)
+### Pull reduced image with Alpine (466.6 MB)
 ```
 docker pull izone/hadoop:alpine
 ```

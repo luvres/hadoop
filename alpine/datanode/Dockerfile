@@ -29,7 +29,7 @@ RUN JAVA_VERSION_MAJOR=8 && \
     JAVA_VERSION_MINOR=112 && \
     JAVA_VERSION_BUILD=15 && \
     JAVA_PACKAGE=jdk && \
-    mkdir /opt && curl -jksSLH "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-b${JAVA_VERSION_BUILD}/${JAVA_PACKAGE}-${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-linux-x64.tar.gz \
+    mkdir /opt && curl -jkSLH "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-b${JAVA_VERSION_BUILD}/${JAVA_PACKAGE}-${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-linux-x64.tar.gz \
     | tar -xzf - -C /opt \
     && ln -s /opt/jdk1.${JAVA_VERSION_MAJOR}.0_${JAVA_VERSION_MINOR} /opt/jdk \
     && rm -rf /opt/jdk/*src.zip \
@@ -69,10 +69,10 @@ ENV PATH=${PATH}:${JAVA_HOME}/bin:${JAVA_HOME}/sbin
 
 # Hadoop
 ENV HADOOP_VERSION 2.7.3
-RUN curl http://ftp.unicamp.br/pub/apache/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz -o /tmp/hadoop-${HADOOP_VERSION}.tar.gz \
-    && tar -xzf /tmp/hadoop-${HADOOP_VERSION}.tar.gz -C /usr/local/ \
-    && ln -s /usr/local/hadoop-${HADOOP_VERSION}/ /opt/hadoop \
-    && rm /tmp/hadoop-${HADOOP_VERSION}.tar.gz
+RUN curl http://ftp.unicamp.br/pub/apache/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz | tar -xzf - -C /usr/local/ \
+    && rm -fR /usr/local/hadoop-${HADOOP_VERSION}/share/doc \
+              /usr/local/hadoop-${HADOOP_VERSION}/share/hadoop/common/jdiff \
+    && ln -s /usr/local/hadoop-${HADOOP_VERSION}/ /opt/hadoop
 ENV HADOOP_HOME=/opt/hadoop
 ENV HADOOP_INSTALL=$HADOOP_HOME
 ENV HADOOP_COMMON_HOME=$HADOOP_HOME
@@ -83,10 +83,8 @@ ENV PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
 # Spark
 ENV SPARK_VERSION 2.0.2
-RUN curl http://d3kbcqa49mib13.cloudfront.net/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz -o /tmp/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz \
-    && tar xzf /tmp/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz -C /usr/local/ \
-    && ln -s /usr/local/spark-${SPARK_VERSION}-bin-hadoop2.7/ /opt/spark \
-    && rm /tmp/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz
+RUN curl http://d3kbcqa49mib13.cloudfront.net/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz | tar -xzf - -C /usr/local/ \
+    && ln -s /usr/local/spark-${SPARK_VERSION}-bin-hadoop2.7/ /opt/spark
 ENV SPARK_HOME=/opt/spark
 ENV PATH=$PATH:$SPARK_HOME/bin
 ADD spark-env.sh $SPARK_HOME/conf/spark-env.sh
