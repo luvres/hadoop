@@ -20,7 +20,9 @@ RUN cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys
 
 RUN /etc/init.d/sshd start
 
-# Ambari 
+# Ambari
+#RUN curl -L http://public-repo-1.hortonworks.com/ambari/centos6/2.x/updates/2.2.2.0/ambari.repo -o curl -L http://public-repo-1.hortonworks.com/ambari/centos6/2.x/updates/2.2.2.0/ambari.repo -o ~/1uvr3z/R/RStudio/ambari.repo \
+#    && yum install -y ambari-server
 RUN wget http://public-repo-1.hortonworks.com/ambari/centos6/2.x/updates/2.2.2.0/ambari.repo -O /etc/yum.repos.d/ambari.repo \
     && yum install -y ambari-server
 
