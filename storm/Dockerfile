@@ -10,8 +10,8 @@ ENV STORM_HOME=/opt/storm
 ENV PATH=$PATH:$STORM_HOME/bin
 ADD storm.yaml /opt/storm/conf/storm.yaml
 
-ADD start.sh /start.sh
-RUN chmod +x start.sh
+ADD start.sh /etc/start.sh
+RUN chmod +x /etc/start.sh
 
 # Storm ports
 EXPOSE 8080
