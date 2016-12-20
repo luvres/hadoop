@@ -5,7 +5,8 @@ USER root
 
 RUN sed -i -e 's/^tsflags=nodocs/#tsflags=nodocs/g' /etc/yum.conf
 RUN yum install -y epel-release && yum update -y \
-    && yum install -y dhclient openssh-server openssh-clients supervisor lsof which gcc sudo ntp
+    && yum install -y dhclient openssh-server openssh-clients supervisor lsof which gcc sudo ntp \
+    && yum clean all
 
 # update libselinux.
 # see https://github.com/sequenceiq/hadoop-docker/issues/14
