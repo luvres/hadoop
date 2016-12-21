@@ -1,4 +1,4 @@
-FROM izone/hadoop:cos6-anaconda
+FROM izone/hadoop:cos6-rstudio
 MAINTAINER Leonardo Loures <luvres@hotmail.com>
 
 # Zookeeper
