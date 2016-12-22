@@ -98,8 +98,9 @@ EXPOSE 8030 8031 8032 8033 8040 8042 8088
 #Other ports
 EXPOSE 49707 22 2122
 
-#RUN echo '#!/bin/bash' >/etc/services.d/ssh \
-#    && echo '/etc/init.d/ssh start' >>/etc/services.d/ssh
+#RUN mkdir /etc/services.d/ssh \
+#    && echo '#!/usr/bin/bash' >/etc/services.d/ssh/run \
+#    && echo 'exec /etc/init.d/ssh start' >>/etc/services.d/ssh/run
 
 
 ENTRYPOINT ["/init"]
