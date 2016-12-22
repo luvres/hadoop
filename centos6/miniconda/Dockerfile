@@ -13,7 +13,7 @@ RUN conda install jupyter -y \
 
 # jdbc
 RUN mkdir /usr/local/jdbc \
-    && curl -L https://github.com/luvres/jdbc/raw/master/mysql-connector-java-5.1.40-bin.jar -o mysql-connector-java-5.1.40-bin.jar \
+    && curl -L https://github.com/luvres/jdbc/raw/master/mysql-connector-java-5.1.40-bin.jar -o /usr/local/jdbc/mysql-connector-java-5.1.40-bin.jar \
     && curl -L https://github.com/luvres/jdbc/raw/master/mariadb-java-client-1.4.6.jar -o /usr/local/jdbc/mariadb-java-client-1.4.6.jar \
     && curl -L https://github.com/luvres/jdbc/raw/master/ojdbc7.jar -o /usr/local/jdbc/ojdbc7.jar \
     && curl -L https://github.com/luvres/jdbc/raw/master/postgresql-9.4.1212.jar -o /usr/local/jdbc/postgresql-9.4.1212.jar

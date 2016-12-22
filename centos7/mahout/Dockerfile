@@ -65,7 +65,7 @@ ENV CLASSPATH=#CLASSPATH:$FLUME_HOME/lib/*
 # Mahout
 ENV MAHOUT_VERSION 0.12.2
 RUN curl http://ftp.unicamp.br/pub/apache/mahout/${MAHOUT_VERSION}/apache-mahout-distribution-${MAHOUT_VERSION}.tar.gz | tar -xzf - -C /usr/local/ \
-    && ln -s /usr/local/-pache-mahout-distribution${MAHOUT_VERSION}/ /opt/mahout
+    && ln -s /usr/local/apache-mahout-distribution${MAHOUT_VERSION}/ /opt/mahout
 ENV MAHOUT_HOME=/opt/mahout
 ENV PATH=$PATH:$MAHOUT_HOME/bin
 
