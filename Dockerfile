@@ -4,7 +4,7 @@ MAINTAINER Leonardo Loures <luvres@hotmail.com>
 RUN apt-get update && apt-get upgrade -y \
     && apt-get install -y \
     openssh-server openssh-client \
-    bzip2 unzip rsync curl net-tools sudo
+    bzip2 unzip rsync curl net-tools sudo supervisor
 
 # SSH Key Passwordless
 RUN ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa \
@@ -81,8 +81,11 @@ RUN chmod +x /etc/start.sh
 RUN hdfs namenode -format
 
 # Set up S6 init system
-ADD https://github.com/just-containers/s6-overlay/releases/download/v1.18.1.5/s6-overlay-amd64.tar.gz /tmp/
-RUN gunzip -c /tmp/s6-overlay-amd64.tar.gz | tar -xf - -C /
+#ADD https://github.com/just-containers/s6-overlay/releases/download/v1.18.1.5/s6-overlay-amd64.tar.gz /tmp/
+#RUN gunzip -c /tmp/s6-overlay-amd64.tar.gz | tar -xf - -C /
+
+# Supervidor
+ADD supervisord.conf /etc/supervisord.conf
 
 WORKDIR /root
 
@@ -102,6 +105,7 @@ EXPOSE 49707 22 2122
 #    && echo '#!/usr/bin/bash' >/etc/services.d/ssh/run \
 #    && echo 'exec /etc/init.d/ssh start' >>/etc/services.d/ssh/run
 
+#ENTRYPOINT ["/init"]
+#CMD ["/etc/start.sh"]
 
-ENTRYPOINT ["/init"]
-CMD ["/etc/start.sh"]
+ENTRYPOINT ["/etc/start.sh"]

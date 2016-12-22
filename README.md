@@ -72,6 +72,17 @@ zoneCluster pseudo
 ```
 ### AUTO CONSTRUCTION creation sequence that are in the Docker Hub
 
+### Debian 8
+```
+git clone https://github.com/luvres/hadoop.git
+cd hadoop
+
+docker build -t izone/hadoop . && \
+docker build -t izone/hadoop:anaconda ./anaconda/ && \
+docker build -t izone/hadoop:rstudio ./rstudio/ && \
+docker build -t izone/hadoop:mahout ./mahout/ && \
+docker build -t izone/hadoop:cluster ./cluster/
+```
 ### CentOS 7
 ```
 git clone https://github.com/luvres/hadoop.git
