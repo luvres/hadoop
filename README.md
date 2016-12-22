@@ -9,7 +9,7 @@
 ##### . Hadoop, Spark, Zookeeper, HBase, Hive, Pig, Sqoop, Flume, Mahout
 ##### . JDBC implemented and ready for sqoop and spark
 ##### . Instances of MariaDB and Oracle 11g
----
+-----
 ### Script for your cluster from 1 to 9 nodes.
 ```
 wget https://raw.githubusercontent.com/luvres/hadoop/master/zoneCluster.sh
@@ -58,6 +58,19 @@ sqoop import \
 	--username root \
 	--password maria \
 	--table user --m 1
+```
+### PySpark with Jupyter Notebook
+#### Browser access
+```
+http://localhost:8888
+```
+### RStudio Server
+#### Browser access
+```
+http://localhost:8787
+
+username: root
+password: root
 ```
 #### Checking imported data for the hdfs
 ```
@@ -125,7 +138,7 @@ cd hadoop
 docker build -t izone/hadoop:alpine ./alpine/ && \
 docker build -t izone/hadoop:alpine-datanode ./alpine/datanode/
 ```
----
+-----
 ### Pull image latest (with CentOS 7)
 ```
 docker pull izone/hadoop
@@ -170,7 +183,7 @@ http://localhost:8088
 
 http://localhost:50070
 ```
----
+-----
 ## Testing..
 
 #### Create a Directory
@@ -206,7 +219,7 @@ hadoop jar /opt/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.3.ja
 ```
 hdfs dfs -cat /output/*
 ```
----
+-----
 ## PySpark and Jupyter Notebook
 
 #### Create a directory for notebooks and Include directory created above on flag "-v"
@@ -255,7 +268,7 @@ http://localhost:8787
 username: root
 password: root
 ```
----
+-----
 ## Hadoop Ecosystem
 ### (Zookeeper, HBase, Hive, Pig, Sqoop, Flume)
 
