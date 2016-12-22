@@ -217,7 +217,7 @@ docker run --rm --name Hadoop -h hadoop \
 	-p 50070:50070 \
 	-p 8888:8888 \
 	-p 4040:4040 \
-        -p 8787:8787 \
+	-p 8787:8787 \
 	-v $HOME/notebooks:/root/notebooks \
 	-ti izone/hadoop:rstudio bash
 ```
