@@ -4,7 +4,7 @@ MAINTAINER Leonardo Loures <luvres@hotmail.com>
 RUN yum install -y epel-release && yum update -y \
     && yum install -y \
     openssh-server openssh-clients supervisor \
-    bzip2 unzip rsync net-tools java-1.8.0-openjdk-headless sudo \
+    bzip2 unzip rsync net-tools sudo \
     && yum clean all 
 
 # SSH Key Passwordless

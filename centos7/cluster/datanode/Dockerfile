@@ -3,7 +3,7 @@ MAINTAINER Leonardo Loures <luvres@hotmail.com>
 
 RUN yum install -y \
     openssh-server openssh-clients \
-    bzip2 unzip rsync net-tools java-1.8.0-openjdk-headless sudo which \
+    bzip2 unzip rsync net-tools sudo which \
     && yum update -y \
     && yum clean all
 
