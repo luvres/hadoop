@@ -80,10 +80,9 @@ ADD start.sh /etc/start.sh
 RUN chmod +x /etc/start.sh
 RUN hdfs namenode -format
 
-## Set up S6 init system
+# Set up S6 init system
 ADD https://github.com/just-containers/s6-overlay/releases/download/v1.18.1.5/s6-overlay-amd64.tar.gz /tmp/
 RUN gunzip -c /tmp/s6-overlay-amd64.tar.gz | tar -xf - -C /
-
 
 WORKDIR /root
 
@@ -99,11 +98,9 @@ EXPOSE 8030 8031 8032 8033 8040 8042 8088
 #Other ports
 EXPOSE 49707 22 2122
 
-
 #RUN echo '#!/bin/bash' >/etc/services.d/ssh \
 #    && echo '/etc/init.d/ssh start' >>/etc/services.d/ssh
 
 
-
-CMD ["/etc/start.sh"]
 ENTRYPOINT ["/init"]
+CMD ["/etc/start.sh"]
