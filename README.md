@@ -1,6 +1,7 @@
 ## Hadoop 2.7.3
 ### With CentOS 7 (Centos option 6.8 also)
 ### Reduced Image Option with Alpine Linux (466.6 MB)
+### And Debian Jessie
 #### · Pseudo distributed mode
 #### · Fully distributed mode
 #### · PySpark with Jupyter Notebook
@@ -131,11 +132,15 @@ docker run --rm --name Hadoop -h hadoop \
 	-p 8088:8088 \
 	-p 8042:8042 \
 	-p 50070:50070 \
-	-ti izone/hadoop:cos7 -test bash
+	-ti izone/hadoop -test bash
 ```
-#### Pull image with CentOS 6 (Same form as centos 7)
+#### Pull image with CentOS 7
 ```
 docker pull izone/hadoop:cos7
+```
+#### Pull image with CentOS 6
+```
+docker pull izone/hadoop:cos6
 ```
 ### Pull reduced image with Alpine (466.6 MB)
 ```
@@ -154,18 +159,6 @@ docker run --rm --name Hadoop -h hadoop \
 git clone https://github.com/luvres/hadoop.git
 cd hadoop
 docker build -t hadoop .
-```
-#### Build image with CentOS 6
-```
-docker build -t hadoop:cos6 ./centos6/
-```
-### Run built image
-```
-docker run --rm --name Hadoop -h hadoop \
-	-p 8088:8088 \
-	-p 8042:8042 \
-	-p 50070:50070 \
-	-ti hadoop:cos7 bash
 ```
 ### Hadoop Browser
 ```
@@ -216,7 +209,7 @@ hdfs dfs -cat /output/*
 ```
 mkdir $HOME/notebooks
 ```
-### Pull image with Miniconda
+### Pull image with RStudio
 ```
 docker run --rm --name Hadoop -h hadoop \
 	-p 8088:8088 \
@@ -224,8 +217,9 @@ docker run --rm --name Hadoop -h hadoop \
 	-p 50070:50070 \
 	-p 8888:8888 \
 	-p 4040:4040 \
+        -p 8787:8787 \
 	-v $HOME/notebooks:/root/notebooks \
-	-ti izone/hadoop:cos7-miniconda bash
+	-ti izone/hadoop:rstudio bash
 ```
 ### Pull image with Anaconda
 ```
@@ -236,7 +230,7 @@ docker run --rm --name Hadoop -h hadoop \
 	-p 8888:8888 \
 	-p 4040:4040 \
 	-v $HOME/notebooks:/root/notebooks \
-	-ti izone/hadoop:cos7-anaconda bash
+	-ti izone/hadoop:anaconda bash
 ```
 ### Browser access
 
