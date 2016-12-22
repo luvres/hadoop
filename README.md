@@ -182,6 +182,7 @@ docker run --rm --name Hadoop -h hadoop \
         -v $HOME/notebooks:/root/notebooks \
         -ti izone/hadoop:rstudio bash
 ```
+-----
 ### AUTO CONSTRUCTION creation sequence that are in the Docker Hub
 
 ### Debian 8
