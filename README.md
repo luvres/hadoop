@@ -94,60 +94,7 @@ zoneCluster pseudo
   -v $HOME/notebooks:/root/notebooks \
   -ti izone/hadoop:ecosystem bash
 ```
-### AUTO CONSTRUCTION creation sequence that are in the Docker Hub
-
-### Debian 8
-```
-git clone https://github.com/luvres/hadoop.git
-cd hadoop
-
-docker build -t izone/hadoop . && \
-docker build -t izone/hadoop:anaconda ./anaconda/ && \
-docker build -t izone/hadoop:rstudio ./rstudio/ && \
-docker build -t izone/hadoop:ecosystem ./ecosystem/ && \
-docker build -t izone/hadoop:cluster ./cluster/ && \
-docker build -t izone/hadoop:datanode ./cluster/datanode
-```
-### CentOS 7
-```
-git clone https://github.com/luvres/hadoop.git
-cd hadoop
-
-docker build -t izone/hadoop:cos7 ./centos7/ && \
-docker build -t izone/hadoop:cos7-miniconda ./centos7/miniconda/ && \
-docker build -t izone/hadoop:cos7-ecosystem ./centos7/ecosystem/ && \
-docker build -t izone/hadoop:cos7-anaconda ./centos7/anaconda/ && \
-docker build -t izone/hadoop:cos7-mahout ./centos7/mahout/ && \
-docker build -t izone/hadoop:cos7-cluster ./centos7/cluster/ && \
-docker build -t izone/hadoop:cos7-datanode ./centos7/cluster/datanode/
-```
-### CentOS 6
-```
-git clone https://github.com/luvres/hadoop.git
-cd hadoop
-
-docker build -t izone/hadoop:cos6 ./centos6/ && \
-docker build -t izone/hadoop:cos6-miniconda ./centos6/miniconda/ && \
-docker build -t izone/hadoop:cos6-ecosystem ./centos6/ecosystem/ && \
-docker build -t izone/hadoop:cos6-anaconda ./centos6/anaconda/ && \
-docker build -t izone/hadoop:cos6-rstudio ./centos6/rstudio/ && \
-docker build -t izone/hadoop:cos6-mahout ./centos6/mahout/ && \
-docker build -t izone/hadoop:cos6-cluster ./centos6/cluster/ && \
-docker build -t izone/hadoop:cos6-datanode ./centos6/cluster/datanode
-
-docker build -t izone/hadoop:rstudio -f ./centos6/rstudio/
-```
-### Alpine
-```
-git clone https://github.com/luvres/hadoop.git
-cd hadoop
-
-docker build -t izone/hadoop:alpine ./alpine/ && \
-docker build -t izone/hadoop:alpine-datanode ./alpine/datanode/
-```
 -----
-
-
 ### Pull image latest (with Debian 8)
 ```
 docker pull izone/hadoop
@@ -179,12 +126,6 @@ docker run --rm --name Hadoop -h hadoop \
 	-p 8042:8042 \
 	-p 50070:50070 \
 	-ti izone/hadoop:alpine -test bash
-```
-### Hadoop Browser
-```
-http://localhost:8088
-
-http://localhost:50070
 ```
 -----
 ## Testing..
@@ -240,4 +181,56 @@ docker run --rm --name Hadoop -h hadoop \
         -p 8787:8787 \
         -v $HOME/notebooks:/root/notebooks \
         -ti izone/hadoop:rstudio bash
+```
+### AUTO CONSTRUCTION creation sequence that are in the Docker Hub
+
+### Debian 8
+```
+git clone https://github.com/luvres/hadoop.git
+cd hadoop
+
+docker build -t izone/hadoop . && \
+docker build -t izone/hadoop:anaconda ./anaconda/ && \
+docker build -t izone/hadoop:rstudio ./rstudio/ && \
+docker build -t izone/hadoop:ecosystem ./ecosystem/ && \
+docker build -t izone/hadoop:cluster ./cluster/ && \
+docker build -t izone/hadoop:datanode ./cluster/datanode
+```
+### CentOS 7
+```
+git clone https://github.com/luvres/hadoop.git
+cd hadoop
+
+docker build -t izone/hadoop:cos7 ./centos7/ && \
+docker build -t izone/hadoop:cos7-miniconda ./centos7/miniconda/ && \
+docker build -t izone/hadoop:cos7-ecosystem ./centos7/ecosystem/ && \
+docker build -t izone/hadoop:cos7-anaconda ./centos7/anaconda/ && \
+docker build -t izone/hadoop:cos7-mahout ./centos7/mahout/ && \
+docker build -t izone/hadoop:cos7-cluster ./centos7/cluster/ && \
+docker build -t izone/hadoop:cos7-datanode ./centos7/cluster/datanode/
+
+```
+### CentOS 6
+```
+git clone https://github.com/luvres/hadoop.git
+cd hadoop
+
+docker build -t izone/hadoop:cos6 ./centos6/ && \
+docker build -t izone/hadoop:cos6-miniconda ./centos6/miniconda/ && \
+docker build -t izone/hadoop:cos6-ecosystem ./centos6/ecosystem/ && \
+docker build -t izone/hadoop:cos6-anaconda ./centos6/anaconda/ && \
+docker build -t izone/hadoop:cos6-rstudio ./centos6/rstudio/ && \
+docker build -t izone/hadoop:cos6-mahout ./centos6/mahout/ && \
+docker build -t izone/hadoop:cos6-cluster ./centos6/cluster/ && \
+docker build -t izone/hadoop:cos6-datanode ./centos6/cluster/datanode
+
+docker build -t izone/hadoop:rstudio -f ./centos6/rstudio/
+```
+### Alpine
+```
+git clone https://github.com/luvres/hadoop.git
+cd hadoop
+
+docker build -t izone/hadoop:alpine ./alpine/ && \
+docker build -t izone/hadoop:alpine-datanode ./alpine/datanode/
 ```
