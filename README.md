@@ -12,8 +12,8 @@
 -----
 ### Script for your cluster from 1 to 9 nodes.
 ```
-wget https://raw.githubusercontent.com/luvres/hadoop/master/zoneCluster.sh
-alias zoneCluster="bash zoneCluster.sh"
+curl -L https://raw.githubusercontent.com/luvres/hadoop/master/zoneCluster.sh -o ~/zoneCluster.sh
+alias zoneCluster="bash ~/zoneCluster.sh"
 ```
 #### Create a directory for notebooks and Include directory created above on flag "-v"
 ```
