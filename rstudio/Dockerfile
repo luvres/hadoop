@@ -15,15 +15,11 @@ RUN curl -s https://download2.rstudio.org/rstudio-server-${RSTUDIO_VERSION}-amd6
     && gdebi -n rstudio.deb \
     && rm rstudio.deb
 
-RUN useradd -m -d /home/rstudio rstudio \
-    && echo rstudio:rstudio | chpasswd
-
 RUN echo "root:root" | chpasswd \
     && echo 'auth-minimum-user-id=0' >> /etc/rstudio/rserver.conf
 
 RUN echo "" >>/etc/supervisord.conf \
     && echo "[program:rstudio]" >>/etc/supervisord.conf \
     && echo "command=/usr/lib/rstudio-server/bin/rserver --server-daemonize=0 --server-app-armor-enabled=0" >>/etc/supervisord.conf
-
 
 EXPOSE 8787
