@@ -14,6 +14,9 @@
 ```
 wget https://raw.githubusercontent.com/luvres/hadoop/master/zoneCluster.sh
 alias zoneCluster="bash zoneCluster.sh"
+```
+#### Create a directory for notebooks and Include directory created above on flag "-v"
+```
 mkdir $HOME/notebooks
 ```
 ### Create cluster of a node 
@@ -59,10 +62,18 @@ sqoop import \
 	--password maria \
 	--table user --m 1
 ```
+#### Checking imported data for the hdfs
+```
+hdfs dfs -ls -R user
+```
 ### PySpark with Jupyter Notebook
 #### Browser access
 ```
 http://localhost:8888
+```
+#### Spark management jobs
+```
+http://localhost:4040
 ```
 ### RStudio Server
 #### Browser access
@@ -71,10 +82,6 @@ http://localhost:8787
 
 username: root
 password: root
-```
-#### Checking imported data for the hdfs
-```
-hdfs dfs -ls -R user
 ```
 ### Creates a pseudo-distributed instance
 ```
@@ -139,7 +146,9 @@ docker build -t izone/hadoop:alpine ./alpine/ && \
 docker build -t izone/hadoop:alpine-datanode ./alpine/datanode/
 ```
 -----
-### Pull image latest (with CentOS 7)
+
+
+### Pull image latest (with Debian 8)
 ```
 docker pull izone/hadoop
 ```
@@ -171,12 +180,6 @@ docker run --rm --name Hadoop -h hadoop \
 	-p 50070:50070 \
 	-ti izone/hadoop:alpine -test bash
 ```
-#### Build image
-```
-git clone https://github.com/luvres/hadoop.git
-cd hadoop
-docker build -t hadoop .
-```
 ### Hadoop Browser
 ```
 http://localhost:8088
@@ -190,22 +193,18 @@ http://localhost:50070
 ```
 hdfs dfs -mkdir /bigdata
 ```
-
 #### List diretory
 ```
 hadoop fs -ls /
 ```
-
 #### Download a file csv
 ```
 wget -c http://compras.dados.gov.br/contratos/v1/contratos.csv
 ```
-
 #### Copy file to the HDFS directory created above
 ```
 hadoop fs -copyFromLocal contratos.csv /bigdata
 ```
-
 #### Read file
 ```
 hadoop fs -cat /bigdata/contratos.csv
@@ -214,18 +213,11 @@ hadoop fs -cat /bigdata/contratos.csv
 ```
 hadoop jar /opt/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.3.jar wordcount /bigdata/contratos.csv /output
 ```
-
 #### Read result
 ```
 hdfs dfs -cat /output/*
 ```
 -----
-## PySpark and Jupyter Notebook
-
-#### Create a directory for notebooks and Include directory created above on flag "-v"
-```
-mkdir $HOME/notebooks
-```
 ### Pull image with Anaconda
 ```
 docker run --rm --name Hadoop -h hadoop \
@@ -237,18 +229,6 @@ docker run --rm --name Hadoop -h hadoop \
 	-v $HOME/notebooks:/root/notebooks \
 	-ti izone/hadoop:anaconda bash
 ```
-### Browser access
-
-#### PySpark with Jupyter Notebook
-```
-http://localhost:8888
-```
-#### Spark management jobs
-```
-http://localhost:4040
-```
-## RStudio Server
-
 ### Pull image with RStudio
 ```
 docker run --rm --name Hadoop -h hadoop \
@@ -261,32 +241,3 @@ docker run --rm --name Hadoop -h hadoop \
         -v $HOME/notebooks:/root/notebooks \
         -ti izone/hadoop:rstudio bash
 ```
-### Browser access
-```
-http://localhost:8787
-
-username: root
-password: root
-```
------
-## Hadoop Ecosystem
-### (Zookeeper, HBase, Hive, Pig, Sqoop, Flume)
-
-### Pull image
-```
-docker run --name Hadoop -h hadoop \
-	-p 8088:8088 \
-	-p 8042:8042 \
-	-p 50070:50070 \
-	-p 8888:8888 \
-	-p 4040:4040 \
-	-v $HOME/notebooks:/root/notebooks \
-	-d izone/hadoop:cos7-ecosystem
-```
-#### Access by Jupyter Notebook
-```
-http://localhost:8888/terminals/1
-
- sh-4.2# bash <enter>
-```
-
