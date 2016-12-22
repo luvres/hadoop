@@ -81,8 +81,9 @@ cd hadoop
 docker build -t izone/hadoop . && \
 docker build -t izone/hadoop:anaconda ./anaconda/ && \
 docker build -t izone/hadoop:rstudio ./rstudio/ && \
-docker build -t izone/hadoop:mahout ./mahout/ && \
-docker build -t izone/hadoop:cluster ./cluster/
+docker build -t izone/hadoop:ecosystem ./ecosystem/ && \
+docker build -t izone/hadoop:cluster ./cluster/ && \
+docker build -t izone/hadoop:datanode ./cluster/datanode
 ```
 ### CentOS 7
 ```
