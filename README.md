@@ -1,10 +1,10 @@
 ## Hadoop 2.7.3
-### With CentOS 7 (Centos option 6.8 also)
-### Reduced Image Option with Alpine Linux (466.6 MB)
-### And Debian Jessie
+### With Debian Jessie, CentOS 7, Centos 6.8
+### and Alpine Linux (466.6 MB)
 #### · Pseudo distributed mode
 #### · Fully distributed mode
 #### · PySpark with Jupyter Notebook
+#### . RStudio Server
 #### . Ecosystem:
 ##### . Hadoop, Spark, Zookeeper, HBase, Hive, Pig, Sqoop, Flume, Mahout
 ##### . JDBC implemented and ready for sqoop and spark
@@ -209,18 +209,6 @@ hdfs dfs -cat /output/*
 ```
 mkdir $HOME/notebooks
 ```
-### Pull image with RStudio
-```
-docker run --rm --name Hadoop -h hadoop \
-	-p 8088:8088 \
-	-p 8042:8042 \
-	-p 50070:50070 \
-	-p 8888:8888 \
-	-p 4040:4040 \
-	-p 8787:8787 \
-	-v $HOME/notebooks:/root/notebooks \
-	-ti izone/hadoop:rstudio bash
-```
 ### Pull image with Anaconda
 ```
 docker run --rm --name Hadoop -h hadoop \
@@ -242,18 +230,26 @@ http://localhost:8888
 ```
 http://localhost:4040
 ```
-### Build image
+## RStudio Server
+
+### Pull image with RStudio
 ```
-git clone https://github.com/luvres/hadoop.git
-cd hadoop
+docker run --rm --name Hadoop -h hadoop \
+        -p 8088:8088 \
+        -p 8042:8042 \
+        -p 50070:50070 \
+        -p 8888:8888 \
+        -p 4040:4040 \
+        -p 8787:8787 \
+        -v $HOME/notebooks:/root/notebooks \
+        -ti izone/hadoop:rstudio bash
 ```
-#### PySpark and Miniconda
+### Browser access
 ```
-docker build -t hadoop:miniconda ./miniconda/
-```
-#### PySpark and Anaconda
-```
-docker build -t hadoop:cos7-anaconda ./centos7/anaconda/
+http://localhost:8787
+
+username: root
+password: root
 ```
 ---
 ## Hadoop Ecosystem
