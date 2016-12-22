@@ -5,8 +5,7 @@ ENV NODES 1
 ENV HOSTNODE node-0
 ENV RPASS=@p4sS_-_#sECURITy*Cre4t3+bigZone
 
-RUN yum install -y pdsh sshpass \
-    && yum update -y
+RUN apt-get install -y sshpass pdsh
 
 # Scala
 ENV SCALA_VERSION 2.12.1
