@@ -42,11 +42,11 @@ zoneCluster 3
 
 docker logs -f Hadoop
 ```
-#### Note: The script is limited to a maximum of 9 nodes because multiple hosts are being created on only one host and I see no point in overloading your machine. The settings are ready for a real cluster and in the future I want to create scripts for provisioning with docker swarm.
+##### Note: The script is limited to a maximum of 9 nodes because multiple hosts are being created on only one host and I see no point in overloading your machine. The settings are ready for a real cluster and in the future I want to create scripts for provisioning with docker swarm.
 
-#### Options: { stop | start | remove | Stop | pseudo | cos6 | cos7 | alpine }
+##### Options: { stop | start | remove | Stop | pseudo | cos6 | cos7 | alpine }
 
-#### Stop and Remove the cluster
+##### Stop and Remove the cluster
 ```
 zoneCluster Stop
 ```
