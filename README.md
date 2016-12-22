@@ -40,9 +40,12 @@ zoneCluster 3
 docker logs -f Hadoop
 ```
 #### Note: The script is limited to a maximum of 9 nodes because multiple hosts are being created on only one host and I see no point in overloading your machine. The settings are ready for a real cluster and in the future I want to create scripts for provisioning with docker swarm.
-### Stop the cluster
+
+### Options: { stop | start | remove | Stop | pseudo }
+
+#### Stop and Remove the cluster
 ```
-zoneCluster stop
+zoneCluster Stop
 ```
 ### Raise Cluster with Mariadb and Oracle 11g Database
 ```
@@ -69,7 +72,7 @@ zoneCluster pseudo
   docker run --rm --name Hadoop -h hadoop \
   -p 8088:8088 -p 8042:8042 -p 50070:50070 -p 8888:8888 -p 4040:4040 \
   -v $HOME/notebooks:/root/notebooks \
-  -ti izone/hadoop:cos7-mahout bash
+  -ti izone/hadoop:ecosystem bash
 ```
 ### AUTO CONSTRUCTION creation sequence that are in the Docker Hub
 
