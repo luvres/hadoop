@@ -128,7 +128,9 @@ docker run --rm --name Hadoop -h hadoop \
 	-ti izone/hadoop:alpine -test bash
 ```
 -----
-## Testing..
+## Examples:
+
+### Hadoop Map Reduce
 
 #### Create a Directory
 ```
@@ -157,6 +159,38 @@ hadoop jar /opt/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.3.ja
 #### Read result
 ```
 hdfs dfs -cat /output/*
+```
+
+### Spark MapReduce
+
+#### pyspark jupyter notebook
+```
+http://localhost:8888/
+new -> python
+```
+#### Terminal commands executed with "!" Straight into the notebook
+#### It is the same as running direct on the terminal
+```
+!mkdir datasets
+!curl -L http://www.gutenberg.org/files/11/11-0.txt -o datasets/book.txt
+!hdfs dfs -mkdir -p /spark/input
+!hdfs dfs -put datasets/book.txt /spark/input
+!hdfs dfs -ls /spark/input
+```
+#### Examples of http://spark.apache.org/examples.html
+```
+text_file = sc.textFile("hdfs://localhost:9000/spark/input/book.txt")
+
+counts = text_file.flatMap(lambda line: line.split(" ")) \
+             .map(lambda word: (word, 1)) \
+             .reduceByKey(lambda a, b: a + b)
+
+counts.saveAsTextFile("hdfs://localhost:9000/spark/output"
+```
+#### View result
+```
+!hdfs dfs -ls /spark/output
+!hdfs dfs -cat /spark/output/part-00000
 ```
 -----
 ### Pull image with Anaconda
