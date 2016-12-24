@@ -96,6 +96,16 @@ Enter password: dsacademy
 Connected.
 SQL>
 ```
+#### Create a table in the Oracle database
+```
+CREATE TABLE cinema ( 
+  ID   NUMBER PRIMARY KEY, 
+  USER_ID   VARCHAR2(30), 
+  MOVIE_ID  VARCHAR2(30),
+  RATING    DECIMAL EXTERNAL,
+  TIMESTAMP VARCHAR2(256) 
+);
+```
 -----
 ### PySpark with Jupyter Notebook
 #### Browser access
