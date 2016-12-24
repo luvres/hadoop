@@ -201,6 +201,7 @@ export HADOOP_CONF_DIR=/etc/hadoop/conf
 export YARN_CONF_DIR=/etc/hadoop/conf
 ```
 #### Submit
+```
 spark-submit --class org.apache.spark.examples.SparkPi --master yarn-cluster $SPARK_HOME/examples/jars/spark-examples_2.11-2.0.2.jar 10
 ```
 -----
