@@ -83,6 +83,7 @@ pseudo(){
   -p 8888:8888 \
   -p 8080:8080 \
   -p 4040:4040 \
+  -p 8787:8787 \
   -v $HOME/notebooks:/root/notebooks \
   -ti izone/hadoop:ecosystem bash
 }
