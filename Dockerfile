@@ -4,7 +4,7 @@ MAINTAINER Leonardo Loures <luvres@hotmail.com>
 RUN apt-get update && apt-get upgrade -y \
     && apt-get install -y \
     openssh-server openssh-client \
-    bzip2 unzip rsync curl net-tools sudo supervisor
+    bzip2 unzip rsync curl net-tools nano sudo supervisor
 
 # SSH Key Passwordless
 RUN ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa \
