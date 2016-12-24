@@ -91,20 +91,22 @@ SQL>
 ```
 SQL> create user aluno identified by dsacademy;
 SQL> grant connect, resource, unlimited tablespace to aluno;
-SQL> conn aluno@xe
-Enter password: dsacademy
-Connected.
-SQL>
+SQL> conn aluno@xe/dsacademy
+SQL> select user from dual;
 ```
 #### Create a table in the Oracle database
 ```
-CREATE TABLE cinema ( 
+SQL> CREATE TABLE cinema ( 
   ID   NUMBER PRIMARY KEY, 
-  USER_ID   VARCHAR2(30), 
-  MOVIE_ID  VARCHAR2(30),
-  RATING    DECIMAL EXTERNAL,
-  TIMESTAMP VARCHAR2(256) 
+  USER_ID       VARCHAR2(30), 
+  MOVIE_ID      VARCHAR2(30),
+  RATING        DECIMAL(30),
+  TIMESTAMP     VARCHAR2(256) 
 );
+
+SQL> desc cinema;
+
+SQL> select count(*) from cinema;
 ```
 -----
 ### PySpark with Jupyter Notebook
