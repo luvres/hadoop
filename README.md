@@ -108,7 +108,7 @@ SQL> desc cinema;
 
 SQL> quit
 
-tee loader.dat <<EOF
+tee $HOME/data/loader.dat <<EOF
 load data
 INFILE 'ml-20m/ml_ratings.csv'
 INTO TABLE cinema
