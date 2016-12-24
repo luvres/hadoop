@@ -54,7 +54,7 @@ zoneCluster Stop
 ```
 zoneCluster 2 -db
 ```
-#### Import data from Mariadb with Sqoop
+### Import data from Mariadb with Sqoop
 ```
 sqoop import \
 	--connect jdbc:mysql://mariadb:3306/mysql \
@@ -66,6 +66,37 @@ sqoop import \
 ```
 hdfs dfs -ls -R user
 ```
+### Import data from Oracle with Sqoop
+```
+http://localhost:8888/terminals/1
+bash
+mkdir etl && cd etl
+```
+#### Download file
+```
+curl -O http://files.grouplens.org/datasets/movielens/ml-20m.zip
+unzip ml-20m.zip
+cd ml-20m
+```
+#### Create file 1000 times smaller
+```
+cat ratings.csv |tail -n $((`cat ratings.csv | wc -l` /1000)) >ml_ratings.csv
+```
+#### Access database and create user
+```
+docker exec -ti OracleXE sqlplus sys/oracle as sysdba
+SQL>
+```
+#### Create the schema in the database and grant privileges
+```
+SQL> create user aluno identified by dsacademy;
+SQL> grant connect, resource, unlimited tablespace to aluno;
+SQL> conn aluno@xe
+Enter password: dsacademy
+Connected.
+SQL>
+```
+-----
 ### PySpark with Jupyter Notebook
 #### Browser access
 ```
