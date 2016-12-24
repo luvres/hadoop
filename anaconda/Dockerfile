@@ -48,7 +48,8 @@ ENV BLUE='\[$(tput setaf 4)\]'
 ENV PURPLE='\[$(tput setaf 5)\]'
 ENV CYAN='\[$(tput setaf 6)\]'
 ENV WHITE='\[$(tput setaf 7)\]'
-RUN echo "" >>$HOME/.bashrc \
+RUN echo 'alias ll="ls -la --color"' >>$HOME/.bashrc \
+    && echo "" >>$HOME/.bashrc \
     && echo 'export PS1="[${WHITE}\u${RED}@${WHITE}\h${WHITE}:\w${RESET}]# "' >>$HOME/.bashrc
 
 VOLUME $NOTEBOOKS_PATH
