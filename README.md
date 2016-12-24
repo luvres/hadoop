@@ -192,6 +192,17 @@ counts.saveAsTextFile("hdfs://localhost:9000/spark/output"
 !hdfs dfs -ls /spark/output
 !hdfs dfs -cat /spark/output/part-00000
 ```
+
+### Spark Yarn management
+
+##### Client enviroment
+```
+export HADOOP_CONF_DIR=/etc/hadoop/conf
+export YARN_CONF_DIR=/etc/hadoop/conf
+```
+#### Submit
+spark-submit --class org.apache.spark.examples.SparkPi --master yarn-cluster $SPARK_HOME/examples/jars/spark-examples_2.11-2.0.2.jar 10
+```
 -----
 ### Pull image with Anaconda
 ```
