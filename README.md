@@ -106,6 +106,22 @@ SQL> CREATE TABLE cinema (
 
 SQL> desc cinema;
 
+SQL> quit
+
+tee loader.dat <<EOF
+load data
+INFILE 'ml-20m/ml_ratings.csv'
+INTO TABLE cinema
+APPEND
+FIELDS TERMINATED BY ','
+trailing nullcols
+(id SEQUENCE (MAX,1),
+ user_id CHAR(30),
+ movie_id CHAR(30),
+ rating   decinal external,
+ timestamp  char(256))
+EOF
+
 SQL> select count(*) from cinema;
 ```
 -----
