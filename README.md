@@ -168,8 +168,8 @@ hdfs dfs -cat /output/*
 http://localhost:8888/
 new -> python
 ```
-#### Terminal commands executed with "!" Straight into the notebook
-#### It is the same as running direct on the terminal
+##### Terminal commands executed with "!" Straight into the notebook
+##### It is the same as running direct on the terminal
 ```
 !mkdir datasets
 !curl -L http://www.gutenberg.org/files/11/11-0.txt -o datasets/book.txt
@@ -177,7 +177,7 @@ new -> python
 !hdfs dfs -put datasets/book.txt /spark/input
 !hdfs dfs -ls /spark/input
 ```
-#### Examples of http://spark.apache.org/examples.html
+##### Examples of http://spark.apache.org/examples.html
 ```
 text_file = sc.textFile("hdfs://localhost:9000/spark/input/book.txt")
 
@@ -187,7 +187,7 @@ counts = text_file.flatMap(lambda line: line.split(" ")) \
 
 counts.saveAsTextFile("hdfs://localhost:9000/spark/output"
 ```
-#### View result
+##### View result
 ```
 !hdfs dfs -ls /spark/output
 !hdfs dfs -cat /spark/output/part-00000
