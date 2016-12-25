@@ -66,11 +66,12 @@ sqoop import \
 ```
 hdfs dfs -ls -R user
 ```
+
 ### Import data from Oracle with Sqoop
+##### Access Oracle
 ```
-http://localhost:8888/terminals/1
-bash
-mkdir etl && cd etl
+docker exec -ti OracleXE bash
+cd $HOME/data/
 ```
 ##### Download file
 ```
@@ -85,7 +86,6 @@ cat ratings.csv |tail -n $((`cat ratings.csv | wc -l` /1000)) >ml_ratings.csv
 #### Load table in Oracle
 ##### Access database and create user
 ```
-docker exec -ti OracleXE bash
 sqlplus sys/oracle as sysdba
 ```
 ##### Create the schema in the database and grant privileges
@@ -93,7 +93,7 @@ sqlplus sys/oracle as sysdba
 SQL> create user aluno identified by dsacademy;
 SQL> grant connect, resource, unlimited tablespace to aluno;
 SQL> conn aluno@xe/dsacademy
-SQL> select user from dual
+SQL> select user from dual;
 ```
 ##### Create a table in the Oracle database
 ```
@@ -113,7 +113,7 @@ SQL> quit
 ```
 tee $HOME/data/loader.dat <<EOF
 load data
-INFILE 'ml-20m/ml_ratings.csv'
+INFILE '$HOME/data/ml-20m/ml_ratings.csv'
 INTO TABLE cinema
 APPEND
 FIELDS TERMINATED BY ','
