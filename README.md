@@ -135,6 +135,16 @@ sqlplus aluno/dsacademy
 
 SQL> select count(*) from cinema;
 ```
+#### Import with Sqoop
+```
+sqoop import \
+--connect jdbc:oracle:thin:@oraclexe:1521:XE \
+--username aluno \
+--password dsacademy \
+--table cinema \
+--columns "user_id, movie_id" \
+--where "1" -m 1
+```
 -----
 ### PySpark with Jupyter Notebook
 #### Browser access

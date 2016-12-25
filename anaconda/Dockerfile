@@ -16,6 +16,7 @@ RUN mkdir /usr/local/jdbc \
     && curl -L https://github.com/luvres/jdbc/raw/master/mysql-connector-java-5.1.40-bin.jar -o /usr/local/jdbc/mysql-connector-java-5.1.40-bin.jar \
     && curl -L https://github.com/luvres/jdbc/raw/master/mariadb-java-client-1.4.6.jar -o /usr/local/jdbc/mariadb-java-client-1.4.6.jar \
     && curl -L https://github.com/luvres/jdbc/raw/master/ojdbc7.jar -o /usr/local/jdbc/ojdbc7.jar \
+    && curl -L https://github.com/luvres/jdbc/raw/master/ojdbc6.jar -o /usr/local/jdbc/ojdbc6.jar \
     && curl -L https://github.com/luvres/jdbc/raw/master/postgresql-9.4.1212.jar -o /usr/local/jdbc/postgresql-9.4.1212.jar
 
 # Spark
@@ -25,6 +26,7 @@ RUN curl http://d3kbcqa49mib13.cloudfront.net/spark-${SPARK_VERSION}-bin-hadoop2
 RUN ln -s /usr/local/jdbc/mysql-connector-java-5.1.40-bin.jar /opt/spark/jars/mysql-connector.jar \
     && ln -s /usr/local/jdbc/mariadb-java-client-1.4.6.jar /opt/spark/jars/mariadb-connector.jar \
     && ln -s /usr/local/jdbc/ojdbc7.jar /opt/spark/jars/ojdbc7.jar \
+    && ln -s /usr/local/jdbc/ojdbc6.jar /opt/spark/jars/ojdbc6.jar \
     && ln -s /usr/local/jdbc/postgresql-9.4.1212.jar /opt/spark/jars/postgresql-connector.jar
 ENV SPARK_HOME=/opt/spark
 ENV PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
