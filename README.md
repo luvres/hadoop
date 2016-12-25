@@ -72,29 +72,30 @@ http://localhost:8888/terminals/1
 bash
 mkdir etl && cd etl
 ```
-#### Download file
+##### Download file
 ```
 curl -O http://files.grouplens.org/datasets/movielens/ml-20m.zip
 unzip ml-20m.zip
 cd ml-20m
 ```
-#### Create file 1000 times smaller
+##### Create file 1000 times smaller
 ```
 cat ratings.csv |tail -n $((`cat ratings.csv | wc -l` /1000)) >ml_ratings.csv
 ```
-#### Access database and create user
+#### Load table in Oracle
+##### Access database and create user
 ```
-docker exec -ti OracleXE sqlplus sys/oracle as sysdba
-SQL>
+docker exec -ti OracleXE bash
+sqlplus sys/oracle as sysdba
 ```
-#### Create the schema in the database and grant privileges
+##### Create the schema in the database and grant privileges
 ```
 SQL> create user aluno identified by dsacademy;
 SQL> grant connect, resource, unlimited tablespace to aluno;
 SQL> conn aluno@xe/dsacademy
-SQL> select user from dual;
+SQL> select user from dual
 ```
-#### Create a table in the Oracle database
+##### Create a table in the Oracle database
 ```
 SQL> CREATE TABLE cinema ( 
   ID   NUMBER PRIMARY KEY, 
@@ -107,7 +108,9 @@ SQL> CREATE TABLE cinema (
 SQL> desc cinema;
 
 SQL> quit
-
+```
+##### Create file loader.dat
+```
 tee $HOME/data/loader.dat <<EOF
 load data
 INFILE 'ml-20m/ml_ratings.csv'
@@ -121,8 +124,10 @@ trailing nullcols
  rating   decinal external,
  timestamp  char(256))
 EOF
-
-SQL> select count(*) from cinema;
+```
+##### Run SQL * Loader
+```
+sqlldr userid=aluno/dsacademy control=loader.dat log=loader.log
 ```
 -----
 ### PySpark with Jupyter Notebook
