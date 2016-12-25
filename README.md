@@ -127,7 +127,7 @@ EOF
 ```
 ##### Run SQL * Loader
 ```
-sqlldr userid=aluno/dsacademy control=$HOME/data/loader.dat log=loader.log
+sqlldr userid=aluno/dsacademy control=$HOME/data/loader.dat log=$HOME/data/loader.log
 ```
 ##### Check load
 ```
