@@ -121,13 +121,19 @@ trailing nullcols
 (id SEQUENCE (MAX,1),
  user_id CHAR(30),
  movie_id CHAR(30),
- rating   decinal external,
+ rating   decimal external,
  timestamp  char(256))
 EOF
 ```
 ##### Run SQL * Loader
 ```
-sqlldr userid=aluno/dsacademy control=loader.dat log=loader.log
+sqlldr userid=aluno/dsacademy control=$HOME/data/loader.dat log=loader.log
+```
+##### Check load
+```
+sqlplus aluno/dsacademy
+
+SQL> select count(*) from cinema;
 ```
 -----
 ### PySpark with Jupyter Notebook
