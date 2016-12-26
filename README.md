@@ -79,9 +79,9 @@ curl -O http://files.grouplens.org/datasets/movielens/ml-20m.zip
 unzip ml-20m.zip
 cd ml-20m
 ```
-##### Create file 1000 times smaller
+##### Create file 100 times smaller
 ```
-cat ratings.csv |tail -n $((`cat ratings.csv | wc -l` /1000)) >ml_ratings.csv
+cat ratings.csv |tail -n $((`cat ratings.csv | wc -l` /100)) >ml_ratings.csv
 ```
 #### Load table in Oracle
 ##### Access database and create user
