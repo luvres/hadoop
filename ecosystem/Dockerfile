@@ -1,4 +1,4 @@
-FROM izone/hadoop:rstudio
+FROM izone/hadoop:julia
 MAINTAINER Leonardo Loures <luvres@hotmail.com>
 
 # Zookeeper
