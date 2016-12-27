@@ -5,7 +5,7 @@
 #### · Fully distributed mode
 #### · PySpark with Jupyter Notebook
 #### . RStudio Server
-#### . Julia
+#### . Julia Language
 #### . Ecosystem:
 ##### . Hadoop, Spark, Zookeeper, HBase, Hive, Pig, Sqoop, Flume, Mahout
 ##### . JDBC implemented and ready for sqoop and spark
