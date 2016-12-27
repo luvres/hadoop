@@ -13,6 +13,7 @@ ADD zoo.cfg /opt/zookeeper/conf/zoo.cfg
 # HBase
 ENV HBASE_VERSION 1.2.4
 RUN curl http://ftp.unicamp.br/pub/apache/hbase/${HBASE_VERSION}/hbase-${HBASE_VERSION}-bin.tar.gz | tar -xzf - -C /usr/local/ \
+    && rm -fR /usr/local/hbase-${HBASE_VERSION}/docs \
     && ln -s /usr/local/hbase-${HBASE_VERSION}/ /opt/hbase
 ENV HBASE_HOME=/opt/hbase
 ENV PATH=$PATH:$HBASE_HOME/bin
@@ -33,6 +34,7 @@ ADD hive-default.xml $HIVE_HOME/conf/hive-default.xml
 # Pig
 ENV PIG_VERSION 0.16.0
 RUN curl http://ftp.unicamp.br/pub/apache/pig/pig-${PIG_VERSION}/pig-${PIG_VERSION}.tar.gz | tar -xzf - -C /usr/local/ \
+    && rm -fR /usr/local/pig-${PIG_VERSION}/docs \
     && ln -s /usr/local/pig-${PIG_VERSION}/ /opt/pig
 ENV PIG_HOME=/opt/pig
 ENV PATH=$PATH:$PIG_HOME/bin
@@ -57,6 +59,7 @@ RUN ln -s /usr/local/jdbc/mysql-connector-java-5.1.40-bin.jar /opt/sqoop/lib/mys
 # Flume
 ENV FLUME_VERSION 1.7.0
 RUN curl http://ftp.unicamp.br/pub/apache/flume/${FLUME_VERSION}/apache-flume-${FLUME_VERSION}-bin.tar.gz | tar -xzf - -C /usr/local/ \
+    && rm -fR /usr/local/apache-flume-${FLUME_VERSION}-bin/docs \
     && ln -s /usr/local/apache-flume-${FLUME_VERSION}-bin/ /opt/flume
 ADD flume-env.sh /opt/flume/conf/flume-env.sh
 ENV FLUME_HOME=/opt/flume
@@ -66,6 +69,7 @@ ENV CLASSPATH=#CLASSPATH:$FLUME_HOME/lib/*
 # Mahout
 ENV MAHOUT_VERSION 0.12.2
 RUN curl http://ftp.unicamp.br/pub/apache/mahout/${MAHOUT_VERSION}/apache-mahout-distribution-${MAHOUT_VERSION}.tar.gz | tar -xzf - -C /usr/local/ \
+    && rm -fR /usr/local/apache-mahout-distribution-${MAHOUT_VERSION}/docs \
     && ln -s /usr/local/apache-mahout-distribution-${MAHOUT_VERSION}/ /opt/mahout
 ENV MAHOUT_HOME=/opt/mahout
 ENV PATH=$PATH:$MAHOUT_HOME/bin
