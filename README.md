@@ -173,10 +173,10 @@ zoneCluster pseudo
 ```
 #### Equivalent to the command
 ```
-  docker run --rm --name Hadoop -h hadoop \
-  -p 8088:8088 -p 8042:8042 -p 50070:50070 -p 8888:8888 -p 4040:4040 \
-  -v $HOME/notebooks:/root/notebooks \
-  -ti izone/hadoop:ecosystem bash
+docker run --rm --name Hadoop -h hadoop \
+-p 8088:8088 -p 8042:8042 -p 50070:50070 -p 8888:8888 -p 4040:4040 \
+-v $HOME/notebooks:/root/notebooks \
+-ti izone/hadoop:ecosystem bash
 ```
 ### Julia (Linear regression)
 ```
@@ -310,14 +310,14 @@ docker run --rm --name Hadoop -h hadoop \
 ### Pull image with RStudio
 ```
 docker run --rm --name Hadoop -h hadoop \
-        -p 8088:8088 \
-        -p 8042:8042 \
-        -p 50070:50070 \
-        -p 8888:8888 \
-        -p 4040:4040 \
-        -p 8787:8787 \
-        -v $HOME/notebooks:/root/notebooks \
-        -ti izone/hadoop:rstudio bash
+	-p 8088:8088 \
+	-p 8042:8042 \
+	-p 50070:50070 \
+	-p 8888:8888 \
+	-p 4040:4040 \
+	-p 8787:8787 \
+	-v $HOME/notebooks:/root/notebooks \
+	-ti izone/hadoop:rstudio bash
 ```
 -----
 ### AUTO CONSTRUCTION creation sequence that are in the Docker Hub
