@@ -5,6 +5,7 @@
 #### · Fully distributed mode
 #### · PySpark with Jupyter Notebook
 #### . RStudio Server
+#### . Julia
 #### . Ecosystem:
 ##### . Hadoop, Spark, Zookeeper, HBase, Hive, Pig, Sqoop, Flume, Mahout
 ##### . JDBC implemented and ready for sqoop and spark
@@ -176,6 +177,13 @@ zoneCluster pseudo
   -p 8088:8088 -p 8042:8042 -p 50070:50070 -p 8888:8888 -p 4040:4040 \
   -v $HOME/notebooks:/root/notebooks \
   -ti izone/hadoop:ecosystem bash
+```
+### Julia (Linear regression)
+```
+curl -O https://raw.githubusercontent.com/luvres/hadoop/master/julia/dataset/multilinreg.jl
+curl -O https://raw.githubusercontent.com/luvres/hadoop/master/julia/dataset/data.txt
+
+julia multilinreg.jl
 ```
 -----
 ### Pull image latest (with Debian 8)
