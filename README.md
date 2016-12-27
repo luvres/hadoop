@@ -145,9 +145,8 @@ sqoop import \
 --connect jdbc:oracle:thin:@oraclexe:1521:XE \
 --username aluno \
 --password dsacademy \
---table cinema \
---columns "user_id, movie_id" \
---where "1" -m 1
+--query "select user_id, movie_id from cinema where rating = 1 and \$CONDITIONS" \
+--target-dir /user/oracle/output -m 1
 ```
 -----
 ### PySpark with Jupyter Notebook
