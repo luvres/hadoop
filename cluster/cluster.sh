@@ -18,6 +18,10 @@ confFiles(){
   cat /etc/machines >>$SPARK_HOME/conf/slaves
   sed -i "s/NAMENODE/$HOSTNAME/" $HADOOP_HOME/etc/hadoop/core-site.xml
   sed -i "s/NAMENODE/$HOSTNAME/" $HADOOP_HOME/etc/hadoop/yarn-site.xml
+  cat $HADOOP_HOME/etc/hadoop/slaves >$HBASE_HOME/conf/regionservers
+  sed -i "s/NAMENODE/$HOSTNAME/" $HBASE_HOME/conf/hbase-site.xml
+  sed -i "s/NAMENODE/$HOSTNAME/" $HBASE_HOME/conf/hbase-site_slave.xml
+  sed -i "s/QUORUM/$HOSTNAME/" $HBASE_HOME/conf/hbase-site.xml
 }; confFiles
 
 hostsNodes(){
@@ -25,13 +29,14 @@ hostsNodes(){
   for i in `seq $((NODES))`
   do
     echo "Configuring files ${HOSTNODE}$i"
-    for f in /etc/hosts ${SOURCE}/hadoop-env.sh ${SOURCE}/core-site.xml ${SOURCE}/mapred-site.xml ${SOURCE}/yarn-site.xml
+    for f in /etc/hosts ${SOURCE}/hadoop-env.sh ${SOURCE}/core-site.xml ${SOURCE}/mapred-site.xml ${SOURCE}/yarn-site.xml $HBASE_HOME/conf/hbase-site_slave.xml
     do
       scp $f ${HOSTNODE}$i:$f
       scp $f ${HOSTNODE}$i:$f
       scp $f ${HOSTNODE}$i:$f
       scp $f ${HOSTNODE}$i:$f
       scp $f ${HOSTNODE}$i:$f
+      scp $f ${HOSTNODE}$i:$HBASE_HOME/conf/hbase-site.xml
     done &>/dev/null
   done
 }; hostsNodes

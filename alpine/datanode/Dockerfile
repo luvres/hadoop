@@ -89,6 +89,15 @@ ENV SPARK_HOME=/opt/spark
 ENV PATH=$PATH:$SPARK_HOME/bin
 ADD spark-env.sh $SPARK_HOME/conf/spark-env.sh
 
+# HBase
+ENV HBASE_VERSION 1.2.4
+RUN curl http://ftp.unicamp.br/pub/apache/hbase/${HBASE_VERSION}/hbase-${HBASE_VERSION}-bin.tar.gz | tar -xzf - -C /usr/local/ \
+    && rm -fR /usr/local/hbase-${HBASE_VERSION}/docs \
+    && ln -s /usr/local/hbase-${HBASE_VERSION}/ /opt/hbase
+ENV HBASE_HOME=/opt/hbase
+ENV PATH=$PATH:$HBASE_HOME/bin
+ADD hbase-env.sh $HBASE_HOME/conf/hbase-env.sh
+
 # Configurations Fully Distributed
 RUN mkdir -p /tmp/hdfs/datanode
 ADD hdfs-site.xml $HADOOP_HOME/etc/hadoop/hdfs-site.xml

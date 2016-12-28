@@ -22,6 +22,8 @@ RUN mkdir -p /tmp/hdfs/{namenode,datanode}
 ADD core-site.xml $HADOOP_HOME/etc/hadoop/core-site.xml
 ADD hdfs-site.xml $HADOOP_HOME/etc/hadoop/hdfs-site.xml
 ADD yarn-site.xml $HADOOP_HOME/etc/hadoop/yarn-site.xml
+ADD hbase-site.xml $HBASE_HOME/conf/hbase-site.xml
+ADD hbase-site_slave.xml $HBASE_HOME/conf/hbase-site_slave.xml
 ADD cluster.sh /etc/cluster.sh
 ADD start.sh /etc/start.sh
 RUN chmod +x /etc/start.sh /etc/cluster.sh
