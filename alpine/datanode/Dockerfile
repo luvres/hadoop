@@ -87,7 +87,6 @@ RUN curl http://d3kbcqa49mib13.cloudfront.net/spark-${SPARK_VERSION}-bin-hadoop2
     && ln -s /usr/local/spark-${SPARK_VERSION}-bin-hadoop2.7/ /opt/spark
 ENV SPARK_HOME=/opt/spark
 ENV PATH=$PATH:$SPARK_HOME/bin
-ADD spark-env.sh $SPARK_HOME/conf/spark-env.sh
 
 # HBase
 ENV HBASE_VERSION 1.2.4
