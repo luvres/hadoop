@@ -25,9 +25,9 @@ confFiles(){
 }; confFiles
 
 hostsNodes(){
-  HADOOP=$HADOOP_HOME/etc/hadoop
-  SPARK=$SPARK_HOME/conf
-  HBASE=$HBASE_HOME/conf
+  HADOOP=/opt/hadoop/etc/hadoop
+  SPARK=/opt/spark/conf
+  HBASE=/opt/hbase/conf
   for i in `seq $((NODES))`
   do
     echo "Configuring files ${HOSTNODE}$i"
