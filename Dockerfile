@@ -98,6 +98,9 @@ EXPOSE 10020 19888
 # Yarn ports
 EXPOSE 8030 8031 8032 8033 8040 8042 8088
 
+# Other ports
+EXPOSE 22
+
 #RUN mkdir /etc/services.d/ssh \
 #    && echo '#!/usr/bin/bash' >/etc/services.d/ssh/run \
 #    && echo 'exec /etc/init.d/ssh start' >>/etc/services.d/ssh/run
