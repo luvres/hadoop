@@ -32,11 +32,7 @@ hostsNodes(){
     for f in /etc/hosts ${SOURCE}/hadoop-env.sh ${SOURCE}/core-site.xml ${SOURCE}/mapred-site.xml ${SOURCE}/yarn-site.xml $HBASE_HOME/conf/hbase-site_slave.xml
     do
       scp $f ${HOSTNODE}$i:$f
-      scp $f ${HOSTNODE}$i:$f
-      scp $f ${HOSTNODE}$i:$f
-      scp $f ${HOSTNODE}$i:$f
-      scp $f ${HOSTNODE}$i:$f
-      scp $f ${HOSTNODE}$i:$HBASE_HOME/conf/hbase-site.xml
+      ssh ${HOSTNODE}$i mv $HBASE_HOME/conf/hbase-site_slave.xml $HBASE_HOME/conf/hbase-site.xml
     done &>/dev/null
   done
 }; hostsNodes
