@@ -33,6 +33,7 @@ arg00(){
   -p 4040:4040 \
   -p 8787:8787 \
   -p 60010:60010 \
+  -p 60030:60030 \
   -v $HOME/notebooks:/root/notebooks \
   -d izone/hadoop:cluster
 }

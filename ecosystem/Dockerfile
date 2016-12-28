@@ -82,4 +82,4 @@ RUN sed -i '/PS1/d' $HOME/.bashrc \
     && echo 'export PS1="${RESET}[${RED}\u${RESET}@${YELLOW}\h${RESET}:${BLUE}\w${RESET}]# ${RESET}"' >>$HOME/.bashrc
 
 # HBase ports
-EXPOSE 60010
+EXPOSE 60010 60030
