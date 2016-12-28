@@ -98,7 +98,6 @@ ENV PATH=$PATH:$HBASE_HOME/bin
 
 # Configurations Fully Distributed
 RUN mkdir -p /tmp/hdfs/datanode
-ADD hdfs-site.xml $HADOOP_HOME/etc/hadoop/hdfs-site.xml
 ADD start.sh /etc/start.sh
 RUN chmod +x /etc/start.sh
 

@@ -31,6 +31,7 @@ hostsNodes(){
     echo "Configuring files ${HOSTNODE}$i"
     for f in /etc/hosts \
              ${SOURCE}/hadoop-env.sh \
+             ${SOURCE}/hdfs-site.xml \ 
              ${SOURCE}/core-site.xml \
              ${SOURCE}/mapred-site.xml \
              ${SOURCE}/yarn-site.xml \
