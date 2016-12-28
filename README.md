@@ -31,6 +31,10 @@ http://localhost:8088
 
 http://localhost:50070
 ```
+#### HBase Browser
+```
+http://localhost:60010
+```
 #### Access by Jupyter Notebook
 ```
 http://localhost:8888/terminals/1
