@@ -99,7 +99,7 @@ ENV PATH=$PATH:$HBASE_HOME/bin
 # Configurations Fully Distributed
 ADD start.sh /etc/start.sh
 RUN chmod +x /etc/start.sh \
-    && dir -p /tmp/hdfs/datanode
+    && mkdir -p /tmp/hdfs/datanode
 
 # Hdfs ports
 EXPOSE 50010 50020 50070 50075 50090 8020 9000
