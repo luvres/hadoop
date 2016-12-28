@@ -81,3 +81,5 @@ RUN chmod +x /etc/start.sh
 RUN sed -i '/PS1/d' $HOME/.bashrc \
     && echo 'export PS1="${RESET}[${RED}\u${RESET}@${YELLOW}\h${RESET}:${BLUE}\w${RESET}]# ${RESET}"' >>$HOME/.bashrc
 
+# HBase ports
+EXPOSE 60010
