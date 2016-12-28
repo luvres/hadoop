@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 nodesSSH(){
   for i in `seq $((NODES))`
   do
