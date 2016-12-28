@@ -25,15 +25,15 @@ confFiles(){
 }; confFiles
 
 hostsNodes(){
-  HADOOP=/opt/hadoop/etc/hadoop
-  SPARK=/opt/spark/conf
-  HBASE=/opt/hbase/conf
+  HADOOP=$HADOOP_HOME/etc/hadoop
+  SPARK=$SPARK_HOME/conf
+  HBASE=$HBASE_HOME/conf
   for i in `seq $((NODES))`
   do
     echo "Configuring files ${HOSTNODE}$i"
     for f in /etc/hosts \
              ${HADOOP}/hadoop-env.sh \
-             ${HADOOP}/hdfs-site.xml \ 
+             ${HADOOP}/hdfs-site.xml \
              ${HADOOP}/core-site.xml \
              ${HADOOP}/mapred-site.xml \
              ${HADOOP}/yarn-site.xml \
