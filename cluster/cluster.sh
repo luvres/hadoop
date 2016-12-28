@@ -29,7 +29,7 @@ hostsNodes(){
   for i in `seq $((NODES))`
   do
     echo "Configuring files ${HOSTNODE}$i"
-    for f in /etc/hosts ${SOURCE}/hadoop-env.sh ${SOURCE}/core-site.xml ${SOURCE}/mapred-site.xml ${SOURCE}/yarn-site.xml $HBASE_HOME/conf/hbase-site_slave.xml
+    for f in /etc/hosts ${SOURCE}/hadoop-env.sh ${SOURCE}/core-site.xml ${SOURCE}/mapred-site.xml ${SOURCE}/yarn-site.xml $HBASE_HOME/conf/hbase-site_slave.xml $HBASE_HOME/conf/hbase-env.sh
     do
       scp $f ${HOSTNODE}$i:$f
       ssh ${HOSTNODE}$i mv $HBASE_HOME/conf/hbase-site_slave.xml $HBASE_HOME/conf/hbase-site.xml

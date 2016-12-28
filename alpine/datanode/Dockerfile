@@ -96,7 +96,6 @@ RUN curl http://ftp.unicamp.br/pub/apache/hbase/${HBASE_VERSION}/hbase-${HBASE_V
     && ln -s /usr/local/hbase-${HBASE_VERSION}/ /opt/hbase
 ENV HBASE_HOME=/opt/hbase
 ENV PATH=$PATH:$HBASE_HOME/bin
-ADD hbase-env.sh $HBASE_HOME/conf/hbase-env.sh
 
 # Configurations Fully Distributed
 RUN mkdir -p /tmp/hdfs/datanode
