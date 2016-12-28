@@ -33,7 +33,7 @@ hostsNodes(){
     echo "Configuring files ${HOSTNODE}$i"
     for f in /etc/hosts \
              ${HADOOP}/hadoop-env.sh \
-             ${HADOOP}/hdfs-site.xml \ 
+             ${HADOOP}/hdfs-site.xml \
              ${HADOOP}/core-site.xml \
              ${HADOOP}/mapred-site.xml \
              ${HADOOP}/yarn-site.xml \
