@@ -32,7 +32,7 @@
   </property>
   <property>
     <name>hbase.zookeeper.quorum</name>
-    <value>QUORUM,node-01</value>
+    <value>QUORUM</value>
   </property>
   <property>
     <name>hbase.zookeeper.property.dataDir</name>

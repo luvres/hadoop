@@ -21,7 +21,7 @@ confFiles(){
   cat $HADOOP_HOME/etc/hadoop/slaves >$HBASE_HOME/conf/regionservers
   sed -i "s/NAMENODE/$HOSTNAME/" $HBASE_HOME/conf/hbase-site.xml
   sed -i "s/NAMENODE/$HOSTNAME/" $HBASE_HOME/conf/hbase-site_slave.xml
-  sed -i "s/QUORUM/$HOSTNAME/" $HBASE_HOME/conf/hbase-site.xml
+  sed -i "s/QUORUM/$(echo `cat /opt/hadoop/etc/hadoop/slaves` | sed 's/ /,/g')/" $HBASE_HOME/conf/hbase-site.xml
 }; confFiles
 
 hostsNodes(){
