@@ -25,22 +25,24 @@ confFiles(){
 }; confFiles
 
 hostsNodes(){
-  SOURCE=/opt/hadoop/etc/hadoop
+  HADOOP=$HADOOP_HOME/etc/hadoop
+  SPARK=$SPARK_HOME/conf
+  HBASE=$HBASE_HOME/conf
   for i in `seq $((NODES))`
   do
     echo "Configuring files ${HOSTNODE}$i"
     for f in /etc/hosts \
-             ${SOURCE}/hadoop-env.sh \
-             ${SOURCE}/hdfs-site.xml \ 
-             ${SOURCE}/core-site.xml \
-             ${SOURCE}/mapred-site.xml \
-             ${SOURCE}/yarn-site.xml \
-             $HBASE_HOME/conf/hbase-site_slave.xml \
-             $HBASE_HOME/conf/hbase-env.sh \
-             $SPARK_HOME/conf/spark-env.sh
+             ${HADOOP}/hadoop-env.sh \
+             ${HADOOP}/hdfs-site.xml \ 
+             ${HADOOP}/core-site.xml \
+             ${HADOOP}/mapred-site.xml \
+             ${HADOOP}/yarn-site.xml \
+             ${SPARK}/spark-env.sh \
+             ${HBASE}/hbase-site_slave.xml \
+             ${HBASE}/hbase-env.sh
     do
       scp $f ${HOSTNODE}$i:$f
-      ssh ${HOSTNODE}$i mv $HBASE_HOME/conf/hbase-site_slave.xml $HBASE_HOME/conf/hbase-site.xml
+      ssh ${HOSTNODE}$i mv ${HBASE}/hbase-site_slave.xml ${HBASE}/hbase-site.xml
     done &>/dev/null
   done
 }; hostsNodes
