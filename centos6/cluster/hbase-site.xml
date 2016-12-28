@@ -30,13 +30,23 @@
     <name>hbase.cluster.distributed</name>
     <value>true</value>
   </property>
+<!--
   <property>
     <name>hbase.zookeeper.quorum</name>
     <value>QUORUM</value>
   </property>
+-->
   <property>
     <name>hbase.zookeeper.property.dataDir</name>
     <value>hdfs://NAMENODE:9000/zookeeper/data</value>
+  </property>
+  <property>
+    <name>hbase.master.info.port</name>
+    <value>60010</value>
+  </property>
+  <property>
+    <name>hbase.regionserver.info.port</name>
+    <value>60030</value>
   </property>
 
 </configuration>
