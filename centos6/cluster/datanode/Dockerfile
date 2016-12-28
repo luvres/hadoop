@@ -81,13 +81,19 @@ RUN curl http://d3kbcqa49mib13.cloudfront.net/spark-${SPARK_VERSION}-bin-hadoop2
     && ln -s /usr/local/spark-${SPARK_VERSION}-bin-hadoop2.7/ /opt/spark
 ENV SPARK_HOME=/opt/spark
 ENV PATH=$PATH:$SPARK_HOME/bin
-ADD spark-env.sh $SPARK_HOME/conf/spark-env.sh
+
+# HBase
+ENV HBASE_VERSION 1.2.4
+RUN curl http://ftp.unicamp.br/pub/apache/hbase/${HBASE_VERSION}/hbase-${HBASE_VERSION}-bin.tar.gz | tar -xzf - -C /usr/local/ \
+    && rm -fR /usr/local/hbase-${HBASE_VERSION}/docs \
+    && ln -s /usr/local/hbase-${HBASE_VERSION}/ /opt/hbase
+ENV HBASE_HOME=/opt/hbase
+ENV PATH=$PATH:$HBASE_HOME/bin
 
 # Configurations Fully Distributed
-RUN mkdir -p /tmp/hdfs/datanode
-ADD hdfs-site.xml $HADOOP_HOME/etc/hadoop/hdfs-site.xml
 ADD start.sh /etc/start.sh
-RUN chmod +x /etc/start.sh
+RUN chmod +x /etc/start.sh \
+    && mkdir -p /tmp/hdfs/datanode
 
 # Hdfs ports
 EXPOSE 50010 50020 50070 50075 50090 8020 9000
