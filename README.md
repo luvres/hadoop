@@ -183,6 +183,9 @@ docker run --rm --name Hadoop -h hadoop \
 ```
 ### Julia (Linear regression)
 ```
+http://localhost:8888/terminals/1
+bash
+
 curl -O https://raw.githubusercontent.com/luvres/hadoop/master/julia/dataset/multilinreg.jl
 curl -O https://raw.githubusercontent.com/luvres/hadoop/master/julia/dataset/data.txt
 
