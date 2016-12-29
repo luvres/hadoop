@@ -181,6 +181,22 @@ Start(){
   CONTAINER=OracleXE
   docker start ${CONTAINER}
 }
+Restart(){
+  # Restart nodes
+  for i in {1..12}
+  do
+    docker restart Node-0$i
+  done &>/dev/null
+  # Restart namenode
+  CONTAINER=Hadoop
+  docker restart ${CONTAINER}
+  # Restart Mariadb
+  CONTAINER=MariaDB
+  docker restart ${CONTAINER}
+  # Restart Oracle
+  CONTAINER=OracleXE
+  docker restart ${CONTAINER}
+}
 remove(){
   # Remove nodes
   for i in {1..12}
@@ -216,6 +232,7 @@ if [ $# == 1 ]; then
       Stop) Stop_remove 2>/dev/null ;;
       stop) Stop ;;
      start) Start ;;
+   restart) Restart ;;
     remove) remove ;;
          *) arg01 $@ ;;
   esac
