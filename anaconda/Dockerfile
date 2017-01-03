@@ -51,8 +51,7 @@ ENV PURPLE='\[$(tput setaf 5)\]'
 ENV CYAN='\[$(tput setaf 6)\]'
 ENV WHITE='\[$(tput setaf 7)\]'
 RUN sed -i '/export/s/# //' $HOME/.bashrc \
-    && sed -i '/eval/s/# //' $HOME/.bashrc \
-    && sed -i '/alias/s/# //' $HOME/.bashrc \
+    && sed -i 's/# alias/alias/' $HOME/.bashrc \
     && echo 'alias h="history"' >>$HOME/.bashrc \
     && echo '# end aliases' >>$HOME/.bashrc \
     && echo "" >>$HOME/.bashrc \
