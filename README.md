@@ -11,7 +11,9 @@
 #### . HBase, Hive, Pig, Sqoop, Flume
 #### . JDBC implemented and ready for sqoop and spark
 -----
-### Script for your cluster from 1 to 9 nodes.
+## Fully distributed mode
+### One host containers
+#### Script for your cluster from 1 to 9 nodes.
 ```
 curl -L https://raw.githubusercontent.com/luvres/hadoop/master/zoneCluster.sh -o ~/zoneCluster.sh
 alias zoneCluster="bash ~/zoneCluster.sh"
