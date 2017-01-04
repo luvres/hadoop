@@ -15,7 +15,7 @@ ENV RSTUDIO_VERSION 1.0.44
 RUN curl -s https://download2.rstudio.org/rstudio-server-${RSTUDIO_VERSION}-amd64.deb -o rstudio.deb \
     && gdebi -n rstudio.deb \
     && rm rstudio.deb
-RUN R -e "install.packages(c('crayon', 'pbdZMQ', 'devtools')), repos='https://cran.fiocruz.br', INSTALL_opts='--no-html')" \
+RUN R -e "install.packages(c('crayon', 'pbdZMQ', 'devtools'), repos='http://cran.fiocruz.br', INSTALL_opts='--no-html')" \
     && R -e "devtools::install_github(paste0('IRkernel/', c('repr', 'IRdisplay', 'IRkernel')))" \
     && R -e "IRkernel::installspec()"
 
