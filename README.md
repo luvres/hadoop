@@ -62,7 +62,7 @@ zoneCluster Stop
 ```
 zoneCluster 2 -db
 ```
-#### Import data from Mariadb with Sqoop
+### Import data from Mariadb with Sqoop
 ```
 sqoop import \
 	--connect jdbc:mysql://mariadb:3306/mysql \
@@ -74,8 +74,7 @@ sqoop import \
 ```
 hdfs dfs -ls -R user
 ```
-
-#### Import data from Oracle with Sqoop
+### Import data from Oracle with Sqoop
 #### Access Oracle
 ```
 docker exec -ti OracleXE bash
