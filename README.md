@@ -53,15 +53,15 @@ docker logs -f Hadoop
 
 ##### Options: { stop | start | remove | Stop | pseudo | cos6 | cos7 | alpine }
 
-##### Stop and Remove the cluster
+#### Stop and Remove the cluster
 ```
 zoneCluster Stop
 ```
-### Raise Cluster with Mariadb and Oracle 11g Database
+### Raise and Import databases Mariadb and Oracle 11g with sqoop
 ```
 zoneCluster 2 -db
 ```
-### Import data from Mariadb with Sqoop
+#### Import data from Mariadb with Sqoop
 ```
 sqoop import \
 	--connect jdbc:mysql://mariadb:3306/mysql \
@@ -74,35 +74,35 @@ sqoop import \
 hdfs dfs -ls -R user
 ```
 
-### Import data from Oracle with Sqoop
-##### Access Oracle
+#### Import data from Oracle with Sqoop
+#### Access Oracle
 ```
 docker exec -ti OracleXE bash
 cd $HOME/data/
 ```
-##### Download file
+#### Download file
 ```
 curl -O http://files.grouplens.org/datasets/movielens/ml-20m.zip
 unzip ml-20m.zip
 cd ml-20m
 ```
-##### Create file 100 times smaller
+#### Create file 100 times smaller
 ```
 cat ratings.csv |tail -n $((`cat ratings.csv | wc -l` /100)) >ml_ratings.csv
 ```
 #### Load table in Oracle
-##### Access database and create user
+#### Access database and create user
 ```
 sqlplus sys/oracle as sysdba
 ```
-##### Create the schema in the database and grant privileges
+#### Create the schema in the database and grant privileges
 ```
 SQL> create user aluno identified by dsacademy;
 SQL> grant connect, resource, unlimited tablespace to aluno;
 SQL> conn aluno@xe/dsacademy
 SQL> select user from dual;
 ```
-##### Create a table in the Oracle database
+#### Create a table in the Oracle database
 ```
 SQL> CREATE TABLE cinema ( 
   ID   NUMBER PRIMARY KEY, 
@@ -116,7 +116,7 @@ SQL> desc cinema;
 
 SQL> quit
 ```
-##### Create file loader.dat
+#### Create file loader.dat
 ```
 tee $HOME/data/loader.dat <<EOF
 load data
@@ -132,11 +132,11 @@ trailing nullcols
  timestamp  char(256))
 EOF
 ```
-##### Run SQL * Loader
+#### Run SQL * Loader
 ```
 sqlldr userid=aluno/dsacademy control=$HOME/data/loader.dat log=$HOME/data/loader.log
 ```
-##### Check load
+#### Check load
 ```
 sqlplus aluno/dsacademy
 
