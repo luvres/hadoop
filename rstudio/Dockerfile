@@ -18,10 +18,8 @@ RUN curl -s https://download2.rstudio.org/rstudio-server-${RSTUDIO_VERSION}-amd6
 RUN R -e "install.packages(c('crayon', 'pbdZMQ', 'devtools'), repos='http://cran.fiocruz.br', INSTALL_opts='--no-html')" \
     && R -e "devtools::install_github(paste0('IRkernel/', c('repr', 'IRdisplay', 'IRkernel')))" \
     && R -e "IRkernel::installspec()"
-
 RUN echo "root:root" | chpasswd \
     && echo 'auth-minimum-user-id=0' >> /etc/rstudio/rserver.conf
-
 RUN echo "" >>/etc/supervisord.conf \
     && echo "[program:rstudio]" >>/etc/supervisord.conf \
     && echo "command=/usr/lib/rstudio-server/bin/rserver --server-daemonize=0 --server-app-armor-enabled=0" >>/etc/supervisord.conf
