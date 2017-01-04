@@ -13,4 +13,5 @@ RUN mkdir $JULIA_PATH \
 ENV JU_HOME=/opt/julia
 ENV PATH $PATH:$JU_HOME/bin
 
-RUN julia -e 'Pkg.add("Gadfly")'
+RUN julia -e 'Pkg.add("IJulia")' \
+    && julia -e 'Pkg.add("Gadfly")'
