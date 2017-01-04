@@ -3,7 +3,7 @@
 ### and Alpine Linux (466.6 MB)
 #### · Pseudo distributed mode
 #### · Fully distributed mode
-### PySpark Jupyter Notebook - Kernels(Python, R, Julia)
+### PySpark Jupyter Notebook - Kernels (Python, R, Julia)
 ### RStudio Server
 ### ETL - (Data Lake)
 #### . Raise Cluster with Mariadb and Oracle 11g Database
