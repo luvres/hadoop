@@ -4,9 +4,8 @@
 ### and Alpine Linux (466.6 MB)
 #### · Pseudo distributed mode
 #### · Fully distributed mode
-#### · PySpark with Jupyter Notebook
+#### · PySpark with Jupyter Notebook (Python, R, Julia)
 #### . RStudio Server
-#### . Julia Language
 #### . Ecosystem:
 ##### . Hadoop, Spark, Zookeeper, HBase, Hive, Pig, Sqoop, Flume, Mahout
 ##### . JDBC implemented and ready for sqoop and spark
