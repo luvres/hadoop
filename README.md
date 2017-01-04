@@ -22,7 +22,7 @@ alias zoneCluster="bash ~/zoneCluster.sh"
 ```
 mkdir $HOME/notebooks
 ```
-### Create cluster of a node 
+#### Create cluster of a node 
 #### The total of 2, as the namenode assumes one more node
 ```
 zoneCluster
