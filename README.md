@@ -7,7 +7,7 @@
 ### PySpark Jupyter Notebook - Kernels (Python, R, Julia)
 ### RStudio Server
 ### ETL - (Data Lake)
-#### . Raise Cluster with Mariadb and Oracle 11g Database
+#### . Raise Cluster and Import databases Mariadb and Oracle 11g with sqoop
 #### . HBase, Hive, Pig, Sqoop, Flume
 #### . JDBC implemented and ready for sqoop and spark
 -----
