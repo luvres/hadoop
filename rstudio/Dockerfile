@@ -1,7 +1,8 @@
 FROM izone/hadoop:anaconda
 MAINTAINER Leonardo Loures <luvres@hotmail.com>
 
-RUN apt-get -y install gdebi-core
+RUN apt-get -y install \
+    gdebi-core libzmq3-dev libcurl4-openssl-dev libssl-dev
 
 # R
 RUN echo "deb http://cran.rstudio.com/bin/linux/debian jessie-cran3/" >>/etc/apt/sources.list \
@@ -14,6 +15,9 @@ ENV RSTUDIO_VERSION 1.0.44
 RUN curl -s https://download2.rstudio.org/rstudio-server-${RSTUDIO_VERSION}-amd64.deb -o rstudio.deb \
     && gdebi -n rstudio.deb \
     && rm rstudio.deb
+RUN R -e "install.packages(c('crayon', 'pbdZMQ', 'devtools'))" \
+    && R -e "devtools::install_github(paste0('IRkernel/', c('repr', 'IRdisplay', 'IRkernel')))" \
+    && R -e "IRkernel::installspec()"
 
 RUN echo "root:root" | chpasswd \
     && echo 'auth-minimum-user-id=0' >> /etc/rstudio/rserver.conf
