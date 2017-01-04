@@ -1,5 +1,4 @@
 # Hadoop 2.7.3 Ecosystem
-## Hadoop 2.7.3 Ecosystem
 ### Linux OS options: Debian Jessie, CentOS 7, Centos 6.8
 ### and Alpine Linux (466.6 MB)
 #### · Pseudo distributed mode
