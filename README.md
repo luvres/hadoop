@@ -1,4 +1,3 @@
-Hadoop 2.7.3 Ecosystem
 # Hadoop 2.7.3 Ecosystem
 ## Hadoop 2.7.3 Ecosystem
 ### With Debian Jessie, CentOS 7, Centos 6.8
