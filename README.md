@@ -27,7 +27,7 @@ mkdir $HOME/notebooks
 ```
 zoneCluster
 ```
-### Hadoop Browser
+#### Hadoop Browser
 ```
 http://localhost:8088
 
@@ -43,7 +43,7 @@ http://localhost:8888/terminals/1
 
  sh-4.2# bash <enter>
 ```
-### To create a cluster of maximum 9 nodes (10 including the namenode)
+#### To create a cluster of maximum 9 nodes (10 including the namenode)
 ```
 zoneCluster 3
 
