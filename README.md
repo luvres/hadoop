@@ -209,7 +209,7 @@ regexp_extract(texto, '^(?:([^,]*),?){4}', 1) salario,
 regexp_extract(texto, '^(?:([^,]*),?){5}', 1) cidade
 from temp_colab;
 ```
-#### HQL Commands
+#### HiveQL Commands
 ```
 SELECT * FROM colaboradores;
 
