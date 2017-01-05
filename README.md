@@ -72,7 +72,7 @@ sqoop import \
 	--connect jdbc:mysql://mariadb:3306/mysql \
 	--username root \
 	--password maria \
-	--table user --m 1
+	--table user -m 1
 ```
 #### Checking imported data for the hdfs
 ```
