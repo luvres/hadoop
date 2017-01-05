@@ -19,7 +19,7 @@
     <meta http-equiv="Content-Language" content="en">
     <meta name="viewport" content="width=device-width">
     
-    <title>hadoop/ham.zip at master · luvres/hadoop · GitHub</title>
+    <title>hadoop/ham.tar.gz at master · luvres/hadoop · GitHub</title>
     <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub">
     <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -42,7 +42,7 @@
     
     <meta name="pjax-timeout" content="1000">
     
-    <meta name="request-id" content="B1C09005:0B20:7165DA6:586E783C" data-pjax-transient>
+    <meta name="request-id" content="B1C09005:0B1C:7E4542F:586E78B8" data-pjax-transient>
 
     <meta name="msapplication-TileImage" content="/windows-tile.png">
     <meta name="msapplication-TileColor" content="#ffffff">
@@ -52,7 +52,7 @@
 <meta name="google-site-verification" content="ZzhVyEFwb7w3e0-uOTltm8Jsck2F5StVihD0exw2fsA">
     <meta name="google-analytics" content="UA-3769691-2">
 
-<meta content="collector.githubapp.com" name="octolytics-host" /><meta content="github" name="octolytics-app-id" /><meta content="B1C09005:0B20:7165DA6:586E783C" name="octolytics-dimension-request_id" />
+<meta content="collector.githubapp.com" name="octolytics-host" /><meta content="github" name="octolytics-app-id" /><meta content="B1C09005:0B1C:7E4542F:586E78B8" name="octolytics-dimension-request_id" />
 <meta content="/&lt;user-name&gt;/&lt;repo-name&gt;/blob/show" data-pjax-transient="true" name="analytics-location" />
 
 
@@ -65,13 +65,13 @@
     <meta name="user-login" content="">
 
         <meta name="expected-hostname" content="github.com">
-      <meta name="js-proxy-site-detection-payload" content="MzJlNWE4NTA2NTRmMjliOGM4NjY5ZjA4MWIxYjEyODg5NDRjZWI0MWM1OTQ3MjU4MDdlNTMyY2FiZDY2YjMxZHx7InJlbW90ZV9hZGRyZXNzIjoiMTc3LjE5Mi4xNDQuNSIsInJlcXVlc3RfaWQiOiJCMUMwOTAwNTowQjIwOjcxNjVEQTY6NTg2RTc4M0MiLCJ0aW1lc3RhbXAiOjE0ODM2MzQ3NDgsImhvc3QiOiJnaXRodWIuY29tIn0=">
+      <meta name="js-proxy-site-detection-payload" content="ZGQxODk3YTVmNGVlZjgzNTU1OWQzMDY5MjdkYzVhMGU0NmYyMDI4YWMzNzlhMWFmYTAyMjZhM2E5M2QzYzlhOXx7InJlbW90ZV9hZGRyZXNzIjoiMTc3LjE5Mi4xNDQuNSIsInJlcXVlc3RfaWQiOiJCMUMwOTAwNTowQjFDOjdFNDU0MkY6NTg2RTc4QjgiLCJ0aW1lc3RhbXAiOjE0ODM2MzQ4NzIsImhvc3QiOiJnaXRodWIuY29tIn0=">
 
 
       <link rel="mask-icon" href="https://assets-cdn.github.com/pinned-octocat.svg" color="#000000">
       <link rel="icon" type="image/x-icon" href="https://assets-cdn.github.com/favicon.ico">
 
-    <meta name="html-safe-nonce" content="3545a1085a88330c7b8c963da675418bc39d2743">
+    <meta name="html-safe-nonce" content="e886c6e4efae7c29fe14736c60921d5f9a7e18ff">
 
     <meta http-equiv="x-pjax-version" content="92d8f5f9071ff7dfb669a9c258d939fd">
     
@@ -84,7 +84,7 @@
   <link href="https://github.com/luvres/hadoop/commits/master.atom" rel="alternate" title="Recent Commits to hadoop:master" type="application/atom+xml">
 
 
-      <link rel="canonical" href="https://github.com/luvres/hadoop/blob/master/datasets/ham.zip" data-pjax-transient>
+      <link rel="canonical" href="https://github.com/luvres/hadoop/blob/master/datasets/ham.tar.gz" data-pjax-transient>
   </head>
 
 
@@ -122,7 +122,7 @@
 
       <div class="site-header-actions">
             <a class="btn btn-primary site-header-actions-btn" href="/join?source=header-repo" data-ga-click="(Logged out) Header, clicked Sign up, text:sign-up">Sign up</a>
-          <a class="btn site-header-actions-btn mr-1" href="/login?return_to=%2Fluvres%2Fhadoop%2Fblob%2Fmaster%2Fdatasets%2Fham.zip" data-ga-click="(Logged out) Header, clicked Sign in, text:sign-in">Sign in</a>
+          <a class="btn site-header-actions-btn mr-1" href="/login?return_to=%2Fluvres%2Fhadoop%2Fblob%2Fmaster%2Fdatasets%2Fham.tar.gz" data-ga-click="(Logged out) Header, clicked Sign in, text:sign-in">Sign in</a>
       </div>
 
         <nav class="site-header-nav site-header-nav-secondary mr-md-3">
@@ -280,9 +280,9 @@
 
     
 
-<a href="/luvres/hadoop/blob/b3f337bbebe29b050731ae85212885b7381c6da1/datasets/ham.zip" class="d-none js-permalink-shortcut" data-hotkey="y">Permalink</a>
+<a href="/luvres/hadoop/blob/1ce93689b8ed234e77955e1f59644272bbfd7fb5/datasets/ham.tar.gz" class="d-none js-permalink-shortcut" data-hotkey="y">Permalink</a>
 
-<!-- blob contrib key: blob_contributors:v21:9d9b7e5d3cc3ef738b2247a3cbce022f -->
+<!-- blob contrib key: blob_contributors:v21:ee15a4feaeb32470a148e1a81cb04509 -->
 
 <div class="file-navigation js-zeroclipboard-container">
   
@@ -324,7 +324,7 @@
 
 
             <a class="select-menu-item js-navigation-item js-navigation-open selected"
-               href="/luvres/hadoop/blob/master/datasets/ham.zip"
+               href="/luvres/hadoop/blob/master/datasets/ham.tar.gz"
                data-name="master"
                data-skip-pjax="true"
                rel="nofollow">
@@ -361,22 +361,22 @@
     <button aria-label="Copy file path to clipboard" class="js-zeroclipboard btn btn-sm BtnGroup-item tooltipped tooltipped-s" data-copied-hint="Copied!" type="button">Copy path</button>
   </div>
   <div class="breadcrumb js-zeroclipboard-target">
-    <span class="repo-root js-repo-root"><span class="js-path-segment"><a href="/luvres/hadoop"><span>hadoop</span></a></span></span><span class="separator">/</span><span class="js-path-segment"><a href="/luvres/hadoop/tree/master/datasets"><span>datasets</span></a></span><span class="separator">/</span><strong class="final-path">ham.zip</strong>
+    <span class="repo-root js-repo-root"><span class="js-path-segment"><a href="/luvres/hadoop"><span>hadoop</span></a></span></span><span class="separator">/</span><span class="js-path-segment"><a href="/luvres/hadoop/tree/master/datasets"><span>datasets</span></a></span><span class="separator">/</span><strong class="final-path">ham.tar.gz</strong>
   </div>
 </div>
 
 
   <div class="commit-tease">
       <span class="float-right">
-        <a class="commit-tease-sha" href="/luvres/hadoop/commit/d14273e8b4366247eda5587d979e388cf1cac1ff" data-pjax>
-          d14273e
+        <a class="commit-tease-sha" href="/luvres/hadoop/commit/1ce93689b8ed234e77955e1f59644272bbfd7fb5" data-pjax>
+          1ce9368
         </a>
-        <relative-time datetime="2017-01-05T16:38:22Z">Jan 5, 2017</relative-time>
+        <relative-time datetime="2017-01-05T16:47:15Z">Jan 5, 2017</relative-time>
       </span>
       <div>
         <img alt="@luvres" class="avatar" height="20" src="https://avatars0.githubusercontent.com/u/12469137?v=3&amp;s=40" width="20" />
         <a href="/luvres" class="user-mention" rel="author">luvres</a>
-          <a href="/luvres/hadoop/commit/d14273e8b4366247eda5587d979e388cf1cac1ff" class="message" data-pjax="true" title="Update">Update</a>
+          <a href="/luvres/hadoop/commit/1ce93689b8ed234e77955e1f59644272bbfd7fb5" class="message" data-pjax="true" title="Update">Update</a>
       </div>
 
     <div class="commit-tease-contributors">
@@ -404,12 +404,12 @@
   <div class="file-actions">
 
     <div class="BtnGroup">
-      <a href="/luvres/hadoop/raw/master/datasets/ham.zip" class="btn btn-sm BtnGroup-item" id="raw-url">Download</a>
-      <a href="/luvres/hadoop/commits/master/datasets/ham.zip" class="btn btn-sm BtnGroup-item" rel="nofollow">History</a>
+      <a href="/luvres/hadoop/raw/master/datasets/ham.tar.gz" class="btn btn-sm BtnGroup-item" id="raw-url">Download</a>
+      <a href="/luvres/hadoop/commits/master/datasets/ham.tar.gz" class="btn btn-sm BtnGroup-item" rel="nofollow">History</a>
     </div>
 
 
-        <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/luvres/hadoop/delete/master/datasets/ham.zip" class="inline-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="LVWiQytC821FumvKCPSq/QIo1ssevm42WZ1RwWbbR56IZbrVIabEXXbwqXhY1jkFMuvC/xd4LXnWH8goDpMS2A==" /></div>
+        <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/luvres/hadoop/delete/master/datasets/ham.tar.gz" class="inline-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="oTbk+w1o7NInLaY0Sb3XMoJ/SIhZpvegbSiNRrIIjI5LCLSoC++YIbGBw/v+KyGwL26Timw2aswLSj1We+Qwrw==" /></div>
           <button class="btn-octicon btn-octicon-danger tooltipped tooltipped-nw" type="submit"
             aria-label="You must be signed in to make or propose changes" data-disable-with>
             <svg aria-hidden="true" class="octicon octicon-trashcan" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M11 2H9c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1H2c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1v9c0 .55.45 1 1 1h7c.55 0 1-.45 1-1V5c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm-1 12H3V5h1v8h1V5h1v8h1V5h1v8h1V5h1v9zm1-10H2V3h9v1z"/></svg>
@@ -417,7 +417,7 @@
 </form>  </div>
 
   <div class="file-info">
-    2.16 KB
+    1.17 KB
   </div>
 </div>
 
@@ -425,7 +425,7 @@
 
   <div itemprop="text" class="blob-wrapper data type-text">
       <div class="image">
-          <a href="/luvres/hadoop/blob/master/datasets/ham.zip?raw=true">View Raw</a>
+          <a href="/luvres/hadoop/blob/master/datasets/ham.tar.gz?raw=true">View Raw</a>
       </div>
   </div>
 
@@ -464,7 +464,7 @@
       <svg aria-hidden="true" class="octicon octicon-mark-github" height="24" version="1.1" viewBox="0 0 16 16" width="24"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
 </a>
     <ul class="site-footer-links">
-      <li>&copy; 2017 <span title="0.05614s from github-fe154-cp1-prd.iad.github.net">GitHub</span>, Inc.</li>
+      <li>&copy; 2017 <span title="0.08406s from github-fe158-cp1-prd.iad.github.net">GitHub</span>, Inc.</li>
         <li><a href="https://github.com/site/terms" data-ga-click="Footer, go to terms, text:terms">Terms</a></li>
         <li><a href="https://github.com/site/privacy" data-ga-click="Footer, go to privacy, text:privacy">Privacy</a></li>
         <li><a href="https://github.com/security" data-ga-click="Footer, go to security, text:security">Security</a></li>
