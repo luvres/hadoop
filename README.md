@@ -11,7 +11,8 @@
 #### . Raise and Import databases Mariadb and Oracle 11g with sqoop
 #### . Hive, Pig, HBase
 #### . JDBC implemented and ready for sqoop and spark
-## Machine Learning (Mahout)
+### Machine Learning
+#### . Mahout (Naive Bayes)
 -----
 ## Fully distributed mode
 ### One host containers
