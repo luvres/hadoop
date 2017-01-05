@@ -17,8 +17,7 @@ RUN curl -s https://download2.rstudio.org/rstudio-server-${RSTUDIO_VERSION}-amd6
     && rm rstudio.deb
 RUN R -e "install.packages(c('crayon', 'pbdZMQ', 'devtools'), repos='http://cran.fiocruz.br', INSTALL_opts='--no-html')" \
     && R -e "devtools::install_github(paste0('IRkernel/', c('repr', 'IRdisplay', 'IRkernel')))" \
-    && R -e "IRkernel::installspec()" \
-    && pip install rpy2
+    && R -e "IRkernel::installspec()"
 RUN echo "root:root" | chpasswd \
     && echo 'auth-minimum-user-id=0' >> /etc/rstudio/rserver.conf
 RUN echo "" >>/etc/supervisord.conf \
