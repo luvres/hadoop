@@ -158,6 +158,65 @@ sqoop import \
 --query "select user_id, movie_id from cinema where rating = 1 and \$CONDITIONS" \
 --target-dir /user/oracle/output -m 1
 ```
+### Hive (Structured Data in hdfs)
+#### Download and copy dataset to hdfs
+```
+curl -O  https://raw.githubusercontent.com/luvres/hadoop/master/datasets/empregados.csv
+
+hdfs dfs -mkdir /hive
+hdfs dfs -copyFromLocal empregados.csv /hive
+```
+#### Create the first schema on Hive (Before starting Hive)
+```
+schematool -initSchema -dbType derby
+```
+#### If you have problems with the previous command
+```
+rm metastore_db -fR
+```
+#### Start Hive
+```
+hive
+```
+#### Create table to receive the file
+```
+CREATE TABLE temp_colab (texto String);
+```
+#### Upload file data
+```
+LOAD DATA INPATH '/hive/empregados.csv' OVERWRITE INTO TABLE temp_colab;
+```
+#### Check file insertion
+```
+SELECT * FROM temp_colab;
+```
+#### Extract data from table temp_colab and separate by column
+```
+CREATE TABLE IF NOT EXISTS colaboradores(
+id int,
+nome String,
+cargo String,
+salario double,
+cidade String
+);
+
+insert overwrite table colaboradores
+SELECT
+regexp_extract(texto, '^(?:([^,]*),?){1}', 1) ID,
+regexp_extract(texto, '^(?:([^,]*),?){2}', 1) nome,
+regexp_extract(texto, '^(?:([^,]*),?){3}', 1) cargo,
+regexp_extract(texto, '^(?:([^,]*),?){4}', 1) salario,
+regexp_extract(texto, '^(?:([^,]*),?){5}', 1) cidade
+from temp_colab;
+```
+#### HQL Commands
+```
+SELECT * FROM colaboradores;
+
+SELECT * FROM colaboradores WHERE Id = 3002;
+
+SELECT sum(salario), cidade from colaboradores group by cidade;
+```
 -----
 ### PySpark with Jupyter Notebook
 #### Browser access
