@@ -65,6 +65,9 @@ zoneCluster 2 -db
 ```
 ### Import data from Mariadb with Sqoop
 ```
+http://localhost:8888/terminals/1
+# bash <Enter>
+
 sqoop import \
 	--connect jdbc:mysql://mariadb:3306/mysql \
 	--username root \
