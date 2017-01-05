@@ -259,6 +259,41 @@ mahout trainnb -i /mahout/nbTrain -li /mahout/nbLabels -o /mahout/nbmodel -ow -c
 ```
 mahout testnb -i /mahout/nbTest -m /mahout/nbmodel -l /mahout/nbLabels -ow -o /mahout/nbpredictions -c
 ```
+### Creating a Predictive Model of Unsupervised Learning with K-Means
+#### Create Folders in HDFS
+```
+hdfs dfs -mkdir -p /mahout/clustering/data
+```
+#### Download and copy dataset to hdfs
+```
+curl https://raw.githubusercontent.com/luvres/hadoop/master/datasets/news.tar.gz | tar -xzf -
+
+hdfs dfs -copyFromLocal news/* /mahout/clustering/data
+```
+#### Converts the dataset to sequence object
+```
+mahout seqdirectory -i /mahout/clustering/data -o /mahout/clustering/kmeansseq
+```
+#### Converts the sequence to TF-IDF vectors
+```
+mahout seq2sparse -i /mahout/clustering/kmeansseq -o /mahout/clustering/kmeanssparse
+
+hdfs dfs -ls /mahout/clustering/kmeanssparse
+```
+#### Building the K-means model
+```
+mahout kmeans -i /mahout/clustering/kmeanssparse/tfidf-vectors/ -c /mahout/clustering/kmeanscentroids  -cl -o /mahout/clustering/kmeansclusters -k 3 -ow -x 10 -dm org.apache.mahout.common.distance.CosineDistanceMeasure
+
+hdfs dfs -ls /mahout/clustering/kmeansclusters
+```
+#### Dump clusters to a text file
+```
+mahout clusterdump -d /mahout/clustering/kmeanssparse/dictionary.file-0 -dt sequencefile -i /mahout/clustering/kmeansclusters/clusters-1-final -n 20 -b 100 -o clusterdump.txt -p /mahout/clustering/kmeansclusters/clusteredPoints/
+```
+#### View clusters
+```
+cat clisterdump.txt
+```
 -----
 ### PySpark with Jupyter Notebook
 #### Browser access
