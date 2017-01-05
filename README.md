@@ -149,7 +149,7 @@ SQL> select count(*) from cinema;
 #### Import with Sqoop
 ```
 http://localhost:8888/terminals/1
-bash
+# bash <Enter>
 
 sqoop import \
 --connect jdbc:oracle:thin:@oraclexe:1521:XE \
