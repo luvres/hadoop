@@ -9,8 +9,9 @@
 ### RStudio Server
 ### ETL - (Data Lake)
 #### . Raise and Import databases Mariadb and Oracle 11g with sqoop
-#### . HBase, Hive, Pig, Sqoop, Flume
+#### . Hive, Pig, HBase
 #### . JDBC implemented and ready for sqoop and spark
+## Machine Learning (Mahout)
 -----
 ## Fully distributed mode
 ### One host containers
@@ -216,6 +217,46 @@ SELECT * FROM colaboradores;
 SELECT * FROM colaboradores WHERE Id = 3002;
 
 SELECT sum(salario), cidade from colaboradores group by cidade;
+```
+-----
+## Machine Learning
+### Creation of the Predictive Model with Naive Bayes
+#### Create Folders in HDFS
+```
+hdfs dfs -mkdir -p /mahout/input/{ham,spam}
+```
+#### Download and copy dataset to hdfs
+```
+curl https://raw.githubusercontent.com/luvres/hadoop/master/datasets/ham.tar.gz | tar -xzf -
+curl https://raw.githubusercontent.com/luvres/hadoop/master/datasets/spam.tar.gz | tar -xzf -
+
+hdfs dfs -copyFromLocal ham/* /mahout/input/ham
+
+hdfs dfs -copyFromLocal spam/* /mahout/input/spam
+```
+#### Converts data to a sequence (required when working with Mahout)
+```
+mahout seqdirectory -i /mahout/input -o /mahout/output/seqoutput
+```
+#### Converts the sequence to TF-IDF vectors
+```
+mahout seq2sparse -i /mahout/output/seqoutput -o /mahout/output/sparseoutput
+```
+#### Displays output
+```
+hdfs dfs -ls /mahout/output/sparseoutput
+```
+#### Convert training and test datasets
+```
+mahout split -i /mahout/output/sparseoutput/tfidf-vectors --trainingOutput /mahout/nbTrain --testOutput /mahout/nbTest --randomSelectionPct 30 --overwrite --sequenceFiles -xm sequencial
+```
+#### Predictive model construction
+```
+mahout trainnb -i /mahout/nbTrain -li /mahout/nbLabels -o /mahout/nbmodel -ow -c
+```
+#### Test model
+```
+mahout testnb -i /mahout/nbTest -m /mahout/nbmodel -l /mahout/nbLabels -ow -o /mahout/nbpredictions -c
 ```
 -----
 ### PySpark with Jupyter Notebook
