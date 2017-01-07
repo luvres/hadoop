@@ -52,16 +52,21 @@ umount boot root
 user: alarm pass: alarm
 user: root  pass: root
 
+echo "root:aamu02" | chpasswd
+echo "alarm:aamu02" | chpasswd
+echo 'alarm ALL=(ALL) ALL' >>/etc/sudoers
+
 
 ### Apache
 pacman -Syyu
-pacman -S rsync apache vim
+pacman -S rsync apache vim sudo docker
 systemctl enable httpd
 systemctl start httpd
 sed -i '/Directory "\/srv\/http"/s/http/http\/ftp/' /etc/httpd/conf/httpd.conf
+sed -i '/DocumentRoot "\/srv\/http"/s/http/http\/ftp/' /etc/httpd/conf/httpd.conf
 echo '/dev/sda1 /srv/http/ftp auto noatime 0 0' >>/etc/fstab
-
-
+systemctl enable docker
+usermod -aG docker alarm
 
 
 ##################
