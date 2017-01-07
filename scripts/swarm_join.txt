@@ -1,0 +1,202 @@
+URL="169.8.192.130"
+URL="izone.changeip.org:8081"
+
+curl http://$URL/Workstation/Arch/vboxArchLinux.sh | bash
+
+vboxmanage list vms
+vboxmanage startvm ArchLinux &
+vboxmanage unregistervm ArchLinux --delete
+
+fdisk /dev/sda
+n
+p
+1
+<Enter>
+<Enter>
+t
+83
+w
+
+mkfs.ext4 /dev/sda1
+mount /dev/sda1 /mnt
+
+curl http://pi/Workstation/Arch/install.sh | bash
+
+reboot
+
+##################
+# Clientes (ssh, docker)
+# sudo apt-get update && sudo apt-get upgrade
+# sudo apt-get install openssh-server
+
+### Servidor
+# sudo apt-get install sshpass
+
+### Iniciar cluster
+docker swarm init --advertise-addr enp3s0
+echo '#!/bin/bash' >join.sh
+docker swarm join-token manager | tail -5 >>join.sh
+
+# vboxheadless -s Ubuntu &
+# vboxheadless -s UbuntuClone &
+
+for ip in $(seq 98 99)
+do
+sshpass -p "aamu02" scp join.sh 191.96.255.$ip:/$HOME
+sshpass -p "aamu02" ssh 191.96.255.$ip bash join.sh
+done
+
+### Imagens docker
+sshpass -p "aamu02" ssh 191.96.255.98 docker images
+for ip in $(seq 98 99); do sshpass -p "aamu02" ssh 191.96.255.$ip docker images; done
+docker save izone/hadoop:datanode > img-hadoop:datanode.tar
+sshpass -p "aamu02" ssh 191.96.255.98 docker load < img-hadoop:datanode.tar
+
+###################
+# Reiniciar cluster
+docker swarm init --advertise-addr enp3s0 --force-new-cluster
+docker swarm init --force-new-cluster
+docker swarm leave --force
+###################
+docker node ls
+for ip in $(seq 97 100); do ping -c 1 191.96.255.$ip | grep "bytes from"; done
+##################
+### docker service
+##################
+NET=172.32.255
+SUBNET=16/28
+RANGE=16/28
+IP=30
+i=1
+NODE=node-0
+docker network rm zover &>/dev/null
+docker network create -d overlay --subnet ${NET}.${SUBNET} --ip-range=${NET}.${RANGE} zover &>/dev/null # 18-30
+
+
+docker service create --name Node-01 --replicas 1 \
+--network zover \
+izone/hadoop:datanode
+
+docker service create --name Node-02 --replicas 1 \
+--network zover \
+izone/hadoop:datanode
+
+
+docker service create --name Hadoop --replicas 1 \
+--network zover \
+-e NODES=$NODES \
+-p 8088:8088 \
+-p 8042:8042 \
+-p 50070:50070 \
+-p 8888:8888 \
+-p 8080:8080 \
+-p 4040:4040 \
+-v $HOME/notebooks:/root/notebooks \
+izone/hadoop:cluster
+##################
+for ip in $(seq 97 100); do ping -c 1 191.96.255.$ip | grep "bytes from"; done
+fping -s -g 191.96.255.97 191.96.255.126 -r 1 | grep alive
+echo `fping -s -g 191.96.255.97 191.96.255.126 -r 1 | grep alive`
+sshpass -p "aamu02" ssh 191.96.255.99 cat /etc/hostname
+
+### Buscar hosts e criar arquivo
+# sshpass
+rm hosts.txt -f
+for ip in $(seq 18 30)
+  do echo `ping -c 1 172.32.255.$ip \
+  | grep "bytes from" | awk '{print $4}' | sed 's/://'` \
+  `sshpass -p "aamu02" ssh 172.32.255.$ip cat /etc/hostname` \
+  >>hosts.txt
+done &>/dev/null && sed -i '/^$/d' hosts.txt
+
+##### Cria tabela de hosts
+NET=172.32.255
+SUBNET=16/28
+RANGE=16/28
+IPi=18
+IP=30
+NODE=node-0
+hosts(){
+rm hosts.txt -f
+for ip in $(seq $IPi $IP)
+  do echo `ping -c 1 ${NET}.$ip \
+  | grep "bytes from" | awk '{print $4}' | sed 's/://'` \
+  `ssh ${NET}.$ip cat /etc/hostname` `echo ${NODE}$((${IP}-${ip}))` \
+  >>hosts.txt
+done &>/dev/null && sed -i '/^$/d' hosts.txt 
+
+# Colocar hostname no inicio do arquivo
+sed -i "1s/^/`ifconfig eth0 | grep "inet " | awk '{print $2}'` $HOSTNAME\n/" hosts.txt
+cat hosts.txt | sort | uniq >aux.txt && mv aux.txt hosts.txt -f # Exclui linhas repetidos
+awk 'length($0) > 26' hosts.txt >aux.txt && mv aux.txt hosts.txt -f # Exclui linhas com menos de 12 caracteres
+}; hosts
+##########################
+
+##################
+NET=172.32.255
+SUBNET=16/28
+RANGE=16/28
+IP=30
+i=1
+NODE=node-0
+docker network rm zover &>/dev/null
+docker network create -d overlay --subnet ${NET}.${SUBNET} --ip-range=${NET}.${RANGE} zover &>/dev/null # 18-30
+docker run --rm --name Node-0$i -h ${NODE}$i \
+--net zover --ip ${NET}.$((${IP}-1)) \
+-ti izone/hadoop:datanode bash
+
+docker network rm znet &>/dev/null
+docker network create --subnet ${NET}.${SUBNET} --ip-range=${NET}.${RANGE} znet &>/dev/null # 18-30
+docker run --rm --name Node-0$i -h ${NODE}$i \
+--net znet --ip ${NET}.$((${IP}-1)) \
+-ti izone/hadoop:datanode bash
+
+
+sshpass -p "aamu02" ssh 191.96.255.98 \
+docker run --name Node-0$i -h ${NODE}$i \
+--net zover --ip ${NET}.$((${IP}-1)) \
+-d izone/hadoop:datanode
+
+##### Consul
+docker run --rm --name Consul -p 8500:8500 -h consul -d progrium/consul -server -bootstrap
+docker run -p 8400:8400 -p 8500:8500 -p 8600:53/udp -h node1 progrium/consul -server -bootstrap
+docker run -p 8400:8400 -p 8500:8500 -p 8600:53/udp -h node1 progrium/consul -server -bootstrap -ui-dir /ui
+
+–cluster-store=PROVIDER://URL:
+–cluster-advertise=HOST_IP|HOST_IFACE:PORT
+–cluster-store-opt=KEY-VALUE OPTIONS:
+
+# Nodes /etc/default/docker
+DOCKER_OPTS="-H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock --cluster-store=consul://191.96.255.98:8500/network --cluster-advertise=eth0:2375"
+DOCKER_OPTS="-H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock --cluster-advertise enp3s0:2375 --cluster-store=consul://191.96.255.100:8500"
+
+DOCKER_OPTS="--cluster-store=consul://191.96.255.100:8500 --cluster-advertise=191.96.255.100:4000"
+
+# /lib/systemd/system/docker.service
+ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock --cluster-advertise enp3s0:2375 --cluster-store=consul://191.96.255.100:8500
+
+ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2376 -H unix:///var/run/docker.sock --cluster-advertise=eth0:2376 --cluster-store=consul://ip-do-consul:8500
+
+sudo service docker restart
+systemctl restart docker.service
+systemctl stop docker.service
+
+##############
+### Daemon ###
+##############
+### https://stackoverflow.com/questions/34365604/how-to-create-docker-overlay-network-between-multi-hosts/34434948#34434948
+docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock --cluster-advertise enp3s0:2375 --cluster-store consul://127.0.0.1:8500
+docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock --cluster-advertise enp3s0:2375 --cluster-store=consul://191.96.255.100:8500
+
+systemctl restart docker.service
+
+
+########
+/usr/bin/docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock --cluster-advertise eth0:2375 --cluster-store consul://127.0.0.1:8500
+alias ldocker='docker -H tcp://0.0.0.0:2375' alias swarm-docker='docker -H tcp://0.0.0.0:5732' #used only on the swarm manager
+export IP=$(ifconfig |grep "192.168.196."|cut -d ":" -f 2|cut -d " " -f 1)
+consul agent -server -bootstrap-expect 1 -data-dir /aux/consul -node=master -bind=$IP -client $IP
+ldocker run -v /aux/cluster.disco:/aux/cluster.disco -d -p 5732:2375 swarm manage file:///aux/cluster.disco
+
+
+
