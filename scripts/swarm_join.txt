@@ -25,6 +25,8 @@ mount /dev/sda1 /mnt
 
 curl http://pi/Workstation/Arch/install.sh | bash
 
+curl https://raw.githubusercontent.com/luvres/hadoop/master/scripts/install.sh  | bash
+
 reboot
 
 ##################
