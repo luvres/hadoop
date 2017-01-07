@@ -5,6 +5,7 @@
 MOUNTPOINT="/mnt"
 USER="luvres"
 PASS="aamu02"
+RPASS="aamu02"
 
 arch_chroot(){
 	arch-chroot $MOUNTPOINT /bin/bash -c "${1}"
@@ -16,7 +17,7 @@ genfstab -p /mnt /mnt/etc/fstab
 
 arch_chroot "sed -i 's/modconf block/modconf block lvm2/' /etc/mkinitcpio.conf"
 
-arch_chroot "echo "root:$PASS" | chpasswd" #
+arch_chroot "echo "root:$RPASS" | chpasswd" #
 arch_chroot "ln -s /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime" #
 arch_chroot "hwclock --systohc --utc"
 arch_chroot "echo desktop > /etc/hostname"
