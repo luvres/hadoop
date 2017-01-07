@@ -55,10 +55,13 @@ user: root  pass: root
 
 ### Apache
 pacman -Syyu
-pacman -S apache
+pacman -S rsync apache vim
 systemctl enable httpd
 systemctl start httpd
-echo '/dev/sda1 /srv/http/ auto noatime 0 0' >>/etc/fstab
+sed -i '/Directory "\/srv\/http"/s/http/http\/ftp/' /etc/httpd/conf/httpd.conf
+echo '/dev/sda1 /srv/http/ftp auto noatime 0 0' >>/etc/fstab
+
+
 
 
 ##################
