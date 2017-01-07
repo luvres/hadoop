@@ -1,4 +1,4 @@
-URL="169.8.192.130"
+#URL="169.8.192.130"
 URL="izone.changeip.org:8081"
 
 curl http://$URL/Workstation/Arch/vboxArchLinux.sh | bash
@@ -23,7 +23,7 @@ w
 mkfs.ext4 /dev/sda1
 mount /dev/sda1 /mnt
 
-curl http://pi/Workstation/Arch/install.sh | bash
+curl http://$URL/Workstation/Arch/install.sh | bash
 
 curl https://raw.githubusercontent.com/luvres/hadoop/master/scripts/install.sh  | bash
 
