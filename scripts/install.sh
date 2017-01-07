@@ -38,7 +38,7 @@ arch_chroot "echo '[archlinuxfr]' >> /etc/pacman.conf"
 arch_chroot "echo 'SigLevel = Never' >> /etc/pacman.conf"
 arch_chroot "echo 'Server = http://repo.archlinux.fr/\$arch' >> /etc/pacman.conf"
 
-arch_chroot "pacman -Sy --noconfirm grub os-prober yaourt dmidecode acpi acpid mlocate bash-completion pkgstats namcap tmux net-tools docker"
+arch_chroot "pacman -Sy --noconfirm grub os-prober yaourt dmidecode acpi acpid mlocate bash-completion pkgstats namcap tmux net-tools vim docker"
 arch_chroot "systemctl enable dhcpcd"
 arch_chroot "systemctl enable acpid"
 arch_chroot "systemctl enable sshd"

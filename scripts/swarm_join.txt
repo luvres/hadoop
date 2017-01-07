@@ -32,6 +32,30 @@ curl https://raw.githubusercontent.com/luvres/hadoop/master/scripts/install.sh  
 
 reboot
 
+### RaspberryPI 2
+mkfs.vfat /dev/sdc1
+mkdir boot
+mount /dev/sdc1 boot
+
+mkfs.ext4 /dev/sdc2
+mkdir root
+mount /dev/sdc2 root
+
+wget -c http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-2-latest.tar.gz
+bsdtar -xpf ArchLinuxARM-rpi-2-latest.tar.gz -C root
+sync
+
+mv root/boot/* boot
+umount boot root
+
+
+### Apache
+pacman -S apache
+systemctl enable httpd
+systemctl start httpd
+echo '/dev/sda1 /srv/http/ auto noatime 0 0' >>/etc/fstab
+
+
 ##################
 # Clientes (ssh, docker)
 # sudo apt-get update && sudo apt-get upgrade
