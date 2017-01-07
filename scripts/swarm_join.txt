@@ -35,11 +35,11 @@ reboot
 ### RaspberryPI 2
 mkfs.vfat /dev/sdc1
 mkdir boot
-mount /dev/sdc1 boot
+mount /dev/sdd1 boot
 
 mkfs.ext4 /dev/sdc2
 mkdir root
-mount /dev/sdc2 root
+mount /dev/sdd2 root
 
 su
 wget -c http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-2-latest.tar.gz
@@ -54,6 +54,7 @@ user: root  pass: root
 
 
 ### Apache
+pacman -Syyu
 pacman -S apache
 systemctl enable httpd
 systemctl start httpd
