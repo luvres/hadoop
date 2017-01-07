@@ -8,6 +8,9 @@ curl https://raw.githubusercontent.com/luvres/hadoop/master/scripts/vboxArchLinu
 vboxmanage list vms
 vboxmanage list runningvms
 vboxmanage startvm ArchLinux &
+
+vboxmanage snapshot ArchLinux take snap_base
+vboxmanage controlvm ArchLinux poweroff
 vboxmanage unregistervm ArchLinux --delete
 
 fdisk /dev/sda
