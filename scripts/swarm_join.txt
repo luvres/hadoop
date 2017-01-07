@@ -67,7 +67,7 @@ sed -i '/DocumentRoot "\/srv\/http"/s/http/http\/ftp/' /etc/httpd/conf/httpd.con
 echo '/dev/sda1 /srv/http/ftp auto noatime 0 0' >>/etc/fstab
 systemctl enable docker
 usermod -aG docker alarm
-
+#rsync -avz --delete --progress /aux/ alarm@pi:/srv/http/ftp
 
 ##################
 # Clientes (ssh, docker)
