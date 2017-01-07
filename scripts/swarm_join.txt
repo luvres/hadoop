@@ -41,12 +41,16 @@ mkfs.ext4 /dev/sdc2
 mkdir root
 mount /dev/sdc2 root
 
+su
 wget -c http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-2-latest.tar.gz
 bsdtar -xpf ArchLinuxARM-rpi-2-latest.tar.gz -C root
 sync
 
 mv root/boot/* boot
 umount boot root
+
+user: alarm pass: alarm
+user: root  pass: root
 
 
 ### Apache
