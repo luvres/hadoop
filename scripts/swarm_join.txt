@@ -6,6 +6,7 @@ curl http://$URL/Workstation/Arch/vboxArchLinux.sh | bash
 curl https://raw.githubusercontent.com/luvres/hadoop/master/scripts/vboxArchLinux.sh | bash
 
 vboxmanage list vms
+vboxmanage list runningvms
 vboxmanage startvm ArchLinux &
 vboxmanage unregistervm ArchLinux --delete
 
