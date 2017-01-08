@@ -1,6 +1,6 @@
 ### Arch Linux
 
-#URL="169.8.192.130"
+#URL="169.8.192.132"
 URL="izone.changeip.org:8081"
 
 curl http://$URL/Workstation/Arch/vboxArchLinux.sh | bash
