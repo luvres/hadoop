@@ -12,7 +12,7 @@
 #### . Hive, Pig, HBase
 #### . JDBC implemented and ready for sqoop and spark
 ### Machine Learning
-#### . Mahout (Naive Bayes)
+#### . Mahout (Naive Bayes, K-Means)
 -----
 ## Fully distributed mode
 ### One host containers
