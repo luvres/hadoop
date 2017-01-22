@@ -11,7 +11,7 @@ ENV PATH=$PATH:$ZOOKEEPER_HOME/bin
 ADD zoo.cfg /opt/zookeeper/conf/zoo.cfg
 
 # HBase
-ENV HBASE_VERSION 1.2.4
+ENV HBASE_VERSION 1.3.0
 RUN curl http://ftp.unicamp.br/pub/apache/hbase/${HBASE_VERSION}/hbase-${HBASE_VERSION}-bin.tar.gz | tar -xzf - -C /usr/local/ \
     && rm -fR /usr/local/hbase-${HBASE_VERSION}/docs \
     && ln -s /usr/local/hbase-${HBASE_VERSION}/ /opt/hbase
