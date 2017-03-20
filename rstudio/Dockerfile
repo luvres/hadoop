@@ -11,7 +11,7 @@ RUN echo "deb http://cran.rstudio.com/bin/linux/debian jessie-cran3/" >>/etc/apt
     && apt-get -y install r-base
 
 # RStudio Server
-ENV RSTUDIO_VERSION 1.0.44
+ENV RSTUDIO_VERSION 1.0.136
 RUN curl -s https://download2.rstudio.org/rstudio-server-${RSTUDIO_VERSION}-amd64.deb -o rstudio.deb \
     && gdebi -n rstudio.deb \
     && rm rstudio.deb

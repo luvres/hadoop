@@ -2,7 +2,7 @@ FROM izone/hadoop:ecosystem
 MAINTAINER Leonardo Loures <luvres@hotmail.com>
 
 # Storm
-ENV STORM_VERSION 1.0.2
+ENV STORM_VERSION 1.0.3
 RUN curl http://ftp.unicamp.br/pub/apache/storm/apache-storm-${STORM_VERSION}/apache-storm-${STORM_VERSION}.tar.gz  | tar -xzf - -C /usr/local/ \
     && ln -s /usr/local/apache-storm-${STORM_VERSION}/ /opt/storm \
     && mkdir /opt/storm/data

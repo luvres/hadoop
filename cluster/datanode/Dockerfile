@@ -1,4 +1,4 @@
-FROM debian
+FROM debian:jessie-slim
 MAINTAINER Leonardo Loures <luvres@hotmail.com>
 
 RUN apt-get update && apt-get upgrade -y \
