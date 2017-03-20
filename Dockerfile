@@ -3,7 +3,7 @@ MAINTAINER Leonardo Loures <luvres@hotmail.com>
 
 RUN apt-get update && apt-get upgrade -y \
     && apt-get install -y \
-    openssh-server openssh-client \
+    openssh-server openssh-client  bash-completion \
     bzip2 unzip rsync curl net-tools nano sudo supervisor
 
 # SSH Key Passwordless
