@@ -2,7 +2,7 @@ FROM alpine
 MAINTAINER Leonardo Loures <luvres@hotmail.com>
 
 RUN apk update && apk upgrade \
-    && apk add openssh rsync curl procps supervisor vim bash ncurses \
+    && apk add openssh rsync curl procps supervisor vim bash ncurses bash-completion \
     && rm -rf /var/cache/apk/*
 
 # SSH Key Passwordless
