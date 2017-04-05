@@ -73,7 +73,7 @@ ENV JAVA_HOME=/opt/jdk
 ENV PATH=${PATH}:${JAVA_HOME}/bin:${JAVA_HOME}/sbin
 
 # Hadoop
-ENV HADOOP_VERSION 2.7.3
+ENV HADOOP_VERSION 2.8.0
 RUN curl http://ftp.unicamp.br/pub/apache/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz | tar -xzf - -C /usr/local/ \
     && rm -fR /usr/local/hadoop-${HADOOP_VERSION}/share/doc \
               /usr/local/hadoop-${HADOOP_VERSION}/share/hadoop/common/jdiff \

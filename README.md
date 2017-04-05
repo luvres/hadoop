@@ -1,8 +1,8 @@
-## Hadoop 2.7.3 Ecosystem
+## Hadoop 2.8.0 Ecosystem
 ## Big Data Engineering and Analytics
 -----
 ### Linux OS options: Debian Jessie, CentOS 7, Centos 6.8
-### and Alpine Linux (466.6 MB)
+### and Alpine Linux (483 MB)
 #### · Pseudo distributed mode
 #### · Fully distributed mode
 ### PySpark Jupyter Notebook - Kernels (Python, R, Julia)
@@ -354,7 +354,7 @@ docker pull izone/hadoop:cos7
 ```
 docker pull izone/hadoop:cos6
 ```
-### Pull reduced image with Alpine (466.6 MB)
+### Pull reduced image with Alpine (483 MB)
 ```
 docker pull izone/hadoop:alpine
 ```
@@ -393,7 +393,7 @@ hadoop fs -cat /bigdata/contratos.csv
 ```
 ##### Test word count with mapreduce
 ```
-hadoop jar /opt/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.3.jar wordcount /bigdata/contratos.csv /output
+hadoop jar /opt/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.0.jar wordcount /bigdata/contratos.csv /output
 ```
 ##### Read result
 ```

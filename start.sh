@@ -27,7 +27,7 @@ fi
 if [[ $1 == "-test" ]]; then
   echo " "
   echo -e "\e[00;33m*\e[00m `date` \e[00;33mtesting Hadoop MapReduce ..\e[00m"
-  hadoop jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.3.jar pi 16 1000
+  hadoop jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.0.jar pi 16 1000
 fi
 
 if [[ $2 == "bash" ]]; then

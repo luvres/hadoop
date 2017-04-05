@@ -2,7 +2,7 @@ FROM izone/hadoop:julia
 MAINTAINER Leonardo Loures <luvres@hotmail.com>
 
 # Zookeeper
-ENV ZOOKEEPER_VERSION 3.4.9
+ENV ZOOKEEPER_VERSION 3.4.10
 RUN curl http://ftp.unicamp.br/pub/apache/zookeeper/zookeeper-${ZOOKEEPER_VERSION}/zookeeper-${ZOOKEEPER_VERSION}.tar.gz | tar -xzf - -C /usr/local/ \
     && ln -s /usr/local/zookeeper-${ZOOKEEPER_VERSION}/ /opt/zookeeper \
     && mkdir /opt/zookeeper/data
