@@ -64,7 +64,7 @@ RUN curl http://ftp.unicamp.br/pub/apache/flume/${FLUME_VERSION}/apache-flume-${
 ADD flume-env.sh /opt/flume/conf/flume-env.sh
 ENV FLUME_HOME=/opt/flume
 ENV PATH=$PATH:$FLUME_HOME/bin
-ENV CLASSPATH=#CLASSPATH:$FLUME_HOME/lib/*
+ENV CLASSPATH=$CLASSPATH:$FLUME_HOME/lib/*
 
 # Mahout
 ENV MAHOUT_VERSION 0.12.2
