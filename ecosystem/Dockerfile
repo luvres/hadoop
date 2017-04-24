@@ -11,7 +11,7 @@ ENV PATH=$PATH:$ZOOKEEPER_HOME/bin
 ADD zoo.cfg /opt/zookeeper/conf/zoo.cfg
 
 # HBase
-ENV HBASE_VERSION 1.3.0
+ENV HBASE_VERSION 1.3.1
 RUN curl http://ftp.unicamp.br/pub/apache/hbase/${HBASE_VERSION}/hbase-${HBASE_VERSION}-bin.tar.gz | tar -xzf - -C /usr/local/ \
     && rm -fR /usr/local/hbase-${HBASE_VERSION}/docs \
     && ln -s /usr/local/hbase-${HBASE_VERSION}/ /opt/hbase
@@ -67,7 +67,7 @@ ENV PATH=$PATH:$FLUME_HOME/bin
 ENV CLASSPATH=#CLASSPATH:$FLUME_HOME/lib/*
 
 # Mahout
-ENV MAHOUT_VERSION 0.12.2
+ENV MAHOUT_VERSION 0.13.0
 RUN curl http://ftp.unicamp.br/pub/apache/mahout/${MAHOUT_VERSION}/apache-mahout-distribution-${MAHOUT_VERSION}.tar.gz | tar -xzf - -C /usr/local/ \
     && rm -fR /usr/local/apache-mahout-distribution-${MAHOUT_VERSION}/docs \
     && ln -s /usr/local/apache-mahout-distribution-${MAHOUT_VERSION}/ /opt/mahout
