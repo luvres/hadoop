@@ -16,7 +16,7 @@ RUN sed -i '/StrictHostKeyChecking/s/#//g' /etc/ssh/ssh_config \
 
 # Java
 RUN JAVA_VERSION_MAJOR=8 && \
-    JAVA_VERSION_MINOR=1310 && \
+    JAVA_VERSION_MINOR=131 && \
     JAVA_VERSION_BUILD=11 && \
     JAVA_PACKAGE=jdk && \
     curl -jkSLH "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-b${JAVA_VERSION_BUILD}/d54c1d3a095b4ff2b6607d096fa80163/${JAVA_PACKAGE}-${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-linux-x64.tar.gz \
