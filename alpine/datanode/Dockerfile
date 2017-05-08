@@ -83,7 +83,7 @@ ENV YARN_HOME=$HADOOP_HOME
 ENV PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
 # Spark
-ENV SPARK_VERSION 2.1.0
+ENV SPARK_VERSION 2.1.1
 RUN curl http://d3kbcqa49mib13.cloudfront.net/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz | tar -xzf - -C /usr/local/ \
     && ln -s /usr/local/spark-${SPARK_VERSION}-bin-hadoop2.7/ /opt/spark
 ENV SPARK_HOME=/opt/spark
