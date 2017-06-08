@@ -2,7 +2,7 @@ FROM izone/hadoop:rstudio
 MAINTAINER Leonardo Loures <luvres@hotmail.com>
 
 ENV JULIA_V 0.5
-ENV JULIA_VERSION 0.5.1
+ENV JULIA_VERSION 0.5.2
 ENV JULIA_PATH /usr/local/julia-${JULIA_VERSION}
 
 RUN mkdir $JULIA_PATH \
