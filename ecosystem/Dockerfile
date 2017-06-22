@@ -32,7 +32,7 @@ ADD hive-env.sh $HIVE_HOME/conf/hive-env.sh
 ADD hive-default.xml $HIVE_HOME/conf/hive-default.xml
 
 # Pig
-ENV PIG_VERSION 0.16.0
+ENV PIG_VERSION 0.17.0
 RUN curl http://ftp.unicamp.br/pub/apache/pig/pig-${PIG_VERSION}/pig-${PIG_VERSION}.tar.gz | tar -xzf - -C /usr/local/ \
     && rm -fR /usr/local/pig-${PIG_VERSION}/docs \
     && ln -s /usr/local/pig-${PIG_VERSION}/ /opt/pig
