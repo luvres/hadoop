@@ -1,4 +1,4 @@
-## Hadoop 2.8.0 Ecosystem
+## Hadoop 2.8.1 Ecosystem
 ## Big Data Engineering and Analytics
 -----
 ### Linux OS options: Debian Jessie, CentOS 7, Centos 6.8
@@ -470,7 +470,7 @@ docker run --rm --name Hadoop -h hadoop \
 -----
 ### AUTO CONSTRUCTION creation sequence that are in the Docker Hub
 
-### Debian 8
+### Debian 8 (Jessie)
 ```
 git clone https://github.com/luvres/hadoop.git
 cd hadoop

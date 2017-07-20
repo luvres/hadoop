@@ -16,10 +16,11 @@ RUN sed -i '/StrictHostKeyChecking/s/#//g' /etc/ssh/ssh_config \
 
 # Java
 RUN JAVA_VERSION_MAJOR=8 && \
-    JAVA_VERSION_MINOR=131 && \
-    JAVA_VERSION_BUILD=11 && \
+    JAVA_VERSION_MINOR=141 && \
+    JAVA_VERSION_BUILD=15 && \
     JAVA_PACKAGE=jdk && \
-    curl -jkSLH "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-b${JAVA_VERSION_BUILD}/d54c1d3a095b4ff2b6607d096fa80163/${JAVA_PACKAGE}-${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-linux-x64.tar.gz \
+    URL=336fa29ff2bb4ef291e347e091f7f4a7 && \
+    curl -jkSLH "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-b${JAVA_VERSION_BUILD}/${URL}/${JAVA_PACKAGE}-${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-linux-x64.tar.gz \
     | tar -xzf - -C /usr/local \
     && ln -s /usr/local/jdk1.${JAVA_VERSION_MAJOR}.0_${JAVA_VERSION_MINOR} /opt/jdk \
     && rm -rf /opt/jdk/*src.zip \
@@ -58,7 +59,7 @@ ENV JAVA_HOME=/opt/jdk
 ENV PATH=${PATH}:${JAVA_HOME}/bin:${JAVA_HOME}/sbin
 
 # Hadoop
-ENV HADOOP_VERSION 2.8.0
+ENV HADOOP_VERSION 2.8.1
 RUN curl http://ftp.unicamp.br/pub/apache/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz | tar -xzf - -C /usr/local/ \
     && rm -fR /usr/local/hadoop-${HADOOP_VERSION}/share/doc \
               /usr/local/hadoop-${HADOOP_VERSION}/share/hadoop/common/jdiff \
@@ -72,7 +73,7 @@ ENV YARN_HOME=$HADOOP_HOME
 ENV PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
 # Spark
-ENV SPARK_VERSION 2.1.1
+ENV SPARK_VERSION 2.2.0
 RUN curl http://d3kbcqa49mib13.cloudfront.net/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz | tar -xzf - -C /usr/local/ \
     && ln -s /usr/local/spark-${SPARK_VERSION}-bin-hadoop2.7/ /opt/spark
 ENV SPARK_HOME=/opt/spark
