@@ -60,6 +60,8 @@ docker logs -f Hadoop
 ```
 zoneCluster Stop
 ```
+
+-----
 ## ETL - (Data Lake)
 ### Import databases Mariadb and Oracle 11g with sqoop
 ```
@@ -160,6 +162,8 @@ sqoop import \
 --query "select user_id, movie_id from cinema where rating = 1 and \$CONDITIONS" \
 --target-dir /user/oracle/output -m 1
 ```
+
+-----
 ### Hive (Structured Data in hdfs)
 #### Download and copy dataset to hdfs
 ```
