@@ -16,10 +16,10 @@ RUN sed -i '/StrictHostKeyChecking/s/#//g' /etc/ssh/ssh_config \
 
 # Java
 RUN JAVA_VERSION_MAJOR=8 && \
-    JAVA_VERSION_MINOR=141 && \
-    JAVA_VERSION_BUILD=15 && \
+    JAVA_VERSION_MINOR=144 && \
+    JAVA_VERSION_BUILD=01 && \
     JAVA_PACKAGE=jdk && \
-    URL=336fa29ff2bb4ef291e347e091f7f4a7 && \
+    URL=090f390dda5b47b9b721c7dfaa008135 && \
     curl -jkSLH "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-b${JAVA_VERSION_BUILD}/${URL}/${JAVA_PACKAGE}-${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-linux-x64.tar.gz \
     | tar -xzf - -C /usr/local \
     && ln -s /usr/local/jdk1.${JAVA_VERSION_MAJOR}.0_${JAVA_VERSION_MINOR} /opt/jdk \
