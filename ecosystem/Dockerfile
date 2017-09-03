@@ -21,7 +21,7 @@ ADD hbase-env.sh $HBASE_HOME/conf/hbase-env.sh
 ADD hbase-site.xml $HBASE_HOME/conf/hbase-site.xml
 
 # Hive
-ENV HIVE_VERSION 2.1.1
+ENV HIVE_VERSION 2.3.0
 RUN curl http://ftp.unicamp.br/pub/apache/hive/hive-${HIVE_VERSION}/apache-hive-${HIVE_VERSION}-bin.tar.gz | tar -xzf - -C /usr/local/ \
     && ln -s /usr/local/apache-hive-${HIVE_VERSION}-bin/ /opt/hive
 ENV HIVE_HOME=/opt/hive

@@ -8,7 +8,7 @@ ENV RPASS=@p4sS_-_#sECURITy*Cre4t3+bigZone
 RUN apt-get install -y sshpass pdsh
 
 # Scala
-ENV SCALA_VERSION 2.12.2
+ENV SCALA_VERSION 2.12.3
 RUN curl http://downloads.lightbend.com/scala/${SCALA_VERSION}/scala-${SCALA_VERSION}.tgz | tar xzf - -C /usr/local/ \
     && ln -s /usr/local/scala-${SCALA_VERSION} /opt/scala
 ENV SCALA_HOME=/opt/scala
