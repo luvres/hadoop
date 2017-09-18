@@ -2,7 +2,7 @@ FROM izone/hadoop
 MAINTAINER Leonardo Loures <luvres@hotmail.com>
 
 # Anaconda3
-ENV ANACONDA_VERSION 4.4.0
+ENV ANACONDA_VERSION 4.3.1
 RUN curl -L https://repo.continuum.io/archive/Anaconda3-${ANACONDA_VERSION}-Linux-x86_64.sh -o Anaconda3-${ANACONDA_VERSION}-Linux-x86_64.sh \
     && /bin/bash Anaconda3-${ANACONDA_VERSION}-Linux-x86_64.sh -b -p /usr/local/anaconda3 \
     && ln -s /usr/local/anaconda3/ /opt/anaconda3 \
