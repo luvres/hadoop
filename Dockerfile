@@ -1,7 +1,7 @@
 FROM debian:jessie-slim
 MAINTAINER Leonardo Loures <luvres@hotmail.com>
 
-RUN apt-get update && apt-get upgrade -y \
+RUN apt-get update \
     && apt-get install -y \
     openssh-server openssh-client bash-completion \
     bzip2 unzip rsync curl net-tools nano sudo supervisor

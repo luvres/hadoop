@@ -50,11 +50,11 @@ ENV PATH=$PATH:$SQOOP_HOME/bin
 ENV ACCUMULO_HOME=/opt/sqoop/accumulo
 ENV HCAT_HOME=/opt/sqoop/hcatalog
 ADD sqoop-env.sh /opt/sqoop/conf/sqoop-env.sh
-RUN ln -s /usr/local/jdbc/mysql-connector-java-5.1.42-bin.jar /opt/sqoop/lib/mysql-connector.jar \
-    && ln -s /usr/local/jdbc/mariadb-java-client-2.0.2.jar /opt/sqoop/lib/mariadb-connector.jar \
+RUN ln -s /usr/local/jdbc/mysql-connector-java-5.1.44-bin.jar /opt/sqoop/lib/mysql-connector.jar \
+    && ln -s /usr/local/jdbc/mariadb-java-client-2.0.3.jar /opt/sqoop/lib/mariadb-connector.jar \
     && ln -s /usr/local/jdbc/ojdbc7.jar /opt/sqoop/lib/ojdbc7.jar \
     && ln -s /usr/local/jdbc/ojdbc6.jar /opt/sqoop/lib/ojdbc6.jar \
-    && ln -s /usr/local/jdbc/postgresql-42.1.1.jar /opt/sqoop/lib/postgresql-connector.jar
+    && ln -s /usr/local/jdbc/postgresql-42.1.4.jar /opt/sqoop/lib/postgresql-connector.jar
 
 # Flume
 ENV FLUME_VERSION 1.7.0
