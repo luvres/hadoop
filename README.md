@@ -485,7 +485,7 @@ docker build -t izone/hadoop:rstudio ./rstudio/ && \
 docker build -t izone/hadoop:julia ./julia/ && \
 docker build -t izone/hadoop:ecosystem ./ecosystem/ && \
 docker build -t izone/hadoop:cluster ./cluster/ && \
-docker build -t izone/hadoop:datanode ./cluster/datanode
+docker build -t izone/hadoop:datanode ./cluster/datanode/
 ```
 ### CentOS 7
 ```
@@ -513,7 +513,7 @@ docker build -t izone/hadoop:cos6-anaconda ./centos6/anaconda/ && \
 docker build -t izone/hadoop:cos6-rstudio ./centos6/rstudio/ && \
 docker build -t izone/hadoop:cos6-mahout ./centos6/mahout/ && \
 docker build -t izone/hadoop:cos6-cluster ./centos6/cluster/ && \
-docker build -t izone/hadoop:cos6-datanode ./centos6/cluster/datanode
+docker build -t izone/hadoop:cos6-datanode ./centos6/cluster/datanode/
 ```
 ### Alpine
 ```
