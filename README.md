@@ -1,4 +1,4 @@
-## Hadoop 2.8.1 Ecosystem
+## Hadoop 2.8.2 Ecosystem
 ## Big Data Engineering and Analytics
 -----
 ### Linux OS options: Debian Jessie, CentOS 7, Centos 6.8
