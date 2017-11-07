@@ -2,39 +2,45 @@ FROM izone/hadoop
 MAINTAINER Leonardo Loures <luvres@hotmail.com>
 
 # Anaconda3
-ENV ANACONDA_VERSION 4.3.1
-RUN curl -L https://repo.continuum.io/archive/Anaconda3-${ANACONDA_VERSION}-Linux-x86_64.sh -o Anaconda3-${ANACONDA_VERSION}-Linux-x86_64.sh \
+ENV PATH=/opt/anaconda3/bin:$PATH
+RUN \
+	ANACONDA_VERSION=5.0.1 \
+    && curl -L https://repo.continuum.io/archive/Anaconda3-${ANACONDA_VERSION}-Linux-x86_64.sh -o Anaconda3-${ANACONDA_VERSION}-Linux-x86_64.sh \
     && /bin/bash Anaconda3-${ANACONDA_VERSION}-Linux-x86_64.sh -b -p /usr/local/anaconda3 \
     && ln -s /usr/local/anaconda3/ /opt/anaconda3 \
-    && rm Anaconda3-${ANACONDA_VERSION}-Linux-x86_64.sh
-ENV PATH=/opt/anaconda3/bin:$PATH
-RUN pip install --upgrade pip \
-    && pip install mrjob
-
-# jdbc
-RUN mkdir /usr/local/jdbc \
+    && rm Anaconda3-${ANACONDA_VERSION}-Linux-x86_64.sh \
+  \
+	&& pip install --upgrade pip \
+    && pip install mrjob \
+  \
+  # jdbc
+	&& mkdir /usr/local/jdbc \
     && curl -L https://github.com/luvres/jdbc/raw/master/mysql-connector-java-5.1.44-bin.jar -o /usr/local/jdbc/mysql-connector-java-5.1.44-bin.jar \
     && curl -L https://github.com/luvres/jdbc/raw/master/mariadb-java-client-2.0.3.jar -o /usr/local/jdbc/mariadb-java-client-2.0.3.jar \
     && curl -L https://github.com/luvres/jdbc/raw/master/ojdbc7.jar -o /usr/local/jdbc/ojdbc7.jar \
     && curl -L https://github.com/luvres/jdbc/raw/master/ojdbc6.jar -o /usr/local/jdbc/ojdbc6.jar \
-    && curl -L https://github.com/luvres/jdbc/raw/master/postgresql-42.1.4.jar -o /usr/local/jdbc/postgresql-42.1.4.jar
-
-# Spark
-ENV SPARK_VERSION 2.2.0
-RUN curl http://d3kbcqa49mib13.cloudfront.net/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz | tar -xzf - -C /usr/local/ \
-    && ln -s /usr/local/spark-${SPARK_VERSION}-bin-hadoop2.7/ /opt/spark
-RUN ln -s /usr/local/jdbc/mysql-connector-java-5.1.44-bin.jar /opt/spark/jars/mysql-connector.jar \
+    && curl -L https://github.com/luvres/jdbc/raw/master/postgresql-42.1.4.jar -o /usr/local/jdbc/postgresql-42.1.4.jar \
+  \
+  # Spark
+	&& SPARK_VERSION=2.2.0 \
+	&& curl http://d3kbcqa49mib13.cloudfront.net/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz | tar -xzf - -C /usr/local/ \
+    && ln -s /usr/local/spark-${SPARK_VERSION}-bin-hadoop2.7/ /opt/spark \
+	&& ln -s /usr/local/jdbc/mysql-connector-java-5.1.44-bin.jar /opt/spark/jars/mysql-connector.jar \
     && ln -s /usr/local/jdbc/mariadb-java-client-2.0.3.jar /opt/spark/jars/mariadb-connector.jar \
     && ln -s /usr/local/jdbc/ojdbc7.jar /opt/spark/jars/ojdbc7.jar \
     && ln -s /usr/local/jdbc/ojdbc6.jar /opt/spark/jars/ojdbc6.jar \
     && ln -s /usr/local/jdbc/postgresql-42.1.4.jar /opt/spark/jars/postgresql-connector.jar
+
 ENV SPARK_HOME=/opt/spark
 ENV PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
 ENV NOTEBOOKS_PATH=/root/notebooks
 RUN mkdir $NOTEBOOKS_PATH
 ENV PYSPARK_PYTHON=python3
 ENV PYSPARK_DRIVER_PYTHON=ipython
-ENV PYSPARK_DRIVER_PYTHON_OPTS="notebook --ip='*' --no-browser --notebook-dir=$NOTEBOOKS_PATH"
+ENV PYSPARK_DRIVER_PYTHON_OPTS="notebook --allow-root --ip='*' \
+										 --no-browser \
+										 --notebook-dir=$NOTEBOOKS_PATH \
+										 --NotebookApp.token=''"
 
 RUN echo "" >>/etc/supervisord.conf \
     && echo "[program:pyspark]" >>/etc/supervisord.conf \

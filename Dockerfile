@@ -1,25 +1,27 @@
 FROM debian:jessie-slim
 MAINTAINER Leonardo Loures <luvres@hotmail.com>
 
-RUN apt-get update \
+RUN \
+	apt-get update \
     && apt-get install -y \
     openssh-server openssh-client bash-completion \
-    bzip2 unzip rsync curl net-tools nano sudo supervisor
-
-# SSH Key Passwordless
-RUN ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa \
+    bzip2 unzip rsync curl net-tools nano sudo supervisor \
+  \
+  # SSH Key Passwordless
+	&& ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa \
     && ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa \
     && cat ~/.ssh/id_dsa.pub >> ~/.ssh/authorized_keys \
-    && chmod 0600 ~/.ssh/authorized_keys
-RUN sed -i '/StrictHostKeyChecking/s/#//g' /etc/ssh/ssh_config \
-    && sed -i '/StrictHostKeyChecking/s/ask/no/g' /etc/ssh/ssh_config
-
-# Java
-RUN JAVA_VERSION_MAJOR=8 && \
-    JAVA_VERSION_MINOR=144 && \
-    JAVA_VERSION_BUILD=01 && \
+    && chmod 0600 ~/.ssh/authorized_keys \
+  \
+	&& sed -i '/StrictHostKeyChecking/s/#//g' /etc/ssh/ssh_config \
+    && sed -i '/StrictHostKeyChecking/s/ask/no/g' /etc/ssh/ssh_config \
+  \
+  # Java
+	&& JAVA_VERSION_MAJOR=8 && \
+    JAVA_VERSION_MINOR=152 && \
+    JAVA_VERSION_BUILD=16 && \
     JAVA_PACKAGE=jdk && \
-    URL=090f390dda5b47b9b721c7dfaa008135 && \
+    URL=aa0333dd3019491ca4f6ddbe78cdb6d0 && \
     curl -jkSLH "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-b${JAVA_VERSION_BUILD}/${URL}/${JAVA_PACKAGE}-${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-linux-x64.tar.gz \
     | tar -xzf - -C /usr/local \
     && ln -s /usr/local/jdk1.${JAVA_VERSION_MAJOR}.0_${JAVA_VERSION_MINOR} /opt/jdk \
@@ -59,8 +61,9 @@ ENV JAVA_HOME=/opt/jdk
 ENV PATH=${PATH}:${JAVA_HOME}/bin:${JAVA_HOME}/sbin
 
 # Hadoop
-ENV HADOOP_VERSION 2.8.1
-RUN curl http://ftp.unicamp.br/pub/apache/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz | tar -xzf - -C /usr/local/ \
+RUN \
+	HADOOP_VERSION=2.8.2 \
+	&& curl http://ftp.unicamp.br/pub/apache/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz | tar -xzf - -C /usr/local/ \
     && rm -fR /usr/local/hadoop-${HADOOP_VERSION}/share/doc \
               /usr/local/hadoop-${HADOOP_VERSION}/share/hadoop/common/jdiff \
     && ln -s /usr/local/hadoop-${HADOOP_VERSION}/ /opt/hadoop
@@ -79,8 +82,8 @@ ADD hdfs-site.xml $HADOOP_HOME/etc/hadoop/hdfs-site.xml
 ADD mapred-site.xml $HADOOP_HOME/etc/hadoop/mapred-site.xml
 ADD yarn-site.xml $HADOOP_HOME/etc/hadoop/yarn-site.xml
 ADD start.sh /etc/start.sh
-RUN chmod +x /etc/start.sh
-RUN hdfs namenode -format
+RUN chmod +x /etc/start.sh \
+	&& hdfs namenode -format
 
 # Set up S6 init system
 #ADD https://github.com/just-containers/s6-overlay/releases/download/v1.18.1.5/s6-overlay-amd64.tar.gz /tmp/

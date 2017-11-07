@@ -21,7 +21,7 @@ ADD hbase-env.sh $HBASE_HOME/conf/hbase-env.sh
 ADD hbase-site.xml $HBASE_HOME/conf/hbase-site.xml
 
 # Hive
-ENV HIVE_VERSION 2.3.0
+ENV HIVE_VERSION 2.3.1
 RUN curl http://ftp.unicamp.br/pub/apache/hive/hive-${HIVE_VERSION}/apache-hive-${HIVE_VERSION}-bin.tar.gz | tar -xzf - -C /usr/local/ \
     && ln -s /usr/local/apache-hive-${HIVE_VERSION}-bin/ /opt/hive
 ENV HIVE_HOME=/opt/hive
@@ -57,7 +57,7 @@ RUN ln -s /usr/local/jdbc/mysql-connector-java-5.1.44-bin.jar /opt/sqoop/lib/mys
     && ln -s /usr/local/jdbc/postgresql-42.1.4.jar /opt/sqoop/lib/postgresql-connector.jar
 
 # Flume
-ENV FLUME_VERSION 1.7.0
+ENV FLUME_VERSION 1.8.0
 RUN curl http://ftp.unicamp.br/pub/apache/flume/${FLUME_VERSION}/apache-flume-${FLUME_VERSION}-bin.tar.gz | tar -xzf - -C /usr/local/ \
     && rm -fR /usr/local/apache-flume-${FLUME_VERSION}-bin/docs \
     && ln -s /usr/local/apache-flume-${FLUME_VERSION}-bin/ /opt/flume
