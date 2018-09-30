@@ -18,10 +18,10 @@ RUN \
   \
   # Java
 	&& JAVA_VERSION_MAJOR=8 && \
-    JAVA_VERSION_MINOR=152 && \
-    JAVA_VERSION_BUILD=16 && \
+    JAVA_VERSION_MINOR=181 && \
+    JAVA_VERSION_BUILD=13 && \
     JAVA_PACKAGE=jdk && \
-    URL=aa0333dd3019491ca4f6ddbe78cdb6d0 && \
+    URL=96a7b8442fe848ef90c96a2fad6ed6d1 && \
     curl -jkSLH "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-b${JAVA_VERSION_BUILD}/${URL}/${JAVA_PACKAGE}-${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-linux-x64.tar.gz \
     | tar -xzf - -C /usr/local \
     && ln -s /usr/local/jdk1.${JAVA_VERSION_MAJOR}.0_${JAVA_VERSION_MINOR} /opt/jdk \
@@ -62,7 +62,7 @@ ENV PATH=${PATH}:${JAVA_HOME}/bin:${JAVA_HOME}/sbin
 
 # Hadoop
 RUN \
-	HADOOP_VERSION=2.8.3 \
+	HADOOP_VERSION=2.8.5 \
 	&& curl http://ftp.unicamp.br/pub/apache/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz | tar -xzf - -C /usr/local/ \
     && rm -fR /usr/local/hadoop-${HADOOP_VERSION}/share/doc \
               /usr/local/hadoop-${HADOOP_VERSION}/share/hadoop/common/jdiff \

@@ -5,15 +5,16 @@ RUN yum install -y epel-release && yum update -y \
     && yum install -y \
     openssh-server openssh-clients supervisor \
     bzip2 unzip rsync net-tools sudo which \
-    && yum clean all
-
+    && yum clean all \
+  \
 # SSH Key Passwordless
-RUN ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa \
+    && ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa \
     && ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa \
     && cat ~/.ssh/id_dsa.pub >> ~/.ssh/authorized_keys \
     && chmod 0600 ~/.ssh/authorized_keys \
-    && /usr/bin/ssh-keygen -A
-RUN sed -i '/StrictHostKeyChecking/s/#//g' /etc/ssh/ssh_config \
+    && /usr/bin/ssh-keygen -A \
+  \
+    && sed -i '/StrictHostKeyChecking/s/#//g' /etc/ssh/ssh_config \
     && sed -i '/StrictHostKeyChecking/s/ask/no/g' /etc/ssh/ssh_config
 
 # Supervidor

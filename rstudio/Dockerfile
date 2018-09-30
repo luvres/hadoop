@@ -12,7 +12,7 @@ RUN \
     && apt-get -y install r-base \
   \
   # RStudio Server
-	&& RSTUDIO_VERSION=1.1.383 \
+	&& RSTUDIO_VERSION=1.1.456 \
 	&& curl -s https://download2.rstudio.org/rstudio-server-${RSTUDIO_VERSION}-amd64.deb -o rstudio.deb \
     && gdebi -n rstudio.deb \
     && rm rstudio.deb \
