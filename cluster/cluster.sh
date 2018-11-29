@@ -1,6 +1,7 @@
 #!/bin/bash
 
 nodesSSH(){
+  rm -f /etc/machines
   for i in `seq $((NODES))`
   do
     echo "Configuring SSH ${HOSTNODE}$i"
@@ -13,6 +14,7 @@ nodesSSH(){
 }; nodesSSH
 
 confFiles(){
+  rm -f $HADOOP_HOME/etc/hadoop/slaves
   echo $HOSTNAME >$HADOOP_HOME/etc/hadoop/slaves
   cat /etc/machines >>$HADOOP_HOME/etc/hadoop/slaves
   cat /etc/machines >>$SPARK_HOME/conf/slaves
